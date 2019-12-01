@@ -1,0 +1,35 @@
+/*
+
+    colors:
+        #FFF            white
+        #3C4483         blue
+        #EFEEE8         paper
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+h1 {
+    color: #FFF;
+    text-align: center;
+    font-size: 5rem;
+}
+
+body {
+    background-color: #FFF;
+}
+
+.app-container {
+    background-color: #EFEEE8;
+}
+
+.app-header {
+    background-color: #3C4483;
+}
