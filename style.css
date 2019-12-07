@@ -4,6 +4,14 @@
         #FFF            white
         #3C4483         blue
         #EFEEE8         paper
+
+
+    Breakpoints
+        Extra small:    <576px
+        Small:          ≥576px
+        Medium:         ≥768px
+        Large:          ≥992px
+        Extra large:    ≥1200px
 */
 
 h1,
@@ -18,7 +26,19 @@ h6 {
 
 h1 {
     color: #FFF;
-    font-size: 5rem;
+    font-size: 1.75rem;
+}
+
+@media (min-width: 576px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    h1 {
+        font-size: 5rem;
+    }
 }
 
 body {
@@ -27,6 +47,7 @@ body {
 
 .app-container {
     background-color: #EFEEE8;
+    min-height: 100vh;
 }
 
 .app-header {
