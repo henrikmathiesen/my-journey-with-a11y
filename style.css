@@ -3,7 +3,7 @@
     colors:
         #FFF            white
         #3C4483         blue
-        #EFEEE8         paper
+        #EEE            paper
 
 
     Breakpoints
@@ -64,7 +64,7 @@ main {
 }
 
 .app-container {
-    background-color: #EFEEE8;
+    background-color: #EEE;
     min-height: 100vh;
 }
 
