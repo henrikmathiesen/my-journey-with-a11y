@@ -4,9 +4,13 @@
   "description": "I'am a front end developer in the pursuit of leveling up my skills in WCAG and web accessibility in general. This site will be the hub for my studies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist",
+    "clean-gh-pages": "rimraf node_modules/gh-pages/.cache"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
 }
