@@ -4,6 +4,7 @@
   "description": "I'am a front end developer in the pursuit of leveling up my skills in WCAG and web accessibility in general. This site will be the hub for my studies.",
   "main": "index.js",
   "scripts": {
+    "copy-to-dist": "cpx \"src/**/*\" dist",
     "deploy": "gh-pages -d dist",
     "clean-gh-pages": "rimraf node_modules/gh-pages/.cache"
   },
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cpx": "^1.5.0",
     "gh-pages": "^2.1.1"
   }
 }
