@@ -23,57 +23,96 @@
             <article class="col-lg-8">
                 <h2>Understanding WCAG</h2>
                 <p>
-                    Web Content Accessibility Guidelines was first released 1998. Version 2 was released 2008 and version 2.1 2018.
+                    Web Content Accessibility Guidelines was first released 1998. Version 2 was released 2008 and
+                    version 2.1 2018.
                 </p>
                 <p>
-                    The main purpose of WCAG is to make content more accessible for people with disabilities. 
-                    But allthough web accessibility is essential for people with disabilities it is useful for all people.
+                    The main purpose of WCAG is to make content more accessible for people with disabilities.
+                    But allthough web accessibility is essential for people with disabilities it is useful for all
+                    people.
                 </p>
                 <p>
-                    WCAG is authored in such a way that compliance with it can be tested by a combination of machine and human evaluation.
-                    There are other accessibility measures like "short paragraphs", these techniques promotes usability for all users,
+                    WCAG is authored in such a way that compliance with it can be tested by a combination of machine and
+                    human evaluation.
+                    There are other accessibility measures like "short paragraphs", these techniques promotes usability
+                    for all users,
                     but are not included in WCAG because they are not easely testable.
                 </p>
-                
+
                 <h3 class="h4">The Four Principles</h3>
                 <p>
                     The foundation for WCAG are four principles (POUR): Perceivable, Operable, Understandable, Robust.
                 </p>
-                
+
                 <h4 class="h5">Perceivable</h4>
                 <p>
                     Information and user interface components can't be invisible to all the user's senses.
-                    One of the biggest barriers to perceivability is content that is only available in visual or in audio format.
+                    One of the biggest barriers to perceivability is content that is only available in visual or in
+                    audio format.
                 </p>
                 <p>
-                    In most cases, the key to perceivability is <strong>converting non-textual content into text</strong>, 
+                    In most cases, the key to perceivability is converting non-textual content into text,
                     which can then be processed by the assistive technology of the user’s choice.
                 </p>
                 <p>
-                    Other perceivability concerns under WCAG include the use of high-contrast color schemes and the ability to resize text, 
+                    Other perceivability concerns under WCAG include the use of high-contrast color schemes and the
+                    ability to resize text,
                     so that people with low vision can successfully use and navigate your site.
                 </p>
 
                 <h4 class="h5">Operable</h4>
                 <p>
                     Perceivable focuses on the user being able to passively access the information in the interface.
-                    Operable on the other hand focuses on the user being able to interact and make full use of the interface.
+                    Operable on the other hand focuses on the user being able to interact and make full use of the
+                    interface.
                 </p>
                 <p>
-                    It is crucial that the interface is navigatable with only the keyboard, both for blind users and for those
+                    It is crucial that the interface is navigatable with only the keyboard, both for blind users and for
+                    those
                     who may not have the fine motor skills required to operate a mouse.
                 </p>
                 <p>
-                    Users should be able to adjust, pause, or disable time limits unless the limit is absolutely necessary or longer than 20 hours.
+                    Users should be able to adjust, pause, or disable time limits unless the limit is absolutely
+                    necessary or longer than 20 hours.
                 </p>
                 <p>
-                    Good semantic in HTML code should be used and the DOM order should match the visual order of elements.
+                    Good semantic in HTML code should be used and the DOM order should match the visual order of
+                    elements.
                 </p>
                 <p>
                     Make links purpose clear and use big enough touch targets.
                 </p>
-                
-                <h3 class="h4">See <a href="wcag-table.html">WCAG Table</a> for a detailed explanation of the composition.</h3>
+
+                <h4 class="h5">Understandable</h4>
+                <p>
+                    The user should be able to understand the information and interface.
+                </p>
+                <p>
+                    Form validation is a part of the Understandable principle.
+                    In order for people with disabilities to understand the problem and correct the issue, websites
+                    should provide better error messages and help prevent errors whenever possible.
+                </p>
+                <p>
+                    This principle also focuses on readability and predictability. Developers should use the lang
+                    attribute,
+                    explain unusual words and use a consistent design with a predictable functionality.
+                </p>
+
+                <h4 class="h5">Robust</h4>
+                <p>
+                    Robustness is the shortest of the four principles. Robustness, as defined by WCAG, refers
+                    specifically to web content that is compatible with a variety of "user agents" (like browsers and assistive technologies).
+                </p>
+                <p>
+                    Developers should focus on writing valid HTML and use semantic elements correctly for their intended purpose.
+                </p>
+                <p>
+                    If your website uses custom-built components, however, you will need to use ARIA roles to provide a description of the element’s function.
+                    Also make sure that assistive technologies can receive status messages without focus.
+                </p>
+
+                <h3 class="h4">See <a href="wcag-table.html">WCAG Table</a> for a detailed explanation of the
+                    composition.</h3>
             </article>
         </main>
     </div>
