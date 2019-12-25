@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="/index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            <div class="col-lg-6">
+                <h2>Longer descriptions</h2>
+
+                <h3 class="h4">aria-describedby or aria-details</h3>
+                <p>A (non working) image with alt attribute and aria-describedby pointing to a .sr only element.</p>
+                <img src="non-working-image" alt="Henry the Great" aria-describedby="henry-desc" />
+                <div id="henry-desc" class="sr-only">A long description for this image.</div>
+                <ul>
+                    <li>
+                        <a href="https://webaim.org/discussion/mail_thread?thread=7002" target="_blank">Any semantic in aria-describedby referenced element will be ignored by assistive technology</a>
+                    </li>
+                    <li>
+                        <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-details" target="_blank">aria-details supports semantic in referenced element</a>
+                    </li>
+                </ul>
+                
+                <h3 class="h4">longdesc attribute</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H45" target="_blank">Can point to seperate page or element on same page</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img" target="_blank">Deprecated (search longdesc)</a>
+                    </li>
+                </ul>
+
+                <h3 class="h4">Best approach</h3>
+                <p>
+                    aria-details or a normal link to a page with the long description seems like the best approach.
+                </p>
+                <p>
+                    <a href="https://webaim.org/discussion/mail_thread?thread=7002" target="_blank">There is a interesting discussion about long description at webaim</a>
+                </p>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>
+
