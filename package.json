@@ -2,7 +2,6 @@
   "name": "my-journey-with-a11y",
   "version": "1.0.0",
   "description": "I'am a front end developer in the pursuit of leveling up my skills in WCAG and web accessibility in general. This site will be the hub for my studies.",
-  "main": "index.js",
   "scripts": {
     "start": "npm run build && http-server \"./build\" -p 1337",
     "build": "gulp",
@@ -13,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cpx": "^1.5.0",
     "gh-pages": "^2.1.1",
     "http-server": "0.9.0",
     "gulp": "3.9.1",
