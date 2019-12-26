@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
     <div class="container app-container">
         <header class="row app-header">
             <div class="col">
-                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">My journey with a11y</h1>
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="/index.html">My journey with a11y</a>
+                </h1>
             </div>
         </header>
-        <main class="row pt-2 pt-sm-4 pt-lg-5">
+        <main class="row py-2 py-sm-4 py-lg-5">
             <article class="col-lg-6">
                 <h2>Welcome!</h2>
                 <p>
@@ -107,6 +109,20 @@
                                     <a href="http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf"
                                         target="_blank">HTML sectioning flowchart (pdf)</a>
                                 </li>
+                                <li>
+                                    WCAG Success Criteria Specific
+                                    <ul>
+                                        <li>1 Perceivable > 1.1 Text alternatives > 1.1.1 Non-text content > 
+                                            <a href="https://www.w3.org/WAI/GL/wiki/ARIATechnique_usingImgRole_with_aria-label_forCSS-backgroundImage" target="_blank">Accessible CSS background images</a>
+                                        </li>
+                                        <li>1 Perceivable > 1.1 Text alternatives > 1.1.1 Non-text content > 
+                                            <a href="https://www.powermapper.com/tests/screen-readers/media/audio-aria-label/">aria-label for audio, Screen reader compatibility</a>
+                                        </li>
+                                        <li>1 Perceivable > 1.1 Text alternatives > 1.1.1 Non-text content > 
+                                            <a href="https://www.powermapper.com/tests/screen-readers/media/video-aria-label/">aria-label for video, Screen reader compatibility</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -129,10 +145,19 @@
                             </ul>
                         </li>
                         <li>
-                            My Resources (placeholder)
+                            My Resources
+                            <ul>
+                                <li><a href="/understanding-wcag.html">Understanding WCAG</a></li>
+                                <li><a href="/wcag-table.html">WCAG table</a></li>
+                            </ul>
                         </li>
                         <li>
-                            My Coding Lab (placeholder)
+                            My Coding Lab
+                            <ul>
+                                <li>1 Perceivable > 1.1 Text alternatives > 1.1.1 Non-text content > 
+                                    <a href="/coding-lab/1-perceivable/1.1-text-alternatives/1.1.1-non-text-content/longer-descriptions.html">Longer descriptions</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
