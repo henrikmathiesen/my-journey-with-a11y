@@ -27,7 +27,7 @@ gulp.task('handlebars', function () {
 });
 
 gulp.task('copy-css', function () {
-    gulp
+    return gulp
         .src(config.path.src + '/css/style.css')
         .pipe(gulp.dest(config.path.bld));
 });
