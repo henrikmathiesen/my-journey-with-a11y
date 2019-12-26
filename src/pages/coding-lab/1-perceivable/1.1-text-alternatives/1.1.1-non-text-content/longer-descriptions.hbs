@@ -1,0 +1,45 @@
+{{#> base homeref="../../../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-6">
+            <h2>Longer descriptions</h2>
+
+            <h3 class="h4">aria-describedby or aria-details</h3>
+            <p>A (non working) image with alt attribute and aria-describedby pointing to a .sr only element.</p>
+            <img src="non-working-image" alt="Henry the Great" aria-describedby="henry-desc" />
+            <div id="henry-desc" class="sr-only">A long description for this image.</div>
+            <ul>
+                <li>
+                    <a href="https://webaim.org/discussion/mail_thread?thread=7002" target="_blank">Any semantic in
+                        aria-describedby referenced element will be ignored by assistive technology</a>
+                </li>
+                <li>
+                    <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-details" target="_blank">aria-details supports
+                        semantic in referenced element</a>
+                </li>
+            </ul>
+
+            <h3 class="h4">longdesc attribute</h3>
+            <ul>
+                <li>
+                    <a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H45" target="_blank">Can point to seperate
+                        page or element on same page</a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img" target="_blank">Deprecated
+                        (search longdesc)</a>
+                </li>
+            </ul>
+
+            <h3 class="h4">Best approach</h3>
+            <p>
+                aria-details or a normal link to a page with the long description seems like the best approach.
+            </p>
+            <p>
+                <a href="https://webaim.org/discussion/mail_thread?thread=7002" target="_blank">There is a interesting
+                    discussion about long description at webaim</a>
+            </p>
+        </div>
+
+        {{/inline}}
+        {{/base}}
