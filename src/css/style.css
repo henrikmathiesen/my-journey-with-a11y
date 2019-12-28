@@ -50,6 +50,10 @@ h2, .h2, .h4 {
     margin-top: 2rem;
 }
 
+* + .h5 {
+    margin-top: 1rem;
+}
+
 .blockquote {
     font-size: 0.9rem;
     border-left: 12px solid lightgray;

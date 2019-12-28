@@ -5,9 +5,11 @@
             <h2>Longer descriptions</h2>
 
             <h3 class="h4">aria-describedby or aria-details</h3>
-            <p>A (non working) image with alt attribute and aria-describedby pointing to a .sr only element.</p>
+            <p>A (non working) image with alt attribute and aria-describedby pointing to a element.</p>
             <img src="non-working-image" alt="Henry the Great" aria-describedby="henry-desc" />
-            <div id="henry-desc" class="sr-only">A long description for this image.</div>
+            <p id="henry-desc">A long description for this image. We dont hide this div with .sr-only since the more ways we present information to people the more inclusive the design is.</p>
+            
+            <h4 class="h5">Notes on aria-describedby and aria-details</h4>
             <ul>
                 <li>
                     <a href="https://webaim.org/discussion/mail_thread?thread=7002" target="_blank">Any semantic in
