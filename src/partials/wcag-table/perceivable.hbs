@@ -188,7 +188,7 @@
     <td class="text-nowrap">1.3.1 Info and Relationships</td>
     <td>A</td>
     <td>
-        By using correct semantic HTML information is conveyed to all users.
+        By using correct semantic HTML, information is conveyed to all users.
         <br>
         <strong>It helps: visually impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank">WCAG:
@@ -225,7 +225,7 @@
         <br>
         <strong>It helps: visually impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/sensory-characteristics.html" target="_blank">WCAG:
-            Understanding 1.3.3 Sensory Characteristics</a>
+            Understanding 1.3.3: Sensory Characteristics</a>
     </td>
     <td>
         Avoid copy like "Read more in the right column", instead refer to a header.
@@ -233,12 +233,43 @@
     </td>
 </tr>
 <tr>
-    <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.3.4 Orientation
+    <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">
+        1.3.4 Orientation
+    </td>
+    <td>AA</td>
+    <td>
+        Dont fix the design to one screen orientation, some users have their devices mounted in a fixed orientation (e.g. on the arm of a power wheelchair).
+        An exception is if the content can only be understood or used in one screen orientation (for example a piano app).
+        <br>
+        <strong>It helps: motor impaired, visually impaired</strong>
+        <br>
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html" target="_blank">WCAG:
+            Understanding 1.3.4: Orientation</a>
+    </td>
+    <td>
+        Allow landscape and portrait
     </td>
 </tr>
 <tr>
-    <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.3.5 Identify Input
-        Purpose</td>
+    <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">
+        1.3.5 Identify Input Purpose
+    </td>
+    <td>AA</td>
+    <td>
+        For some input fields, the type attribute already offers a way to broadly specify the intention of the input field, for example, input type="tel".
+        The HTML autocomplete attribute takes this one step further, only accepting a certain number of specific well-defined fixed values.
+        This allows a more fine-grained definition or identification of purpose than the type attribute.
+        <br>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" target="_blank">MDN: The HTML autocomplete attribute</a>
+        <br>
+        <strong>It helps: cognitive impaired, motor impairments</strong>
+        <br>
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html" target="_blank">
+        WCAG: Understanding 1.3.5: Identify Input Purpose</a>
+    </td>
+    <td>
+        Use HTML 5 input types with autocomplete
+    </td>
 </tr>
 <tr>
     <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.3.6 Identify
