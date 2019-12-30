@@ -18,7 +18,10 @@ gulp.task('handlebars', function () {
     return gulp
         .src(config.path.src + '/pages/**/*.hbs')
         .pipe(handlebars({}, {
-            batch: [config.path.src + '/layouts'],
+            batch: [
+                config.path.src + '/layouts', 
+                config.path.src + '/partials'
+            ],
         }))
         .pipe(rename({
             extname: '.html'
