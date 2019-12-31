@@ -294,6 +294,21 @@
 </tr>
 <tr>
     <td class="text-nowrap">1.4.1 Use of Color</td>
+    <td>A</td>
+    <td>
+        Color is an important part of design, however, some users have difficulty perceiving color.
+        The intent of this Success Criterion is to ensure that all users can access information that is conveyed by color differences.
+        <br>
+        <a href="https://github.com/twbs/bootstrap/issues/15304" target="_blank">Bootstrap default links might violate 1.4.1</a>
+        <br>
+        <strong>It helps: visually impaired</strong>
+        <br>
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html" target="_blank">WCAG: Understanding 1.4.1: Use of Color</a>
+    </td>
+    <td>
+        Ensure that information conveyed by color is also available in text, for example form validation (dont just mark invalid fields with a red border) (remember programmatically set aria-invalid as well).
+        Underline links or use a contrast ratio of 3:1.
+    </td>
 </tr>
 <tr>
     <td class="text-nowrap">1.4.2 Audio Control</td>
