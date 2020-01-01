@@ -435,55 +435,69 @@
     <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.10 Reflow</td>
     <td>AA</td>
     <td>
-        Text
+        The intent of this Success Criterion is to support people with low vision who need to enlarge text and read it in a single column.
+        Avoid scrolling in 2 dimensions: <br>
+        Vertical scrolling content at a width equivalent to 320 CSS pixels (or browser window set to a width of 1280px and zoomed in to 400%), <br>
+        Horizontal scrolling content at a height equivalent to 256 CSS pixels <br>
         <br>
-        <strong>It helps: </strong>
+        <strong>It helps: Visually impaired, cognitive impaired</strong>
         <br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html" target="_blank">WCAG: Understanding 1.4.10: Reflow</a>
     </td>
     <td>
-        Text
+        Make the site responsive. Data tables, some images and maps could be an exception.
     </td>
 </tr>
 <tr>
     <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.11 Non-text Contrast</td>
     <td>AA</td>
     <td>
-        Text
+        The intent of this Success Criterion is to ensure that active user interface components (and state like selected and focus indicator) and meaningful graphics are distinguishable by people with moderately low vision.
+        Active user interface component must have a minimum 3:1 contrast ratio with the adjacent colors.
         <br>
-        <strong>It helps: </strong>
+        <strong>It helps: Visually impaired</strong>
         <br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" target="_blank">WCAG: Understanding 1.4.11: Non-text Contrast</a>
     </td>
     <td>
-        Text
+        See tools. Disabled components are an exception.
     </td>
 </tr>
 <tr>
     <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.12 Text Spacing</td>
     <td>AA</td>
     <td>
-        Text
+        The developer should not hinder the end user changing the typography, and if user changes the typography to any of these bullet points the content should still be perceivable (no cut offs nor overlaps).
+        Also the bullet points are a good baseline for developers to use themselves.
+        <ul>
+            <li>Line height to at least 1.5 times the font size</li>
+            <li>Spacing following paragraphs to at least 2 times the font size</li>
+            <li>Letter spacing (tracking) to at least 0.12 times the font size</li>
+            <li>Word spacing to at least 0.16 times the font size</li>
+        </ul>
         <br>
-        <strong>It helps: </strong>
+        <strong>It helps: Visually impaired, cognitive impaired</strong>
         <br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html" target="_blank">WCAG: Understanding 1.4.12: Text Spacing</a>
     </td>
     <td>
-        Text
+        See tools.
     </td>
 </tr>
 <tr>
     <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.13 Content on Hover or Focus</td>
     <td>AA</td>
     <td>
-        Text
+        Content that apperars on hover and focus must be perceivable and dismissable.
         <br>
-        <strong>It helps: </strong>
+        <strong>It helps: Visually impaired, cognitive impaired, motor impaired</strong>
         <br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html" target="_blank">WCAG: Understanding 1.4.13: Content on Hover or Focus</a>
     </td>
     <td>
-        Text
+        Close custom tooltips on ESC.
+        Allow user to hover out on hover trigger without removing the triggered content.
+        The triggered content should persist until user hovers out on the triggered content or closes it (status messages that changes are excempt, like a "busy" message thats no longer valid).
+        HTML title are excempt. Content which can be triggered via pointer hover should also be able to be triggered by keyboard focus.
     </td>
 </tr>
