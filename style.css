@@ -25,6 +25,10 @@ h1 {
     font-size: 1.75rem;
 }
 
+a {
+    text-decoration: underline !important;
+}
+
 h1 a {
     color: #FFF !important;
     text-decoration: none !important;

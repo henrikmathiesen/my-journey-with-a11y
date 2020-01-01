@@ -298,8 +298,6 @@
                             The HTML autocomplete attribute takes this one step further, only accepting a certain number of specific well-defined fixed values.
                             This allows a more fine-grained definition or identification of purpose than the type attribute.
                             <br>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" target="_blank">MDN: The HTML autocomplete attribute</a>
-                            <br>
                             <strong>It helps: cognitive impaired, motor impairments</strong>
                             <br>
                             <a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html" target="_blank">
@@ -332,45 +330,214 @@
                     </tr>
                     <tr>
                         <td class="text-nowrap">1.4.1 Use of Color</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.2 Audio Control</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.3 Contrast (Minimum)</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.4 Resize text</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.5 Images of Text</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.6 Contrast (Enhanced)</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.7 Low or No Background Audio</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.8 Visual Presentation</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1.4.9 Images of Text (No Exception)</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.10 Reflow</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.11 Non-text
-                            Contrast</td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.12 Text Spacing
+                        <td>A</td>
+                        <td>
+                            Color is an important part of design, however, some users have difficulty perceiving color.
+                            The intent of this Success Criterion is to ensure that all users can access information that is conveyed by color differences.
+                            <br>
+                            <strong>It helps: visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html" target="_blank">WCAG: Understanding 1.4.1: Use of Color</a>
+                        </td>
+                        <td>
+                            Ensure that information conveyed by color is also available in text, for example form validation (dont just mark invalid fields with a red border) (remember programmatically set aria-invalid as well).
+                            Underline links or use a contrast ratio of 3:1.
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.13 Content on
-                            Hover or Focus</td>
+                        <td class="text-nowrap">1.4.2 Audio Control</td>
+                        <td>A</td>
+                        <td>
+                            Individuals who use screen reading software can find it hard to hear the speech output if there is other audio playing at the same time.
+                            <br>
+                            <strong>It helps: Visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-control.html" target="_blank">WCAG: Understanding 1.4.2: Audio Control</a>
+                        </td>
+                        <td>
+                            Play sound for only 3 seconds. If longer, provide a way to stop it, or reduce the volyme to zero.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.3 Contrast (Minimum)</td>
+                        <td>AA</td>
+                        <td>
+                            The intent of this Success Criterion is to provide enough contrast between text and its background so that it can be read by people with moderately low vision (who do not use contrast-enhancing assistive technology).
+                            The contrast requirement for larger text is therefore lower.
+                            <br>
+                            <strong>It helps: Visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank">WCAG: Understanding 1.4.3: Contrast (Minimum)</a>
+                        </td>
+                        <td>
+                            Text is less than 18 point if not bold and less than 14 point if bold = contrast ratio 4.5:1<br>
+                            Text is at least 18 point if not bold and at least 14 point if bold = contrast ratio 3:1<br>
+                            See tools.<br>
+                            Also remember including placeholder text.
+                            Text that is decorative and conveys no information is excluded, as are logos and disabled components.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.4 Resize text</td>
+                        <td>AA</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that visually rendered text, including text-based controls,
+                            can be scaled successfully so that it can be read directly by people with mild visual disabilities
+                            <br>
+                            <strong>It helps: Visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html" target="_blank">WCAG: Understanding 1.4.4: Resize text</a>
+                        </td>
+                        <td>
+                            User should be able to zoom up to 200% without clipping, truncating or obscured content.
+                            Also use relative sizes like rem and percent, so user can change text size without zooming in images.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.5 Images of Text</td>
+                        <td>AA</td>
+                        <td>
+                            If an author can use text to achieve the same visual effect, he or she should present the information as text rather than using an image.
+                            It helps people with low vision, so they can enlarge it or have it read by a screen reader. People with cognitive disabilities that affect reading are also helped.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html" target="_blank">WCAG: Understanding 1.4.5: Images of Text</a>
+                        </td>
+                        <td>
+                            Prefer text and CSS over images of text. Logos (and charts, screenshots) are an exception.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.6 Contrast (Enhanced)</td>
+                        <td>AAA</td>
+                        <td>
+                            Text is less than 18 point if not bold and less than 14 point if bold = contrast ratio 7:1<br>
+                            Text is at least 18 point if not bold and at least 14 point if bold = contrast ratio 4.5:1<br>
+                            See tools
+                            <br>
+                            <strong>It helps: Visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">WCAG: Understanding 1.4.6: Contrast (Enhanced)</a>
+                        </td>
+                        <td>
+                            Text that is decorative and conveys no information is excluded, as are logos and disabled components.        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.7 Low or No Background Audio</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that any non-speech sounds are low enough that a user who is hard of hearing can separate the speech from background sounds.
+                            <br>
+                            <strong>It helps: Hearing impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/low-or-no-background-audio.html" target="_blank">WCAG: Understanding 1.4.7: Low or No Background Audio</a>
+                        </td>
+                        <td>
+                            Mixing audio files so that non-speech sounds are at least 20 decibels lower than the speech audio content
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.8 Visual Presentation</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this AAA Success Criterion is to ensure that visually rendered text is presented in such a manner that it can be perceived without its layout interfering with its readability.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html" target="_blank">WCAG: Understanding 1.4.8: Visual Presentation</a>
+                        </td>
+                        <td>
+                            Foreground and background colors can be selected by the user.
+                            Text blocks width is no more than 80 characters. Text is not justified.
+                            Line height 1.5 and spacing between paragraphs is at least 1.5 larger than line height.
+                            Text can be resized without assistive technology up to 200 percent in a way that does not require the user to scroll horizontally to read a line of text.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1.4.9 Images of Text (No Exception)</td>
+                        <td>AAA</td>
+                        <td>
+                            Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text-no-exception.html" target="_blank">WCAG: Understanding 1.4.9: Images of Text (No Exception)</a>
+                        </td>
+                        <td>
+                            Use text and CSS over images of text. Logos (and charts, screenshots) are an exception.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.10 Reflow</td>
+                        <td>AA</td>
+                        <td>
+                            The intent of this Success Criterion is to support people with low vision who need to enlarge text and read it in a single column.
+                            Avoid scrolling in 2 dimensions: <br>
+                            Vertical scrolling content at a width equivalent to 320 CSS pixels (or browser window set to a width of 1280px and zoomed in to 400%), <br>
+                            Horizontal scrolling content at a height equivalent to 256 CSS pixels <br>
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html" target="_blank">WCAG: Understanding 1.4.10: Reflow</a>
+                        </td>
+                        <td>
+                            Make the site responsive. Data tables, some images and maps could be an exception.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.11 Non-text Contrast</td>
+                        <td>AA</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that active user interface components (and state like selected and focus indicator) and meaningful graphics are distinguishable by people with moderately low vision.
+                            Active user interface component must have a minimum 3:1 contrast ratio with the adjacent colors.
+                            <br>
+                            <strong>It helps: Visually impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" target="_blank">WCAG: Understanding 1.4.11: Non-text Contrast</a>
+                        </td>
+                        <td>
+                            See tools. Disabled components are an exception.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.12 Text Spacing</td>
+                        <td>AA</td>
+                        <td>
+                            The developer should not hinder the end user changing the typography, and if user changes the typography to any of these bullet points the content should still be perceivable (no cut offs nor overlaps).
+                            Also the bullet points are a good baseline for developers to use themselves.
+                            <ul>
+                                <li>Line height to at least 1.5 times the font size</li>
+                                <li>Spacing following paragraphs to at least 2 times the font size</li>
+                                <li>Letter spacing (tracking) to at least 0.12 times the font size</li>
+                                <li>Word spacing to at least 0.16 times the font size</li>
+                            </ul>
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html" target="_blank">WCAG: Understanding 1.4.12: Text Spacing</a>
+                        </td>
+                        <td>
+                            See tools.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">1.4.13 Content on Hover or Focus</td>
+                        <td>AA</td>
+                        <td>
+                            Content that apperars on hover and focus must be perceivable and dismissable.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired, motor impaired</strong>
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html" target="_blank">WCAG: Understanding 1.4.13: Content on Hover or Focus</a>
+                        </td>
+                        <td>
+                            Close custom tooltips on ESC.
+                            Allow user to hover out on hover trigger without removing the triggered content.
+                            The triggered content should persist until user hovers out on the triggered content or closes it (status messages that changes are excempt, like a "busy" message thats no longer valid).
+                            HTML title are excempt. Content which can be triggered via pointer hover should also be able to be triggered by keyboard focus. Use role=tooltip.
+                        </td>
                     </tr>
                 </tbody>
             </table>
