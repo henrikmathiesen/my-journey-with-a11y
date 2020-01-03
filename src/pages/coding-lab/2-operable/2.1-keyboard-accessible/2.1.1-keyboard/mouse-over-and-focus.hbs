@@ -1,0 +1,35 @@
+{{#> base homeref="../../../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-6">
+            <h2>Mouse over and focus</h2>
+            <p>
+                If doing something on mouse over, also do it on focus.
+            </p>
+
+            <div class="mb-2">
+                <button class="btn btn-danger" id="btn-01">Console.log on just mouse over event</button>
+            </div>
+            <div>
+                <button class="btn btn-success" id="btn-02">Console.log on mouse over and focus event</button>
+            </div>
+        </div>
+
+        <script>
+            const btn01 = document.getElementById('btn-01');
+            const btn02 = document.getElementById('btn-02');
+
+            btn01.addEventListener('mouseover', function () {
+                console.log('btn01 mouseover - showing a tooltip');
+            });
+
+            btn02.addEventListener('mouseover', btn02EventHandler);
+            btn02.addEventListener('focus', btn02EventHandler);
+
+            function btn02EventHandler({type}) { 
+                console.log(`btn02 ${type} - showing a tooltip (close it with ESC also)`);
+            }
+        </script>
+
+        {{/inline}}
+        {{/base}}
