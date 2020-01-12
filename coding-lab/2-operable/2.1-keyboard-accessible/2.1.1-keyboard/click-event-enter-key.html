@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../style.css">
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-6">
+            <h2>Click event and enter key</h2>
+            <p>
+                If we bind a click event to a span (with tabindex=0), enter key wont trigger it.
+                But if we instead use a button, enter key will trigger the event.
+            </p>
+
+            <div class="mb-2">
+                <span class="btn btn-danger" id="btn-01" role="button" tabindex="0">Span</span>
+            </div>
+            <div>
+                <button class="btn btn-success" id="btn-02">Button</button>
+            </div>
+        </div>
+
+        <script>
+
+            const btn01 = document.getElementById('btn-01');
+            const btn02 = document.getElementById('btn-02');
+
+            btn01.addEventListener('click', function () {
+                console.log('btn01 click event');
+            });
+
+            btn02.addEventListener('click', function () {
+                console.log('btn02 click event');
+            });
+            
+        </script>
+
+
+        </main>
+    </div>
+</body>
+
+</html>

@@ -538,6 +538,76 @@
                             HTML title are excempt. Content which can be triggered via pointer hover should also be able to be triggered by keyboard focus. Use role=tooltip.
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row" rowspan="34" class="text-nowrap">2 Operable</th><!-- Change rowspan, do subheaders -->
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row" rowspan="5" class="text-nowrap">2.1 Keyboard accessible</th>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.1.1 Keyboard</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that, wherever possible, content can be operated through a keyboard.<br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html" target="_blank">WCAG: Understanding 2.1.1: Keyboard</a>
+                        </td>
+                        <td>
+                            Ensure keyboard control for all functionality (there are exceptions like handdrawing).
+                            On mouseover event should also have an on focus event. 
+                            Bind events to keyboard accessible controls like a, button,
+                            the user agent will take care of firing an onclick event for you if activated via the keyboard.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.1.2 No keyboard trap</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that content does not "trap" keyboard focus.
+                            If a user can move to a part of the page via the keyboard, the user must also be able to move away from it using only the keyboard.
+                            This is often an issue on pages that rely on plugins, such as Flash or Java applets, make sure the plugin can return keyboard focus.
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html" target="_blank">WCAG: Understanding 2.1.2: No keyboard trap</a>
+                        </td>
+                        <td>
+                            Ensuring that users are not trapped in content. The user should be able to tab away from a widget, or close it (like for example a modal)
+                            with ESC or a button.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.1.3 Keyboard (no exception)</td>
+                        <td>AAA</td>
+                        <td>
+                            This is the same as Success Criterion 2.1.1, except that no exceptions are allowed.
+                            So, if an app prompts the user to do a hand drawing (path dependent), the app
+                            can not conform to this success criterion
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception.html" target="_blank">WCAG: Understanding 2.1.3: Keyboard (no exception)</a>
+                        </td>
+                        <td>
+                            See 2.1.1.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">2.1.4 Character key shortcuts</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Crition is to reduce accidental activation of keyboard shortcuts that are made up of only character keys (no modifier).
+                            This can happen to keyboard users and users that use speech recognition.
+                        <br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html" target="_blank">WCAG: Understanding 2.1.4 Character key shortcuts</a>
+                        </td>
+                        <td>
+                            If the site/app has single key shortcuts, let users turn them off or remap them.
+                            Note that this success criterion doesn't affect components such as listboxes and drop-down menus, that may be selected by one or more character keys, the shortcuts are only active when the components have focus.
+                            Accesskeys are also not affected because they include modifier keys.
+                        </td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
