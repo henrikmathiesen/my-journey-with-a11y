@@ -4,13 +4,110 @@
         <div class="col-lg-6">
             <h2>Modals</h2>
             <p>
-                Making modals accessible... (keyboard focus inside modal, close it, restore focus to last element focused)
+                Making modals accessible... (keyboard focus inside modal, close it, restore focus to last element
+                focused)
             </p>
-
+            <h3 class="h4">A place of focus bellow</h3>
+            <p>
+                <button class="btn btn-warning">Focus button</button>
+            </p>
+            <h3 class="h4">Open Modal bellow</h3>
+            <p>
+                <button class="btn btn-success" id="modal-trigger">Open Modal</button>
+            </p>
+            <h3 class="h4">Placeholder text bellow</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
         </div>
 
+        <div class="d-none" id="modal">Modal 01</div>
+        <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
+
+        <!-- 
+            - Design modal
+            - Semantic
+            - aria-hidden on col when modal is open (no can not do, hope aria-modal works)
+        -->
+
         <script>
-            
+            const $modalTrigger = document.getElementById('modal-trigger');
+            const $modal = document.getElementById('modal');
+            const $modalBackdrop = document.getElementById('modal-backdrop');
+            const $body = document.querySelector('body');
+
+            let modalIsOpen = false;
+
+            $modalTrigger.addEventListener('click', toggleModal);
+            $modalBackdrop.addEventListener('click', toggleModal);
+            window.addEventListener('keyup', function (e) {
+                if (!e.keyCode || e.keyCode === 27) { 
+                    modalIsOpen && toggleModal();
+                }
+            });
+
+            function toggleModal() {
+                if (!modalIsOpen) {
+                    // open it
+                    $modal.classList.remove('d-none');
+                    $modalBackdrop.classList.remove('d-none');
+                    $body.classList.add('app-modal-open')
+                } else {
+                    // close it
+                    $modal.classList.add('d-none');
+                    $modalBackdrop.classList.add('d-none');
+                    $body.classList.remove('app-modal-open')
+                }
+
+                modalIsOpen = !modalIsOpen;
+            }
+
+
         </script>
 
         {{/inline}}
