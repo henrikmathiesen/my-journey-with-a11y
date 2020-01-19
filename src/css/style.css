@@ -85,6 +85,13 @@ main {
     background-color: #3C4483;
 }
 
+.app-btn-transparent {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    appearance: none;
+}
+
 .app-modal-open {
     overflow: hidden;
 }
@@ -93,9 +100,25 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1040;
     width: 100vw;
     height: 100vh;
     background-color: #000;
     opacity: .5;
+    z-index: 10;
+}
+
+.app-modal {
+    position: fixed;
+    width: 320px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    top: 16px;
+    left: 50%;
+    margin-left: -160px;
+    z-index: 20;
+    background-color: white;
+}
+
+.app-close {
+    font-size: 2rem;
 }

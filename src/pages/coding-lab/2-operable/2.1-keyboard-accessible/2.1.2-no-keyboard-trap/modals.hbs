@@ -20,6 +20,10 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
                 at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
             </p>
+            <h3 class="h4">A place of focus bellow</h3>
+            <p>
+                <button class="btn btn-warning">Focus button</button>
+            </p>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
                 at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
@@ -66,7 +70,23 @@
             </p>
         </div>
 
-        <div class="d-none" id="modal">Modal 01</div>
+        <div class="app-modal d-none" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h2 class="h4" id="modal-title">Iam the Modal Title</h2>
+                <button class="app-btn-transparent" aria-label="Close">
+                    <span class="app-close" aria-hidden="true">x</span>
+                </button>
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero maiores ad excepturi earum numquam
+                perferendis.
+            </p>
+            <div class="text-right mb-3">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">OK</button>
+            </div>
+        </div>
+        
         <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
 
         <!-- 
@@ -76,17 +96,23 @@
         -->
 
         <script>
-            const $modalTrigger = document.getElementById('modal-trigger');
-            const $modal = document.getElementById('modal');
-            const $modalBackdrop = document.getElementById('modal-backdrop');
-            const $body = document.querySelector('body');
+            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+            }
 
-            let modalIsOpen = false;
+            var $modalTrigger = document.getElementById('modal-trigger');
+            var $modal = document.getElementById('modal');
+            var $modalBackdrop = document.getElementById('modal-backdrop');
+            var $body = document.querySelector('body');
+
+            var modalIsOpen = false;
 
             $modalTrigger.addEventListener('click', toggleModal);
+            $modal.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', toggleModal) });
             $modalBackdrop.addEventListener('click', toggleModal);
             window.addEventListener('keyup', function (e) {
-                if (!e.keyCode || e.keyCode === 27) { 
+                if (!e.keyCode || e.keyCode === 27) {
                     modalIsOpen && toggleModal();
                 }
             });
@@ -96,12 +122,12 @@
                     // open it
                     $modal.classList.remove('d-none');
                     $modalBackdrop.classList.remove('d-none');
-                    $body.classList.add('app-modal-open')
+                    $body.classList.add('app-modal-open');
                 } else {
                     // close it
                     $modal.classList.add('d-none');
                     $modalBackdrop.classList.add('d-none');
-                    $body.classList.remove('app-modal-open')
+                    $body.classList.remove('app-modal-open');
                 }
 
                 modalIsOpen = !modalIsOpen;
