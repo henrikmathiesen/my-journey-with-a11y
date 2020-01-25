@@ -70,7 +70,7 @@
             </p>
         </div>
 
-        <div class="app-modal d-none" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="app-modal d-none" id="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h2 class="h4" id="modal-title">Iam the Modal Title</h2>
                 <button class="app-btn-transparent" aria-label="Close">
@@ -87,15 +87,6 @@
         </div>
 
         <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
-
-        <!-- 
-            + Design modal
-            - Read links under Scope
-            - Semantic
-            - aria-hidden on col when modal is open (no can not do, hope aria-modal works)
-                - Test with NVDA
-            - focus inside modal
-        -->
 
         <script>
             // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
@@ -125,6 +116,7 @@
                     $modal.classList.remove('d-none');
                     $modalBackdrop.classList.remove('d-none');
                     $body.classList.add('app-modal-open');
+                    $modal.focus();
                 } else {
                     // close it
                     $modal.classList.add('d-none');
