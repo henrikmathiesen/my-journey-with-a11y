@@ -70,7 +70,8 @@
             </p>
         </div>
 
-        <div class="app-modal d-none" id="modal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="app-modal d-none" id="modal" tabindex="-1" role="dialog" aria-modal="true"
+            aria-labelledby="modal-title">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h2 class="h4" id="modal-title">Iam the Modal Title</h2>
                 <button class="app-btn-transparent" aria-label="Close">
@@ -104,9 +105,36 @@
             $modalTrigger.addEventListener('click', toggleModal);
             $modal.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', toggleModal) });
             $modalBackdrop.addEventListener('click', toggleModal);
+
+            // Tab Trap, view-source:http://udacity.github.io/ud891/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
+            var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+            var focusableElements = modal.querySelectorAll(focusableElementsString);
+            var firstTabStop = focusableElements[0];
+            var lastTabStop = focusableElements[focusableElements.length - 1];
+
             window.addEventListener('keyup', function (e) {
+                // Close open modal if ESC
                 if (!e.keyCode || e.keyCode === 27) {
                     modalIsOpen && toggleModal();
+                }
+            });
+
+            window.addEventListener('keydown', function (e) { 
+                // Tab Trap inside open modal
+                if (modalIsOpen && e.keyCode === 9) {
+                    // SHIFT + TAB
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstTabStop) {
+                            e.preventDefault();
+                            lastTabStop.focus();
+                        }
+                    // TAB
+                    } else {
+                        if (document.activeElement === lastTabStop) {
+                            e.preventDefault();
+                            firstTabStop.focus();
+                        }
+                    }
                 }
             });
 
@@ -122,6 +150,7 @@
                     $modal.classList.add('d-none');
                     $modalBackdrop.classList.add('d-none');
                     $body.classList.remove('app-modal-open');
+                    $modalTrigger.focus();
                 }
 
                 modalIsOpen = !modalIsOpen;
