@@ -114,6 +114,7 @@
 
             window.addEventListener('keyup', function (e) {
                 // Close open modal if ESC
+                // e.key also works: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
                 if (!e.keyCode || e.keyCode === 27) {
                     modalIsOpen && toggleModal();
                 }
