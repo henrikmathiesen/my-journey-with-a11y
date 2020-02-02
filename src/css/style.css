@@ -1,12 +1,16 @@
 /*
 
+    Headers:
+        h2
+        h3.h4
+        h4.h5
+
     colors:
         #FFF            white
         #3C4483         blue
         #EEE            paper
 
-
-    Breakpoints
+    Breakpoints:
         Extra small:    <576px
         Small:          ≥576px
         Medium:         ≥768px
