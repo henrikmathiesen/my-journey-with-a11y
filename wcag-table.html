@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My journey with a11y</title>
+    <title>WCAG Table - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -597,7 +597,7 @@
                         <td>
                             The intent of this Success Crition is to reduce accidental activation of keyboard shortcuts that are made up of only character keys (no modifier).
                             This can happen to keyboard users and users that use speech recognition.
-                        <br>
+                            <br>
                             <strong>It helps: Visually impaired, motor impaired</strong><br>
                             <a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html" target="_blank">WCAG: Understanding 2.1.4 Character key shortcuts</a>
                         </td>
@@ -605,6 +605,104 @@
                             If the site/app has single key shortcuts, let users turn them off or remap them.
                             Note that this success criterion doesn't affect components such as listboxes and drop-down menus, that may be selected by one or more character keys, the shortcuts are only active when the components have focus.
                             Accesskeys are also not affected because they include modifier keys.
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row" rowspan="7" class="text-nowrap">2.2 Enough Time</th>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.2.1 Timing Adjustable</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to ensure that users with disabilities are given adequate time to interact with Web content whenever possible.
+                            Any process that happens without user initiation after a set time or on a periodic basis is a time limit. This includes partial or full updates of content (for example, page refresh), 
+                            changes to content, or the expiration of a window of opportunity for a user to react to a request for input.
+                            Also animated, moving or scrolling content introduces a time limit on a users ability to read content.
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired, hearing impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html" target="_blank">WCAG: Understanding 2.2.1: Timing Adjustable</a>
+                        </td>
+                        <td>
+                            User should be able to: turn off, adjust the length (10x default setting), request more time (20 seconds to do so, at least 10 times).
+                            Disabling time limits is better than customizing the length of time limits, which is better than requesting more time before a time limit occurs.
+                            There are exceptions, for example real time events like an auction. 20 hours+ time limit is also an exception.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.2.2 Pause, Stop, Hide</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to avoid distracting users during their interaction with a Web page.
+                            Partial content that moves, blinks, flashes, scrolls or auto updates, like animations, weather information or stock tickers
+                            can be distracting for people with certain disabilties.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html" target="_blank">WCAG: Understanding 2.2.2: Pause, Stop, Hide</a>
+                        </td>
+                        <td>
+                            Users should be able to pause, stop or hide partial content that is auto updating or moving, blinking or scrolling that lasts more than 5 seconds.
+                            An animation that occurs as part of a preload phase or similar situation can be considered an excempt if interaction cannot occur during that phase.
+                            Having an animation stop only so long as a user has focus on it (where it restarts as soon as the user moves the focus away) would not be considered a 
+                            "mechanism for the user to pause" because it makes the page unusable in the process and would not meet this SC.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.2.3 No Timing</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this Success Criterion is to minimize the occurrence of content that requires timed interaction.
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired, hearing impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/no-timing.html" target="_blank">WCAG: Understanding 2.2.3: No Timing</a>
+                        </td>
+                        <td>
+                            Allow users to complete an activity without any time limit.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.2.4 Interruptions</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this Success Criterion is to allow users to turn off updates from the author/server except in emergencies 
+                            (civil emergency alert messages or any other messages that warn of danger to health, safety, or property, including data loss, loss of connection, etcetera).
+                            This allows people with disabilities to focus on the content.
+                            <br>
+                            <strong>It helps: Cognitive impaired, visually impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/interruptions.html" target="_blank">WCAG: Understanding 2.2.4: Interruptions</a>
+                        </td>
+                        <td>
+                            Providing a mechanism to postpone any updating of content or providing a mechanism to request an update of the content instead of updating automatically.
+                            Or provide options for automatic notifications.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.2.5 Re-authenticating</td>
+                        <td>AAA</td>
+                        <td>
+                            For security reasons, many sites implement an authentication time limit after a certain period of inactivity. 
+                            These time limits may cause problems for persons with disabilities because it may take longer for them to complete the activity.
+                            <br>
+                            <strong>It helps: Cognitive impaired, motor impaired, visually impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/re-authenticating.html" target="_blank">WCAG: Understanding 2.2.5: Re-authenticating</a>
+                        </td>
+                        <td>
+                            Saving data so that it can be used after a user re-authenticates.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">2.2.6 Timeouts</td>
+                        <td>AAA</td>
+                        <td>
+                            This Success Criterion works in tandem with Success Criterion 2.2.1 Timing Adjustable, but is specifically focused on notification of timeouts related to user inactivity.
+                            The use of timeouts can present barriers for users with disabilities, as these users may require more time to read content or to perform functions, such as completing an online form.
+                            This Success Criterion helps users by ensuring they are notified about timeouts related to inactivity.
+                            <br>
+                            <strong>It helps: Cognitive impaired, language related disabilities, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/timeouts.html" target="_blank">WCAG: Understanding 2.2.6: Timeouts</a>
+                        </td>
+                        <td>
+                            Dont timeout the user for at least 20 hours, or store user data for more than 20 hours (is it really a timeout then?) or provide a warning of the timeout duration at the start of the process.
                         </td>
                     </tr>
                     

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modals - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../style.css">
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-6">
+            <h2>Modals</h2>
+            <p>
+                Making modals accessible... (keyboard focus inside modal, close it, restore focus to last element
+                focused)
+            </p>
+            <h3 class="h4">A place of focus bellow</h3>
+            <p>
+                <button class="btn btn-warning">Focus button</button>
+            </p>
+            <h3 class="h4">Open Modal bellow</h3>
+            <p>
+                <button class="btn btn-success" id="modal-trigger">Open Modal</button>
+            </p>
+            <h3 class="h4">Placeholder text bellow</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <h3 class="h4">A place of focus bellow</h3>
+            <p>
+                <button class="btn btn-warning">Focus button</button>
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ipsa tenetur possimus ratione eveniet quo
+                at, animi nihil harum aspernatur iste adipisci recusandae aliquam sit neque in quod nemo ipsum.
+            </p>
+        </div>
+
+        <div class="app-modal d-none" id="modal" tabindex="-1" role="dialog" aria-modal="true"
+            aria-labelledby="modal-title">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h2 class="h4" id="modal-title">Iam the Modal Title</h2>
+                <button class="app-btn-transparent" aria-label="Close">
+                    <span class="app-close" aria-hidden="true">x</span>
+                </button>
+            </div>
+            <p>
+                This is text inside modal.
+            </p>
+            <div class="text-right mb-3">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">OK</button>
+            </div>
+        </div>
+
+        <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
+
+        <script>
+            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+            }
+
+            var $modalTrigger = document.getElementById('modal-trigger');
+            var $modal = document.getElementById('modal');
+            var $modalBackdrop = document.getElementById('modal-backdrop');
+            var $body = document.querySelector('body');
+
+            var modalIsOpen = false;
+
+            $modalTrigger.addEventListener('click', toggleModal);
+            $modal.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', toggleModal) });
+            $modalBackdrop.addEventListener('click', toggleModal);
+
+            // Tab Trap, view-source:http://udacity.github.io/ud891/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
+            var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+            var focusableElements = modal.querySelectorAll(focusableElementsString); // OBS: not live
+            var firstTabStop = focusableElements[0];
+            var lastTabStop = focusableElements[focusableElements.length - 1];
+
+            window.addEventListener('keyup', function (e) {
+                // Close open modal if ESC
+                // e.key also works: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+                if (!e.keyCode || e.keyCode === 27) {
+                    modalIsOpen && toggleModal();
+                }
+            });
+
+            window.addEventListener('keydown', function (e) { 
+                // Tab Trap inside open modal
+                if (modalIsOpen && e.keyCode === 9) {
+                    // SHIFT + TAB
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstTabStop) {
+                            e.preventDefault();
+                            lastTabStop.focus();
+                        }
+                    // TAB
+                    } else {
+                        if (document.activeElement === lastTabStop) {
+                            e.preventDefault();
+                            firstTabStop.focus();
+                        }
+                    }
+                }
+            });
+
+            function toggleModal() {
+                if (!modalIsOpen) {
+                    // open it
+                    $modal.classList.remove('d-none');
+                    $modalBackdrop.classList.remove('d-none');
+                    $body.classList.add('app-modal-open');
+                    $modal.focus();
+                } else {
+                    // close it
+                    $modal.classList.add('d-none');
+                    $modalBackdrop.classList.add('d-none');
+                    $body.classList.remove('app-modal-open');
+                    $modalTrigger.focus();
+                }
+
+                modalIsOpen = !modalIsOpen;
+            }
+
+
+        </script>
+
+
+        </main>
+    </div>
+</body>
+
+</html>
