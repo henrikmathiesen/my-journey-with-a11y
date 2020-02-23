@@ -3,9 +3,12 @@
 
         <div class="col-lg-12">
             <h2>Bypass blocks</h2>
-            <div class="row">
+            <div id="skip-to-content-container" class="row sr-only">
                 <div class="col">
-                    <a href="#maincontent" class="d-inline-block p-1 bg-light">Skip to main content</a>
+                    <a href="#maincontent" id="skip-to-main-content-link" class="d-inline-block p-1 bg-light">Skip to
+                        main content</a>
+                    <a href="#asidecontent" id="skip-to-aside-content-link" class="d-inline-block p-1 bg-light">Skip to
+                        aside content</a>
                 </div>
             </div>
             <div class="row mb-4">
@@ -24,10 +27,11 @@
                 </nav>
             </div>
             <div class="row">
-                <div class="col-lg-8" id="maincontent">
+                <div id="maincontent" class="col-lg-8">
                     <h3 class="h4">Main content</h3>
                     <p>
-                        In a more realistic scenario this section would be in a main tag, but that tag is already taken by top level content.
+                        In a more realistic scenario this section would be in a main tag, but that tag is already taken
+                        by top level content.
                     </p>
                     <p>
                         "If a page includes more than one main landmark, each should have a unique label."
@@ -43,22 +47,32 @@
                     </div>
                     <p>
                         This technique generates a hashed linked. To not have that we need to
-                        programmatically set focus with tabindex=-1 on id=main.
+                        programmatically set focus with tabindex=-1 on id=maincontent.
                     </p>
                     <h4 class="h5">Hidden skip links</h4>
                     <p>
-                        "Probably the most accessible method for visually hiding skip links is to hide them off screen, then cause them to be positioned on screen when they receive keyboard focus."
+                        "Probably the most accessible method for visually hiding skip links is to hide them off screen,
+                        then cause them to be positioned on screen when they receive keyboard focus."
                     </p>
                     <p>
                         <a href="https://webaim.org/techniques/skipnav/#creating">webaim.org</a>
                     </p>
                 </div>
-                <aside class="col-lg-4">
+                <aside id="asidecontent" class="col-lg-4">
                     <h3 class="h4">Aside content</h3>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cumque qui aut et saepe
                         error libero autem deleniti odio reprehenderit
                         voluptatibus, minima alias magnam repellendus quis, fuga expedita labore quas.
+                    </p>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">A place of focus in aside content</button>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, consequatur consequuntur
+                        dolore aspernatur dolorem rerum,
+                        neque quasi nihil repudiandae animi quia voluptatum officiis, voluptas placeat autem amet
+                        necessitatibus blanditiis quidem?
                     </p>
                 </aside>
             </div>
@@ -70,6 +84,23 @@
         -->
 
         <script>
+            const skipToContentContainer = document.getElementById('skip-to-content-container');
+            const skipToMainContentLink = document.getElementById('skip-to-main-content-link');
+            const skipToAsideContentLink = document.getElementById('skip-to-aside-content-link');
+
+            skipToMainContentLink.addEventListener('focus', setSkipContentContainerVisible);
+            skipToAsideContentLink.addEventListener('focus', setSkipContentContainerVisible);
+
+            skipToMainContentLink.addEventListener('blur', setSkipContentContainerInVisible);
+            skipToAsideContentLink.addEventListener('blur', setSkipContentContainerInVisible);
+
+            function setSkipContentContainerVisible() {
+                skipToContentContainer.classList.remove('sr-only');
+            }
+
+            function setSkipContentContainerInVisible() { 
+                skipToContentContainer.classList.add('sr-only');
+            }
 
         </script>
 
