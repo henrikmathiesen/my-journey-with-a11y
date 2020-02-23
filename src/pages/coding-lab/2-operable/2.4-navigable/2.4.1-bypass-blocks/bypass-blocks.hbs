@@ -1,0 +1,77 @@
+{{#> base title="Bypass blocks" homeref="../../../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-12">
+            <h2>Bypass blocks</h2>
+            <div class="row">
+                <div class="col">
+                    <a href="#maincontent" class="d-inline-block p-1 bg-light">Skip to main content</a>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <nav class="col">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">Navigation Item 1</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Navigation Item 2</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Navigation Item 3</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-lg-8" id="maincontent">
+                    <h3 class="h4">Main content</h3>
+                    <p>
+                        In a more realistic scenario this section would be in a main tag, but that tag is already taken by top level content.
+                    </p>
+                    <p>
+                        "If a page includes more than one main landmark, each should have a unique label."
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum a repellat beatae doloribus porro
+                        aperiam accusantium perferendis
+                        reprehenderit voluptate impedit quaerat recusandae odit eum incidunt temporibus, deleniti unde
+                        voluptas eius.
+                    </p>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">A place of focus in main content</button>
+                    </div>
+                    <p>
+                        This technique generates a hashed linked. To not have that we need to
+                        programmatically set focus with tabindex=-1 on id=main.
+                    </p>
+                    <h4 class="h5">Hidden skip links</h4>
+                    <p>
+                        "Probably the most accessible method for visually hiding skip links is to hide them off screen, then cause them to be positioned on screen when they receive keyboard focus."
+                    </p>
+                    <p>
+                        <a href="https://webaim.org/techniques/skipnav/#creating">webaim.org</a>
+                    </p>
+                </div>
+                <aside class="col-lg-4">
+                    <h3 class="h4">Aside content</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cumque qui aut et saepe
+                        error libero autem deleniti odio reprehenderit
+                        voluptatibus, minima alias magnam repellendus quis, fuga expedita labore quas.
+                    </p>
+                </aside>
+            </div>
+        </div>
+
+        <!--
+            Also
+                See wcag-etc for programmatically setting focus with tabindex=-1
+        -->
+
+        <script>
+
+        </script>
+
+        {{/inline}}
+        {{/base}}
