@@ -5,9 +5,11 @@
             <h2>Bypass blocks</h2>
             <div id="skip-to-content-container" class="row sr-only">
                 <div class="col">
-                    <a href="#maincontent" id="skip-to-main-content-link" class="d-inline-block p-1 bg-light">Skip to
+                    <a href="#maincontent" id="skip-to-main-content-link"
+                        class="d-inline-block p-1 bg-light sr-only">Skip to
                         main content</a>
-                    <a href="#asidecontent" id="skip-to-aside-content-link" class="d-inline-block p-1 bg-light">Skip to
+                    <a href="#asidecontent" id="skip-to-aside-content-link"
+                        class="d-inline-block p-1 bg-light sr-only">Skip to
                         aside content</a>
                 </div>
             </div>
@@ -84,22 +86,25 @@
         -->
 
         <script>
-            const skipToContentContainer = document.getElementById('skip-to-content-container');
-            const skipToMainContentLink = document.getElementById('skip-to-main-content-link');
-            const skipToAsideContentLink = document.getElementById('skip-to-aside-content-link');
-
-            skipToMainContentLink.addEventListener('focus', setSkipContentContainerVisible);
-            skipToAsideContentLink.addEventListener('focus', setSkipContentContainerVisible);
-
-            skipToMainContentLink.addEventListener('blur', setSkipContentContainerInVisible);
-            skipToAsideContentLink.addEventListener('blur', setSkipContentContainerInVisible);
-
-            function setSkipContentContainerVisible() {
-                skipToContentContainer.classList.remove('sr-only');
+            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
             }
 
-            function setSkipContentContainerInVisible() { 
-                skipToContentContainer.classList.add('sr-only');
+            const skipContentContainer = document.getElementById('skip-to-content-container');
+            const skipLinks = skipContentContainer.querySelectorAll('a');
+
+            skipLinks.forEach(function (a) { a.addEventListener('focus', skipLinkFocus) });
+            skipLinks.forEach(function (a) { a.addEventListener('blur', skipLinkBlur) });
+
+            function skipLinkFocus(ev) {
+                skipContentContainer.classList.remove('sr-only');
+                ev.target.classList.remove('sr-only');
+            }
+
+            function skipLinkBlur() {
+                skipContentContainer.classList.add('sr-only');
+                skipLinks.forEach(function (a) { a.classList.add('sr-only') });
             }
 
         </script>
