@@ -265,13 +265,17 @@
     <td class="text-nowrap">2.4.4 Link Purpose (In Context)</td>
     <td>A</td>
     <td>
-        
+        The intent of this Success Criterion is to help users understand the purpose of each link.
+        The purpose of each link should be determined from the link text alone or from the link text together with its programmatically determined link context.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" target="_blank">WCAG: Understanding 2.4.4 Link Purpose (In Context)</a>
     </td>
     <td>
-        
+        The link text should describe the destination of the link. Make sure all links to the same destination use the same link text.
+        Whenever possible, provide link text that identifies the purpose of the link without needing additional context.
+        But in some situations the developer may want to provide part of the description of the link in logically related text that provides the context for the link,
+        for example in a souranding p tag or td tag, aria-label or aria-labelledby can also be used (all of these are programmatically determined link context).
     </td>
 </tr>
 <tr>
