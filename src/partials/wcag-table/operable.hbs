@@ -314,13 +314,16 @@
     <td class="text-nowrap">2.4.7 Focus Visible</td>
     <td>AA</td>
     <td>
-        
+        The purpose of this success criterion is to help a person know which focusable element has the keyboard focus.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, motor impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" target="_blank">WCAG: Understanding 2.4.7 Focus Visible</a>
     </td>
     <td>
-        
+        An exception to this is if there is only one focusable element on the page.
+        Either let the browser default focus indicator do its thing (dont override it) 
+        or do override it with your own that match the design of the app/site (make it clear).
+        A blinking cursor in an input field is a focus indicator on its own.
     </td>
 </tr>
 <tr>
@@ -340,13 +343,16 @@
     <td class="text-nowrap">2.4.9 Link Purpose (Link Only)</td>
     <td>AAA</td>
     <td>
-        
+        A more strict version of 2.4.4.
+        Link purpose should be clear when taken out of context (like a link list presented by a screen reader)
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" target="_blank">WCAG: Understanding 2.4.9 Link Purpose (Link Only)</a>
     </td>
     <td>
-        
+        See 2.4.4, and also provide the link text that identifies the purpose of the link without needing additional context.
+        aria-label can be sufficent as direct context ("in some assistive technologies the aria-label value will show in the list of links instead of the actual link text"),
+        but it is better to write the text inside the a tag for meeting this success criteria.
     </td>
 </tr>
 <tr>
