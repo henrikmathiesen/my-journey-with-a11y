@@ -90,11 +90,6 @@
         <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
 
         <script>
-            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
-            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
-                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
-            }
-
             var $modalTrigger = document.getElementById('modal-trigger');
             var $modal = document.getElementById('modal');
             var $modalBackdrop = document.getElementById('modal-backdrop');
