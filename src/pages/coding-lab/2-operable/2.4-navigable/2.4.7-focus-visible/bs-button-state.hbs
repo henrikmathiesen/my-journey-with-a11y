@@ -35,11 +35,34 @@
             </div>
 
             <h3 class="h4">Bootstrap buttons selected state</h3>
-            
+            <div id="filter-buttons">
+                <button class="btn btn-outline-secondary">Filter 1</button>
+                <button class="btn btn-outline-secondary">Filter 2</button>
+                <button class="btn btn-outline-secondary">Filter 3</button>
+                <button class="btn btn-outline-secondary">Filter 4</button>
+            </div>
         </div>
 
         <script>
-            
+            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+            }
+
+            const filterButtons = document.getElementById('filter-buttons').querySelectorAll('button');
+            filterButtons.forEach(b => b.addEventListener('click', filterButtonClicked));
+
+            function filterButtonClicked(ev) {
+                filterButtons.forEach(b => {
+                    b.classList.remove('btn-success');
+                    b.classList.add('btn-outline-secondary');
+                });
+
+                ev.target.classList.remove('btn-outline-secondary');
+                ev.target.classList.add('btn-success');
+            }
+
+
         </script>
 
 
