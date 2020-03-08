@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.4.7 Focus Visible: Bootstrap button states - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-8">
+            <h2>2.4.7 Focus Visible: Bootstrap button states</h2>
+
+            <h3 class="h4">First a look on vanilla items</h3>
+            <div>
+                <div class="mb-2">
+                    <button>Vanilla button</button>
+                </div>
+                <div class="mb-2">
+                    <a href="#">Vanilla link</a>
+                </div>
+                <div>
+                    <input type="text">
+                </div>
+            </div>
+
+            <h3 class="h4">Bootstrap items</h3>
+            <div>
+                <div>
+                    <button class="btn btn-link">Button as link</button>
+                </div>
+                <div class="mb-2">
+                    <button class="btn btn-primary">Button primary</button>
+                    <button class="btn btn-secondary">Button secondary</button>
+                    <button class="btn btn-warning">Button warning</button>
+                    <button class="btn btn-danger">Button danger</button>
+                    <button class="btn btn-success">Button success</button>
+                </div>
+                <div>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <h3 class="h4">Bootstrap buttons selected state</h3>
+            <div id="filter-buttons">
+                <button class="btn btn-outline-secondary">Filter 1</button>
+                <button class="btn btn-outline-secondary">Filter 2</button>
+                <button class="btn btn-outline-secondary">Filter 3</button>
+                <button class="btn btn-outline-secondary">Filter 4</button>
+            </div>
+        </div>
+
+        <script>
+            const filterButtons = document.getElementById('filter-buttons').querySelectorAll('button');
+            filterButtons.forEach(b => b.addEventListener('click', filterButtonClicked));
+
+            function filterButtonClicked(ev) {
+                filterButtons.forEach(b => {
+                    b.classList.remove('btn-success');
+                    b.classList.add('btn-outline-secondary');
+                });
+
+                ev.target.classList.remove('btn-outline-secondary');
+                ev.target.classList.add('btn-success');
+            }
+
+
+        </script>
+
+
+
+        </main>
+    </div>
+</body>
+
+</html>

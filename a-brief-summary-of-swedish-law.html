@@ -10,6 +10,12 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    </script>
 </head>
 
 <body>
@@ -51,7 +57,7 @@
             </p>
 
             <p>
-                <a href="https://www.digg.se/utveckling--innovation/digital-tillganglighet" target="_blank">DIGG - digital-tillgänglighet</a>
+                <a href="https://www.digg.se/utveckling--innovation/digital-tillganglighet" target="_blank">DIGG - digital tillgänglighet</a>
             </p>
 
             <p>

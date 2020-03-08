@@ -10,6 +10,12 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    </script>
 </head>
 
 <body>
@@ -703,6 +709,213 @@
                         </td>
                         <td>
                             Dont timeout the user for at least 20 hours, or store user data for more than 20 hours (is it really a timeout then?) or provide a warning of the timeout duration at the start of the process.
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row" rowspan="4" class="text-nowrap">2.3 Seizures and Physical Reactions</th>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.3.1 Three Flashes or Below Threshold</td>
+                        <td>A</td>
+                        <td>
+                            Some users can experience seizures due to photosensitivity if content flashes at certain frequencies for more than a few flashes.
+                            People are even more sensitive to red flashing than to other colors.
+                            Blinking can be allowed for a short time as long as it stops (or can be stopped).
+                            Blinking usually does not occur at speeds of 3 per second or more, but it can. If blinking occurs faster than 3 per second, it would also be considered a flash.
+                            <br>
+                            <strong>It helps: Photosensitive epilepsy, photosensitive seizure disorders</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes-or-below-threshold.html" target="_blank">WCAG: Understanding 2.3.1 Three Flashes or Below Threshold</a>
+                        </td>
+                        <td>
+                            Ensure that no component of the content flashes more than 3 times in any 1-second period. If it does keep the area small enough and evaluate the pattern / red flash thresholds.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.3.2 Three Flashes</td>
+                        <td>AAA</td>
+                        <td>
+                            The purpose of this Success Criterion is to further reduce the chance of seizures.
+                            <br>
+                            <strong>It helps: Photosensitive epilepsy, photosensitive seizure disorders</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes.html" target="_blank">WCAG: Understanding 2.3.2 Three Flashes</a>
+                        </td>
+                        <td>
+                            Whereas Success Criterion 2.3.1 allows flashing if it is dim enough or has a small enough area, Success Criterion 2.3.2 does not allow flashing greater than 3 per second, 
+                            regardless of brightness or size. 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap table-info" aria-label="New in WCAG 2.1">2.3.3 Animation from Interactions</td>
+                        <td>AAA</td>
+                        <td>
+                            "Animation from interactions" applies when a user’s interaction initiates non-essential animation. In contrast, 2.2.2 Pause, Stop, Hide applies when the web page initiates animation.
+                            The intent of this Success Criterion is to allow users to prevent animation from interaction from being displayed on Web pages.
+                            <br>
+                            <strong>It helps: Vestibular (inner ear) disorder</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html" target="_blank">WCAG: Understanding 2.3.3 Animation from Interactions</a>
+                        </td>
+                        <td>
+                            Avoid using unnecessary animation. Provide a control for users to turn off non-essential animations from user interaction. 
+                            Take advantage of the reduce motion feature in the user-agent or operating system, 'prefers-reduced-motion' CSS Media Query.
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row" rowspan="11" class="text-nowrap">2.4 Navigable</th>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.1 Bypass blocks</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to allow people who navigate sequentially through content more direct access to the primary content of the Web page,
+                            by skipping repeated blocks of content (like top navigation).
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html" target="_blank">WCAG: Understanding 2.4.1 Bypass blocks</a>
+                        </td>
+                        <td>
+                            Use proper semantics and landmarks. Provide skip links.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.2 Page Titled</td>
+                        <td>A</td>
+                        <td>
+                            A descriptive title for each web page help users orient themselves on the web site.
+                            When titles appear in site maps or lists of search results, users can more quickly identify the content they need.
+                            User agents make the title of the page easily available to the user for identifying the page, by displaying it in the window or tab header.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html" target="_blank">WCAG: Understanding 2.4.2 Page Titled</a>
+                        </td>
+                        <td>
+                            Use descriptive titles that make sense when read out of context. Having link text and titles that agree, or be very similar, is good practice.
+                            Although not required for conformance, it could be a good idea to include the site name and sub sections in the title.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.3 Focus Order</td>
+                        <td>A</td>
+                        <td>
+                            
+                            <br>
+                            <strong>It helps: </strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html" target="_blank">WCAG: Understanding 2.4.3 Focus Order</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.4 Link Purpose (In Context)</td>
+                        <td>A</td>
+                        <td>
+                            The intent of this Success Criterion is to help users understand the purpose of each link.
+                            The purpose of each link should be determined from the link text alone or from the link text together with its programmatically determined link context.
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" target="_blank">WCAG: Understanding 2.4.4 Link Purpose (In Context)</a>
+                        </td>
+                        <td>
+                            The link text should describe the destination of the link. Make sure all links to the same destination use the same link text.
+                            Whenever possible, provide link text that identifies the purpose of the link without needing additional context.
+                            But in some situations the developer may want to provide part of the description of the link in logically related text that provides the context for the link,
+                            for example in a souranding p tag or td tag, aria-label or aria-labelledby can also be used (all of these are programmatically determined link context).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.5 Multiple Ways</td>
+                        <td>AA</td>
+                        <td>
+                            Different users may find one technique of navigation more usable than others, therefor provide different ways of locating a web page.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/multiple-ways.html" target="_blank">WCAG: Understanding 2.4.5 Multiple Ways</a>
+                        </td>
+                        <td>
+                            Exception: where the Web Page is the result of, or a step in, a process.
+                            Consider: Providing a site map or table of contents.
+                            Consider providing search functionality.
+                            Consider providing links between pages as well as a main navigation.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.6 Headings and Labels</td>
+                        <td>AA</td>
+                        <td>
+                            This Success Criterion does not require headings or labels.
+                            This Success Criterion requires that if headings or labels are provided, they be descriptive.
+                            Descriptive headings are especially helpful for users who have disabilities that make reading slow and for people with limited short-term memory.
+                            When heading and label have proper semantic, screen reader users can have them read out as a list and jump to them.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html" target="_blank">WCAG: Understanding 2.4.6 Headings and Labels</a>
+                        </td>
+                        <td>
+                            Headings should describe the content of their section. Labels should describe the purpose of their associated control.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.7 Focus Visible</td>
+                        <td>AA</td>
+                        <td>
+                            The purpose of this success criterion is to help a person know which focusable element has the keyboard focus.
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" target="_blank">WCAG: Understanding 2.4.7 Focus Visible</a>
+                        </td>
+                        <td>
+                            An exception to this is if there is only one focusable element on the page.
+                            Either let the browser default focus indicator do its thing (dont override it) 
+                            or do override it with your own that match the design of the app/site (make it clear).
+                            A blinking cursor in an input field is a focus indicator on its own.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.8 Location</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this Success Criterion is to provide a way for the user to orient herself within a set of Web pages, a Web site, or a Web application and find related information.
+                            <br>
+                            <strong>It helps: Cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/location.html" target="_blank">WCAG: Understanding 2.4.8 Location</a>
+                        </td>
+                        <td>
+                            Provide breadcrumbs, site map and for widgets, display whats active (for example an active tab in a set of tabs).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.9 Link Purpose (Link Only)</td>
+                        <td>AAA</td>
+                        <td>
+                            A more strict version of 2.4.4.
+                            Link purpose should be clear when taken out of context (like a link list presented by a screen reader)
+                            <br>
+                            <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html" target="_blank">WCAG: Understanding 2.4.9 Link Purpose (Link Only)</a>
+                        </td>
+                        <td>
+                            See 2.4.4, and also provide the link text that identifies the purpose of the link without needing additional context.
+                            aria-label can be sufficent as direct context ("in some assistive technologies the aria-label value will show in the list of links instead of the actual link text"),
+                            but it is better to write the text inside the a tag for meeting this success criteria.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">2.4.10 Section Headings</td>
+                        <td>AAA</td>
+                        <td>
+                            The intent of this Success Criterion is to provide headings for sections of a Web page, when the page is organized into sections.
+                            Section tag can stand on its own but can also be part (like a chapter) of an Article element (see HTML sectioning flowchart under resources).
+                            When such sections exist, they need to have headings that introduce them.
+                            This provision is included at Level AAA because it cannot be applied to all types of content and it may not always be possible to insert headings, 
+                            for example, when posting a pre-existing document to the Web.
+                            <br>
+                            <strong>It helps: Visually impaired, cognitive impaired</strong><br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Understanding/section-headings.html" target="_blank">WCAG: Understanding 2.4.10 Section Headings</a>
+                        </td>
+                        <td>
+                            Provide headings for each section. NOTE: "Sufficient Techniques" does not exemplify the section element, the author just uses h tags and p tags.
                         </td>
                     </tr>
                     

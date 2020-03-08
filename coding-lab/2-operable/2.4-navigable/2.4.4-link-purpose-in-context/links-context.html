@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>2.1.1 Keyboard: Click event and enter key - My journey with a11y</title>
+    <title>2.4.4 Link Purpose (In Context): Links context - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -30,34 +30,10 @@
         <main class="row py-2 py-sm-4 py-lg-5">
             
         <div class="col-lg-8">
-            <h2>2.1.1 Keyboard: Click event and enter key</h2>
-            <p>
-                If we bind a click event to a span (with tabindex=0), enter key wont trigger it.
-                But if we instead use a button, enter key will trigger the event.
-            </p>
-
-            <div class="mb-2">
-                <span class="btn btn-danger" id="btn-01" role="button" tabindex="0">Span</span>
-            </div>
-            <div>
-                <button class="btn btn-success" id="btn-02">Button</button>
-            </div>
+            <h2>2.4.4 Link Purpose (In Context): Links context</h2>
+            
         </div>
 
-        <script>
-
-            const btn01 = document.getElementById('btn-01');
-            const btn02 = document.getElementById('btn-02');
-
-            btn01.addEventListener('click', function () {
-                console.log('btn01 click event');
-            });
-
-            btn02.addEventListener('click', function () {
-                console.log('btn02 click event');
-            });
-            
-        </script>
 
 
         </main>

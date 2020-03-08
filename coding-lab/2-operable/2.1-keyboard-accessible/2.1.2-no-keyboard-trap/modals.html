@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modals - My journey with a11y</title>
+    <title>2.1.2 No keyboard trap: Modals - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    </script>
 </head>
 
 <body>
@@ -23,8 +29,8 @@
         </header>
         <main class="row py-2 py-sm-4 py-lg-5">
             
-        <div class="col-lg-6">
-            <h2>Modals</h2>
+        <div class="col-lg-8">
+            <h2>2.1.2 No keyboard trap: Modals</h2>
             <p>
                 Making modals accessible... (keyboard focus inside modal, close it, restore focus to last element
                 focused)
@@ -112,11 +118,6 @@
         <div class="app-modal-backdrop d-none" id="modal-backdrop"></div>
 
         <script>
-            // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
-            if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
-                Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
-            }
-
             var $modalTrigger = document.getElementById('modal-trigger');
             var $modal = document.getElementById('modal');
             var $modalBackdrop = document.getElementById('modal-backdrop');
