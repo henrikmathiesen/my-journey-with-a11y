@@ -7,12 +7,18 @@
                 If we bind a click event to a span (with tabindex=0), enter key wont trigger it.
                 But if we instead use a button, enter key will trigger the event.
             </p>
+            <p>
+                Likewise if we bind a click event to a link, both click and enter key will trigger it.
+            </p>
 
             <div class="mb-2">
                 <span class="btn btn-danger" id="btn-01" role="button" tabindex="0">Span</span>
             </div>
-            <div>
+            <div class="mb-2">
                 <button class="btn btn-success" id="btn-02">Button</button>
+            </div>
+            <div>
+                <a href="#" id="link-01">Link</a>
             </div>
         </div>
 
@@ -20,6 +26,7 @@
 
             const btn01 = document.getElementById('btn-01');
             const btn02 = document.getElementById('btn-02');
+            const link01 = document.getElementById('link-01');
 
             btn01.addEventListener('click', function () {
                 console.log('btn01 click event');
@@ -28,7 +35,11 @@
             btn02.addEventListener('click', function () {
                 console.log('btn02 click event');
             });
-            
+
+            link01.addEventListener('click', function () { 
+                console.log('link01 click event');
+            });
+
         </script>
 
         {{/inline}}
