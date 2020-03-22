@@ -252,13 +252,15 @@
     <td class="text-nowrap">2.4.3 Focus Order</td>
     <td>A</td>
     <td>
-        
+        The intent of this Success Criterion is to ensure that when users navigate sequentially through content, they encounter information in an order that is consistent with the meaning of the content and can be operated from the keyboard.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html" target="_blank">WCAG: Understanding 2.4.3 Focus Order</a>
     </td>
     <td>
-        
+        Use logical tab order (dont mess with tabindex 1,2,3). Develop accessible modals (see also 2.1.1).
+        When the source order matches the visual order, everyone will read the content and interact with it in the same (correct) order.
+        When using DOM scripting to insert content, insert the content immediately after the trigger control.
     </td>
 </tr>
 <tr>
