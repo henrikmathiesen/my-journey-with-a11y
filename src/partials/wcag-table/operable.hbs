@@ -409,13 +409,17 @@
     <td class="text-nowrap">2.5.3 Label in Name</td>
     <td>A</td>
     <td>
-        
+        For the purposes of this Success Criterion, "label" is simply referring to a text string in close visual proximity to a component.
+        Avoid disconnect between the visible name (visible text in an element) and the programmatic name (like aria-label or alt text).
+        For example, a text field has a [label] that says First name and an [aria-label] that says Your name, 
+        in this case, a screen reader would be presented with "Your Name" when they navigate into the field, and nothing will happen if a Dragon user says "Click First Name."
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, cognitive impaired, motor impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html" target="_blank">WCAG: Understanding 2.5.3: Label in Name</a>
     </td>
     <td>
-        
+        If an element has both visual text and an accessible text, make sure that they communicate the same thing and the visual text is included in the accessible text.
+        For example an image of an arrow with the word "Next" has an alt text with the word "Next" (and NOT for example continue).
     </td>
 </tr>
 <tr>
