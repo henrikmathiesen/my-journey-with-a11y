@@ -1,12 +1,36 @@
 {{#> base title="2.4.3 Focus Order" homeref="../../../../" }}
     {{#*inline "content"}}
 
-        <div class="col-lg-8">
+        <div class="col-lg-8" style="position: relative">
             <h2>2.4.3 Focus Order</h2>
-            
+            <hr>
+            <div style="margin-top:80px">
+                <p>
+                    Try to avoid this. But if neccessary, could perhaps set tabindex to -1 on content that is positioned top and set focus on it with javascript. See modals. 
+                </p>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, illo quam. Consequatur, minus corporis voluptas porro ipsum culpa quas sapiente illo quos necessitatibus fuga sit tempora rerum asperiores soluta quasi!
+                </p>
+                <div>
+                    <button class="btn btn-secondary">A button</button>
+                </div>
+            </div>
+            <div style="position: absolute;top:60px">
+                <div>
+                    Iam first in visual order but last in DOM order. Not optimal.
+                </div>
+                <div>
+                    <button class="btn btn-secondary">A button</button>
+                </div>
+            </div>
+            <hr>
         </div>
 
-        
+
+        <script>
+
+        </script>
+
 
         {{/inline}}
         {{/base}}
