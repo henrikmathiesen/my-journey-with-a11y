@@ -4,6 +4,19 @@
         <div class="col-lg-8">
             <h2>2.4.4 Link Purpose (In Context): Links context</h2>
             
+            <h3 id="headline">Storms hit east coast</h3>
+            <ul>
+                <li>
+                    <a href="#" id="link-01" aria-labelledby="headline link-01">Read more about New York</a>
+                </li>
+                <li>
+                    <a href="#" id="link-02" aria-labelledby="headline link-02">Read more about New Jersey</a>
+                </li>
+            </ul>
+            <p>
+                If aria-labelledby does not reference its own a tag, only h3 is read by NVDA.
+                It seems like aria-labelledby completely overrides the link text.
+            </p>
         </div>
 
 
