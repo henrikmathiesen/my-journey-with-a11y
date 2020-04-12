@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>2.1.1 Keyboard: Click event and enter key - My journey with a11y</title>
+    <title>2.4.3 Focus Order - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -29,46 +29,40 @@
         </header>
         <main class="row py-2 py-sm-4 py-lg-5">
             
-        <div class="col-lg-8">
-            <h2>2.1.1 Keyboard: Click event and enter key</h2>
-            <p>
-                If we bind a click event to a span (with tabindex=0), enter key wont trigger it.
-                But if we instead use a button, enter key will trigger the event.
-            </p>
-            <p>
-                Likewise if we bind a click event to a link, both click and enter key will trigger it.
-            </p>
-
-            <div class="mb-2">
-                <span class="btn btn-danger" id="btn-01" role="button" tabindex="0">Span</span>
+        <div class="col-lg-8" style="position: relative">
+            <h2>2.4.3 Focus Order</h2>
+            <hr>
+            <div style="margin-top:80px">
+                <p>
+                    Try to avoid this. But if neccessary, could perhaps set tabindex to -1 on content that is positioned top and set focus on it with javascript. See modals. 
+                </p>
+                <p>
+                    See also 
+                    <a href="https://henrikmathiesen.github.io/wcag-etc/wcag-tabindex-layout.html" target="_blank">Tabindex for layout - WCAG etc</a>
+                </p>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, illo quam. Consequatur, minus corporis voluptas porro ipsum culpa quas sapiente illo quos necessitatibus fuga sit tempora rerum asperiores soluta quasi!
+                </p>
+                <div>
+                    <button class="btn btn-secondary">A button</button>
+                </div>
             </div>
-            <div class="mb-2">
-                <button class="btn btn-success" id="btn-02">Button</button>
+            <div style="position: absolute;top:60px">
+                <div>
+                    Iam first in visual order but last in DOM order. Not optimal.
+                </div>
+                <div>
+                    <button class="btn btn-secondary">A button</button>
+                </div>
             </div>
-            <div>
-                <a href="#" id="link-01">Link</a>
-            </div>
+            <hr>
         </div>
+
 
         <script>
 
-            const btn01 = document.getElementById('btn-01');
-            const btn02 = document.getElementById('btn-02');
-            const link01 = document.getElementById('link-01');
-
-            btn01.addEventListener('click', function () {
-                console.log('btn01 click event');
-            });
-
-            btn02.addEventListener('click', function () {
-                console.log('btn02 click event');
-            });
-
-            link01.addEventListener('click', function () { 
-                console.log('link01 click event');
-            });
-
         </script>
+
 
 
         </main>
