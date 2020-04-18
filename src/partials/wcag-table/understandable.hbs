@@ -11,7 +11,7 @@
     <td>
         Both assistive technologies and conventional user agents can render text more accurately 
         when the language of the Web page is identified. Screen readers can load the correct pronunciation rules. 
-        Visual browsers can display characters and scripts correctly. Media players can show captions correctly. 
+        Visual browsers can display characters and scripts (the writing system) correctly. Media players can show captions correctly. 
         As a result, users with disabilities will be better able to understand the content.
         <br>
         <strong>It helps: Visually impaired, cognitive impaired</strong><br>
@@ -28,6 +28,11 @@
     <td class="text-nowrap">3.1.2 Language of Parts</td>
     <td>AA</td>
     <td>
+        The intent of this Success Criterion is to ensure that user agents can correctly present content written in multiple languages.
+        This is especially important when switching between languages that read from left to right and languages that read from right to left, 
+        or when text is rendered in a language that uses a different alphabet.
+        If there is doubt whether a change in language is intended, consider whether the word would be pronounced the 
+        same (except for accent or intonation) in the language of the immediately surrounding text.
         <br>
         <strong>It helps: Visually impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/language-of-parts.html" target="_blank">
@@ -35,7 +40,8 @@
         </a>
     </td>
     <td>
-        
+        Use the lang attribute for the HTML element.
+        And for tags where a switch of language is used.
     </td>
 </tr>
 <tr>
