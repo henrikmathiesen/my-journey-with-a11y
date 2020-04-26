@@ -119,33 +119,40 @@
     <th scope="row" rowspan="6" class="text-nowrap">3.2 Predictable</th>
 </tr>
 <tr>
-    <td class="text-nowrap"></td>
-    <td></td>
+    <td class="text-nowrap">3.2.1: On Focus</td>
+    <td>A</td>
     <td>
-        
+        Any component that is able to trigger an event when it receives focus must not change the context.
+        For example: When a field receives focus, a help dialog window describing the field and providing options opens. 
+        As a keyboard user tabs through the Web page, the dialog opens, moving the keyboard focus away from the control 
+        every time the user attempts to tab past the field.
         <br>
-        <strong>It helps:</strong><br>
-        <a href="" target="_blank">
-            WCAG: Understanding 
+        <strong>It helps: Visual impaired, cognitive impaired, motor impaired</strong><br>
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html" target="_blank">
+            WCAG: Understanding 3.2.1: On Focus
         </a>
     </td>
     <td>
-        
+        Change of content != change of context. <br>
+        Opening a new window, moving focus to a different component, going to a new page (including anything that would look to a user as if they had moved to a new page) or significantly re-arranging the content of a page are examples of changes of context. <br>
+        Tooltip that does not recieve focus is ok (but use a button with click event instead).<br>
+        Dont remove focus programmatically.
     </td>
 </tr>
 <tr>
-    <td class="text-nowrap"></td>
-    <td></td>
+    <td class="text-nowrap">3.2.2: On Input</td>
+    <td>A</td>
     <td>
-        
+        The intent of this Success Criterion is to ensure that entering data or selecting a form control has predictable effects.
+        Setting a form elements (as opposed to activating a link, or using a submit button to explicitly submit a form) shouldn't change the page context, unless the user is advised ahead of time.
         <br>
         <strong>It helps:</strong><br>
-        <a href="" target="_blank">
-            WCAG: Understanding 
+        <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-input.html" target="_blank">
+            WCAG: Understanding 3.2.2: On Input
         </a>
     </td>
     <td>
-        
+        Rather than changing the window.location or a language of a site when a select element is changed, add a submit button.
     </td>
 </tr>
 <tr>
