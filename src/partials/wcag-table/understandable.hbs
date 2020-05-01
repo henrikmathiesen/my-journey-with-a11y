@@ -159,44 +159,54 @@
     <td class="text-nowrap">3.2.3: Consistent Navigation</td>
     <td>AA</td>
     <td>
-        
+         Use of consistent presentation and layout for users who interact with repeated content within a set of Web pages and need to locate specific information or functionality more than once.
+         It is important to note that the use of the phrase "same order" in this section is not meant to imply that subnavigation menus cannot be used or that blocks of secondary navigation or page structure cannot be used.
         <br>
-        <strong>It helps:</strong><br>
+        <strong>It helps: Visually impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation.html" target="_blank">
             WCAG: Understanding 3.2.3: Consistent Navigation
         </a>
     </td>
     <td>
-        
+        Place menus consistent in the same place. Place searchfields and skip to main content links in the same place.
     </td>
 </tr>
 <tr>
     <td class="text-nowrap">3.2.4: Consistent Identification</td>
     <td>AA</td>
     <td>
-        
+        The intent of this Success Criterion is to ensure consistent identification of functional components that appear repeatedly within a set of Web pages.
         <br>
-        <strong>It helps:</strong><br>
+        <strong>It helps: Visually impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html" target="_blank">
             WCAG: Understanding 3.2.4: Consistent Identification
         </a>
     </td>
     <td>
-        
+        Keep labels, names, alt text consistent. <br>
+        Make sure links to the same resource use the same link text.<br>
+        Icons with similar functionality should follow a consistent labeling pattern. For example, "Print x" where x would be the thing to be printed.<br>
+        Don't use a search submit button that says "Search" on some pages, and "Find" on others.<br>
+        A check mark icon functions as "approved", on one page but as "included" on another. Since they serve different functions, they have different text alternatives. <br>
+        <a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H2" target="_blank">Also prefer to group link and icon programmatically (and or aria-hidden on link)</a>
     </td>
 </tr>
 <tr>
     <td class="text-nowrap">3.2.5: Change on Request</td>
     <td>AAA</td>
     <td>
-        
+        The intent of this Success Criterion is to encourage design of Web content that gives users full control of changes of context.
+        Content that initiates changes of context automatically only when user preferences allow can conform to this Success Criterion.
         <br>
-        <strong>It helps:</strong><br>
+        <strong>It helps: Visually impaired, motor impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/change-on-request.html" target="_blank">
             WCAG: Understanding 3.2.5: Change on Request
         </a>
     </td>
     <td>
-        
+        Instead of automatically updating the content, the author provides an "Update now" button that requests a refresh of the content.<br>
+        Let the user start a slide show by activating it <br>
+        If a link opens in a new window (target blank), write it in the link text.<br>
+        Be wary of posting data and render new data when user might not expect it, like when checking a checkbox.
     </td>
 </tr>
