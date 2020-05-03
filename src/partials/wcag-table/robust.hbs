@@ -9,15 +9,19 @@
     <td class="text-nowrap">4.1.1 Parsing</td>
     <td>A</td>
     <td>
-        
+        Ensure that user agents, including assistive technologies, can accurately interpret and parse content. 
+        If the content cannot be parsed into a data structure, then different user agents may present it differently 
+        or be completely unable to parse it. Some user agents use "repair techniques" to render poorly coded content.
+        Since repair techniques vary among user agents, authors cannot assume that content will be accurately parsed into a data structure.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Everyone</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/parsing.html" target="_blank">
             WCAG: Understanding 4.1.1: Parsing
         </a>
     </td>
     <td>
-        
+        Use valid HTML.
+        <a href="https://validator.w3.org/" target="_blank">The W3C Markup Validation Service</a>
     </td>
 </tr>
 <tr>
@@ -62,6 +66,7 @@
         Use aria-live=assertive or role=alert for error/warning messages.<br>
         role=alert is equivalent to using aria-live=assertive.<br>
         There is also aria-live=polite <br>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">MDN: ARIA live regions</a>, string search for "Preferring specialized live region roles".
+        <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" target="_blank">MDN: ARIA live regions</a>, 
+        string search for "Preferring specialized live region roles", also for "aria-atomic".
     </td>
 </tr>
