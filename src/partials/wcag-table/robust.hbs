@@ -28,15 +28,19 @@
     <td class="text-nowrap">4.1.2 Name, Role, Value</td>
     <td>A</td>
     <td>
-        
+        The intent of this Success Criterion is to ensure that Assistive Technologies (AT) can gather information about, activate(or set) and keep up to date on the status of user interface controls in the content.
+        A particularly important state of a user interface control is whether or not it has focus. The focus state of a control can be programmatically determined, and notifications about change of focus are sent 
+        to user agents and assistive technology. Other examples of user interface control state are whether or not a checkbox or radio button has been selected, or whether or not a collapsible tree or list node is expanded or collapsed.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" target="_blank">
             WCAG: Understanding 4.1.2: Name, Role, Value
         </a>
     </td>
     <td>
-        
+        If standard controls are used in their default manner, this condition will be met. But custom widgets (of span/divs etc) should have name and role assigned (ARIA is used appropriately).
+        Also use tabindex=0 to make it focusable.<br>
+        If an image is changed via scripting, its alt text should be changed along with it.
     </td>
 </tr>
 <tr>
