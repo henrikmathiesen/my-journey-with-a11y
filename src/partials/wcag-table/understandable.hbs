@@ -218,15 +218,19 @@
     <td class="text-nowrap">3.3.1 Error Identification</td>
     <td>A</td>
     <td>
-        
+        Users should be made aware that an error has occurred and can determine what is wrong. The error message should be as specific as possible.
+        Per the definition in WCAG 2.0, an "input error" is information provided by the user that is not accepted: validation rules, required but omitted.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html" target="_blank">
             WCAG: Understanding 3.3.1: Error Identification
         </a>
     </td>
     <td>
-        
+        It is perfectly acceptable to indicate the error in other ways such as image, color etc, but errors must also be identified using text.<br>
+        Identify input that has error programmatically with aria-invalid<br>
+        aria-describedby can be used together with aria-invalid to programmatically connect error messages to the input that has the error.<br>
+        <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21" target="_blank">ARIA21: Using Aria-Invalid to Indicate An Error Field</a>
     </td>
 </tr>
 <tr>
@@ -241,7 +245,7 @@
         </a>
     </td>
     <td>
-        
+        <!-- required in label vs aria-required=true -->
     </td>
 </tr>
 <tr>
