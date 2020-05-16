@@ -233,6 +233,8 @@
         <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21" target="_blank">ARIA21: Using Aria-Invalid to Indicate An Error Field (Example 2)</a><br>
         Can also place an element with role=alert before the form and put the validation messages there. <br>
         <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19" target="_blank">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a>
+        <br><br>
+        If using server side validation, it could be a good idea to return the page with the string "validation error" in the page title.
     </td>
 </tr>
 <tr>
@@ -248,21 +250,29 @@
     </td>
     <td>
         <!-- required in label vs aria-required=true -->
+        <!-- note: https://www.w3.org/WAI/WCAG21/Techniques/general/G89 -->
     </td>
 </tr>
 <tr>
     <td class="text-nowrap">3.3.3 Error Suggestion</td>
     <td>AA</td>
     <td>
-        
+        The intent of this Success Criterion is to ensure that users receive appropriate suggestions for correction of an input error if it is possible.
+        Some examples of information that is input error include information that is required but omitted by the user and information that is provided 
+        by the user but that falls outside the required data format or allowed values.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Visually impaired, cognitive impaired, motor impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html" target="_blank">
             WCAG: Understanding 3.3.3: Error Suggestion
         </a>
     </td>
     <td>
-        
+        If inputs are required communicate it in text in the label, and use aria-required to reinforce it.<br>
+        If a user tries to submit a form without populating the required inputs, see 3.3.1, and display a validation message, for example "Input data missing".<br>
+        If a user tries to submit a form with format validation errors, see 3.3.1, and display a validation message, for example 
+        "Employee's Birth Date is after their hire date. Please verify the birth date and hire date."<br><br>
+
+        Try to help the user with for example a type ahead for selecting a city.
     </td>
 </tr>
 <tr>
