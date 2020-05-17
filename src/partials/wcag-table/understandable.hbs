@@ -241,16 +241,20 @@
     <td class="text-nowrap">3.3.2 Labels or Instructions</td>
     <td>A</td>
     <td>
-        
+        The goal is to make certain that enough information is provided for the user to accomplish the task without undue confusion or navigation.
         <br>
-        <strong>It helps: </strong><br>
+        <strong>It helps: Cognitive impaired</strong><br>
         <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" target="_blank">
             WCAG: Understanding 3.3.2: Labels or Instructions
         </a>
     </td>
     <td>
-        <!-- required in label vs aria-required=true -->
-        <!-- note: https://www.w3.org/WAI/WCAG21/Techniques/general/G89 -->
+        Use labels for inputs, fieldsets and legends, and connect them with for and id (see also 1.3.1: Info and Relationships). <br>
+        Make sure form control labels are descriptive <br>
+        Provide examples of the expected values and format (preferebly not in placeholder, since contrast issues (1.4.3 Contrast (Minimum)), put it in the label) <br>
+        <br><br>
+        For data formats with common variations, such as dates and times, it may be useful to provide a preference option so users can use the format that is most comfortable to them.<br>
+        <a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G89" target="_blank">G89: Providing expected data format and example</a>
     </td>
 </tr>
 <tr>
@@ -273,7 +277,7 @@
         "Employee's Birth Date is after their hire date. Please verify the birth date and hire date."<br><br>
 
         Try to help the user with for example a type ahead for selecting a city. <br>
-        Also see 1.3.5.
+        See also 1.3.5: Identify Input Purpose (autocomplete).
     </td>
 </tr>
 <tr>
