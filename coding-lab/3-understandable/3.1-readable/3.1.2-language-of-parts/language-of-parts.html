@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.1.2 Language of parts - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-8">
+            <h2>3.1.2 Language of parts</h2>
+            <p>
+                HTML has attribute lang set to en.
+            </p>
+
+            <p>
+                This text is in english and NVDA should read it in english.
+            </p>
+            <!-- just testing: lang sv with english text -->
+            <p lang="sv">
+                This text is in english and NVDA should read it in english.
+            </p>
+            
+            <p lang="sv">
+                Denna texten är på svenska och NVDA ska läsa den på svenska.
+            </p>
+            <!-- just testing: lang en with swedish text -->
+            <p lang="en">
+                Denna texten är på svenska och NVDA ska läsa den på svenska.
+            </p>
+
+            <p>
+                When using the wrong lang value NVDA does not sound quit right. As expected really.
+            </p>
+        </div>
+
+        
+
+
+
+        </main>
+    </div>
+</body>
+
+</html>
