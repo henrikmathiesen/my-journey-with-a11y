@@ -11,25 +11,25 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control" aria-required="true">
+                            <input type="text" name="firstName" id="firstName" class="form-control" required>
                             <p class="invalid-feedback" id="firstName-validation-message">First Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
-                            <input type="text" name="lastName" id="lastName" class="form-control" aria-required="true">
+                            <input type="text" name="lastName" id="lastName" class="form-control" required>
                             <p class="invalid-feedback" id="lastName-validation-message">Last Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="dateOfBirth">Date of birth (required, yyyy-mm-dd)</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" aria-required="true" data-required-format-date="true">
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required-format-date>
                             <p class="invalid-feedback" id="dateOfBirth-validation-message">Date of birth is required (yyyy-mm-dd)</p>
                         </div>
 
                         <div class="form-group">
                             <label for="city">City (required)</label>
-                            <select name="city" id="city" class="form-control" aria-required="true">
+                            <select name="city" id="city" class="form-control" required>
                                 <option value="">Select One</option>
                                 <option value="Adamsburg">Adamsburg</option>
                                 <option value="Bertilsburg">Bertilsburg</option>
@@ -55,7 +55,7 @@
 
         <script>
 
-            const $requiredInputs = document.querySelectorAll('[aria-required]');
+            const $requiredInputs = document.querySelectorAll('[required]');
             const $requiredFormatDates = document.querySelectorAll('[data-required-format-date]');
 
             document.getElementById('submitButton').addEventListener('click', validate);
