@@ -4,7 +4,7 @@
         <div class="col-lg-8">
 
             <h2>3.3 Input Assistance - Accessible Forms</h2>
-            
+
             <form novalidate>
 
                 <div class="form-row">
@@ -12,30 +12,32 @@
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
                             <input type="text" name="firstName" id="firstName" class="form-control" aria-required="true">
-                            <p class="d-none" id="firstName-validation-message">First Name is required</p>
+                            <p class="invalid-feedback" id="firstName-required-message">First Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
                             <input type="text" name="lastName" id="lastName" class="form-control" aria-required="true">
-                            <p class="d-none" id="lastName-validation-message">Last Name is required</p>
+                            <p class="invalid-feedback" id="lastName-required-message">Last Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="dateOfBirth">Date of birth (required, yyyy-mm-dd)</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" aria-required="true">
-                            <p class="d-none" id="dateOfBirth-validation-message-01">Date of birth is required</p>
-                            <p class="d-none" id="dateOfBirth-validation-message-02">Date of birth has invalid format, provide yyyy-mm-dd</p>
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" aria-required="true" data-required-format-date="true">
+                            <p class="invalid-feedback" id="dateOfBirth-required-message">Date of birth is required</p>
+                            {{!-- <p class="invalid-feedback" id="dateOfBirth-required-format-date-message">Date of birth has invalid format,
+                                provide yyyy-mm-dd</p> --}}
                         </div>
 
                         <div class="form-group">
                             <label for="city">City (required)</label>
                             <select name="city" id="city" class="form-control" aria-required="true">
-                                <option>Adamsburg</option>
-                                <option>Bertilsburg</option>
-                                <option>Ceasarsburg</option>
+                                <option value="">Select One</option>
+                                <option value="Adamsburg">Adamsburg</option>
+                                <option value="Bertilsburg">Bertilsburg</option>
+                                <option value="Ceasarsburg">Ceasarsburg</option>
                             </select>
-                            <p class="d-none" id="city-validation-message">City is required</p>
+                            <p class="invalid-feedback" id="city-required-message">City is required</p>
                         </div>
 
                         <div class="form-group">
@@ -44,7 +46,7 @@
                         </div>
 
                         <div>
-                            <button class="btn btn-primary btn-block">Submit</button>
+                            <button id="submitButton" class="btn btn-primary btn-block">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -55,9 +57,30 @@
 
         <script>
 
-            
+            const $requiredInputs = document.querySelectorAll('[aria-required]');
+            const $requiredFormatDates = document.querySelectorAll('[data-required-format-date]');
+
+            document.getElementById('submitButton').addEventListener('click', validate);
+
+            function validate(e) {
+                e.preventDefault();
+
+                $requiredInputs.forEach((fc) => {
+
+                    if (fc.value === '') {
+                        fc.classList.add('is-invalid');
+                        fc.setAttribute('aria-invalid', 'true')
+                        fc.setAttribute('aria-describedBy', fc.getAttribute('id') + '-required-message');
+                    } else {
+                        fc.classList.remove('is-invalid');
+                        fc.removeAttribute('aria-invalid');
+                        fc.removeAttribute('aria-describedBy');
+                    }
+
+                });
+            }
 
         </script>
 
-        {{/inline}}
-        {{/base}}
+    {{/inline}}
+    {{/base}}
