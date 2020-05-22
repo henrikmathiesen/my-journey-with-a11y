@@ -11,26 +11,31 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control">
+                            <input type="text" name="firstName" id="firstName" class="form-control" aria-required="true">
+                            <p class="d-none" id="firstName-validation-message">First Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
-                            <input type="text" name="lastName" id="lastName" class="form-control">
+                            <input type="text" name="lastName" id="lastName" class="form-control" aria-required="true">
+                            <p class="d-none" id="lastName-validation-message">Last Name is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="dateOfBirth">Date of birth (required, yyyy-mm-dd)</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control">
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" aria-required="true">
+                            <p class="d-none" id="dateOfBirth-validation-message-01">Date of birth is required</p>
+                            <p class="d-none" id="dateOfBirth-validation-message-02">Date of birth has invalid format, provide yyyy-mm-dd</p>
                         </div>
 
                         <div class="form-group">
                             <label for="city">City (required)</label>
-                            <select name="city" id="city" class="form-control">
+                            <select name="city" id="city" class="form-control" aria-required="true">
                                 <option>Adamsburg</option>
                                 <option>Bertilsburg</option>
                                 <option>Ceasarsburg</option>
                             </select>
+                            <p class="d-none" id="city-validation-message">City is required</p>
                         </div>
 
                         <div class="form-group">
@@ -48,10 +53,9 @@
 
         </div>
 
-        
-
-
         <script>
+
+            
 
         </script>
 
