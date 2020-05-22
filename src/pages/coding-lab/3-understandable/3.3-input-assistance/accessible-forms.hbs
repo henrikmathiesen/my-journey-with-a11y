@@ -2,12 +2,58 @@
     {{#*inline "content"}}
 
         <div class="col-lg-8">
+
             <h2>3.3 Input Assistance - Accessible Forms</h2>
             
+            <form novalidate>
+
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="firstName">First Name (required)</label>
+                            <input type="text" name="firstName" id="firstName" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name (required)</label>
+                            <input type="text" name="lastName" id="lastName" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of birth (required, yyyy-mm-dd)</label>
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City (required)</label>
+                            <select name="city" id="city" class="form-control">
+                                <option>Adamsburg</option>
+                                <option>Bertilsburg</option>
+                                <option>Ceasarsburg</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favoriteFood">Favorite Food</label>
+                            <input type="text" name="favoriteFood" id="favoriteFood" class="form-control">
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
         </div>
 
         
 
+
+        <script>
+
+        </script>
 
         {{/inline}}
         {{/base}}
