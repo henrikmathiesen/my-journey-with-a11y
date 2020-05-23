@@ -12,19 +12,19 @@
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
                             <input type="text" name="firstName" id="firstName" class="form-control" required>
-                            <p class="invalid-feedback" id="firstName-validation-message">First Name is required</p>
+                            <p class="invalid-feedback" id="firstName-validation-message">Please enter first name</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
                             <input type="text" name="lastName" id="lastName" class="form-control" required>
-                            <p class="invalid-feedback" id="lastName-validation-message">Last Name is required</p>
+                            <p class="invalid-feedback" id="lastName-validation-message">Please enter last name</p>
                         </div>
 
                         <div class="form-group">
                             <label for="dateOfBirth">Date of birth (required, yyyy-mm-dd)</label>
                             <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required-format-date>
-                            <p class="invalid-feedback" id="dateOfBirth-validation-message">Date of birth is required (yyyy-mm-dd)</p>
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message">Please enter date of birth in format yyyy-mm-dd</p>
                         </div>
 
                         <div class="form-group">
@@ -35,7 +35,7 @@
                                 <option value="Bertilsburg">Bertilsburg</option>
                                 <option value="Ceasarsburg">Ceasarsburg</option>
                             </select>
-                            <p class="invalid-feedback" id="city-validation-message">City is required</p>
+                            <p class="invalid-feedback" id="city-validation-message">Please select a city</p>
                         </div>
 
                         <div class="form-group">
@@ -58,34 +58,36 @@
             const $requiredInputs = document.querySelectorAll('[required]');
             const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
 
-            $requiredInputs.forEach(fc => fc.addEventListener('blur', _ => validateRequired(fc)));
-            $requiredFormatDatesInputs.forEach(fc => fc.addEventListener('blur', _ => validateDateFormat(fc)));
+            $requiredInputs.forEach(input => input.addEventListener('blur', _ => validateRequired(input)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => validateDateFormat(input)));
             document.getElementById('submitButton').addEventListener('click', validateAll);
 
             function validateAll(e) { 
                 e.preventDefault();
-                $requiredInputs.forEach(fc => validateRequired(fc));
-                $requiredFormatDatesInputs.forEach(fc => validateDateFormat(fc));
+                $requiredInputs.forEach(input => validateRequired(input));
+                $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
+
+                // const invalidInputs
             }
 
-            function validateRequired(fc) {
-                if (fc.value === '') {
-                    setInvalid(fc);
+            function validateRequired(input) {
+                if (input.value === '') {
+                    setInvalid(input);
                 } else {
-                    setValid(fc);
+                    setValid(input);
                 }
             }
 
-            function validateDateFormat(fc) {
+            function validateDateFormat(input) {
                 const pattern = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
 
-                if (fc.value.match(pattern) == null) {
-                    setInvalid(fc);
+                if (input.value.match(pattern) == null) {
+                    setInvalid(input);
                 } else {
-                    if (isCorrectDate(fc.value) == false) {
-                        setInvalid(fc);
+                    if (isCorrectDate(input.value) == false) {
+                        setInvalid(input);
                     } else {
-                        setValid(fc);
+                        setValid(input);
                     }
                 }
             }
@@ -104,16 +106,16 @@
                     dateObj.getDate() === +dayPart;
             }
 
-            function setInvalid(fc) {
-                fc.classList.add('is-invalid');
-                fc.setAttribute('aria-invalid', 'true')
-                fc.setAttribute('aria-describedBy', fc.getAttribute('id') + '-validation-message');
+            function setInvalid(input) {
+                input.classList.add('is-invalid');
+                input.setAttribute('aria-invalid', 'true')
+                input.setAttribute('aria-describedBy', input.getAttribute('id') + '-validation-message');
             }
 
-            function setValid(fc) {
-                fc.classList.remove('is-invalid');
-                fc.removeAttribute('aria-invalid');
-                fc.removeAttribute('aria-describedBy');
+            function setValid(input) {
+                input.classList.remove('is-invalid');
+                input.removeAttribute('aria-invalid');
+                input.removeAttribute('aria-describedBy');
             }
 
         </script>
