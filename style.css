@@ -8,7 +8,10 @@
     colors:
         #FFF            white
         #3C4483         blue
-        #EEE            paper
+        #fcfcfc         paper
+        text            #212529
+        lines           #666 , lightgray
+        input:focus     #007bff
 
     Breakpoints:
         Extra small:    <576px
@@ -85,7 +88,7 @@ main {
 }
 
 .app-container {
-    background-color: #EEE;
+    background-color: #fcfcfc;
     min-height: 100vh;
 }
 
@@ -129,4 +132,12 @@ main {
 
 .app-close {
     font-size: 2rem;
+}
+
+.form-control {
+    border-color: #666;
+}
+
+.form-control:focus {
+    border-color: #007bff;
 }
