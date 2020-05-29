@@ -1,0 +1,63 @@
+{{#> base title="3.3 Input Assistance - Accessible Forms V2" homeref="../../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-8">
+
+            <h2>3.3 Input Assistance - Accessible Forms V2</h2>
+
+            <form novalidate>
+
+                <div class="form-row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="firstName">First Name (required)</label>
+                            <input type="text" name="firstName" id="firstName" class="form-control" required>
+                            <p class="invalid-feedback" id="firstName-validation-message">Please enter first name</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name (required)</label>
+                            <input type="text" name="lastName" id="lastName" class="form-control" required>
+                            <p class="invalid-feedback" id="lastName-validation-message">Please enter last name</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span>)</label>
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required-format-date>
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message">Please enter date of birth in format <span aria-label="yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City (required)</label>
+                            <select name="city" id="city" class="form-control" required>
+                                <option value="">Select One</option>
+                                <option value="Adamsburg">Adamsburg</option>
+                                <option value="Bertilsburg">Bertilsburg</option>
+                                <option value="Ceasarsburg">Ceasarsburg</option>
+                            </select>
+                            <p class="invalid-feedback" id="city-validation-message">Please select a city</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favoriteFood">Favorite Food</label>
+                            <input type="text" name="favoriteFood" id="favoriteFood" class="form-control">
+                        </div>
+
+                        <div>
+                            <button id="submitButton" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <script>
+
+            
+
+        </script>
+
+    {{/inline}}
+    {{/base}}
