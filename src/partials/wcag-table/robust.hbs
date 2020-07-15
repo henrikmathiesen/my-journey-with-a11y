@@ -64,7 +64,15 @@
         </a>
     </td>
     <td>
-        Make sure assistive technologies can recieve status messages that are not focusable (change of content).<br>
+        Make sure assistive technologies can recieve status messages that are not given focus (either programmatically or naturally because of change of context).
+
+        <br><br>
+        <em>
+            Opening a new window, moving focus to a different component, going to a new page (including anything that would look to a user as if they had moved to a new page), 
+            opening a modal, or significantly re-arranging the content of a page are examples of changes of context.
+        </em>
+        <br><br>
+
         Also communicate when status messages are hidden. <br>
         Use role=status. <br>
         Use aria-live=assertive or role=alert for error/warning messages.<br>
