@@ -1,4 +1,4 @@
-const gulp = require('gulp');
+const { series, parallel, src, dest, watch } = require('gulp');
 const handlebars = require('gulp-compile-handlebars');
 const rename = require('gulp-rename');
 const del = require('del');
@@ -15,13 +15,13 @@ const config = {
     }
 };
 
-gulp.task('clean-build-folder', function () {
+function cleanBuildFolderTask(cb) {
     del.sync(config.path.bld);
-});
+    cb();
+}
 
-gulp.task('handlebars', function () {
-    gulp
-        .src(config.path.src + '/pages/**/*.hbs')
+function handlebarsTask(cb) {
+    src(config.path.src + '/pages/**/*.hbs')
         .pipe(handlebars({}, {
             batch: [
                 config.path.src + '/layouts',
@@ -31,27 +31,33 @@ gulp.task('handlebars', function () {
         .pipe(rename({
             extname: '.html'
         }))
-        .pipe(gulp.dest(config.path.bld));
-});
+        .pipe(dest(config.path.bld));
 
-gulp.task('copy-css', function () {
-    gulp
-        .src(config.path.src + '/css/style.css')
-        .pipe(gulp.dest(config.path.bld));
-});
+    cb();
+}
 
-gulp.task('connect', function () {
+function copyCssTask(cb) {
+    src(config.path.src + '/css/style.css')
+        .pipe(dest(config.path.bld));
+
+    cb();
+}
+
+function connectTask(cb) {
     connect.server({
         root: config.path.bld,
         port: config.server.port
     });
-});
 
+    cb();
+}
 
-gulp.task('build', ['clean-build-folder', 'handlebars', 'copy-css'], function () { });
+const buildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, copyCssTask));
 
-gulp.task('watch', function () {
-    gulp.watch(config.path.srcWatch, ['build']);
-});
+function watchTask(cb) {
+    watch(config.path.srcWatch, buildTask);
+    cb();
+}
 
-gulp.task('default', ['build', 'watch', 'connect'], function () { });
+exports.build = buildTask;
+exports.default = series(buildTask, parallel(watchTask, connectTask));
