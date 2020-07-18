@@ -1,9 +1,57 @@
-{{#> base title="Understanding ARIA" }}
+{{#> base title="Understanding WAI-ARIA" }}
     {{#*inline "content"}}
 
         <article class="col-lg-8">
-            <h2>Understanding ARIA</h2>
-            
+            <h2>Understanding WAI-ARIA</h2>
+
+            <p>
+                <strong>Web Accessibility Initiative - Accessible Rich Internet Applications</strong>
+            </p>
+            <p>
+                ARIA makes non accessible controls accessible.
+            </p>
+            <p>
+                Prefer native controls (you get keyboard support, focus, built in semantics), but when that is not enough, use ARIA.
+            </p>
+            <p>
+                For example: if we want to use div or span elements instead of a native checkbox, we need aria to communicate what it is to screen readers.
+                This can be done with attributes: role=checkbox, aria-checked=true | false
+            </p>
+
+            <p>
+                ARIA does not modify appearence nor behavior. It does not add focusability nor keyboard event handling.
+            </p>
+
+            <h3 class="h4">Create accessible widgets not possible with plain HTML</h3>
+            <p>
+                ARIA adds semantics but can also modify semantics, for example button[role]="switch"[aria-checked]="true" 
+                will modify a button to be communicated as a switch (to go hand in hand with a switch design).
+            </p>
+            <p>
+                ul[role]="tree" li[role]="treeitem"[aria-expanded]="true" ul[role]="group" li[role]="treeitem"[aria-expanded]="false"
+            </p>
+
+            <h3 class="h4">Extra labels and descriptions</h3>
+            <p>
+                button.search-icon[aria-label]="Search"
+            </p>
+
+            <h3 class="h4">Relationships</h3>
+            <p>
+                button[aria-expanded]="false"[aria-controls]="settings" Settings /button <br>
+                div[id]="settings"
+            </p>
+
+            <h3 class="h4">Live updates</h3>
+            <p>
+                div[aria-live]="polite" , div[aria-live]="assertive" (or role="alert")
+            </p>
+            <p>
+                Remember that the container tag that has the aria must be in DOM. Insert/update new content into it.
+                Also look up aria-atomic (WCAG Table > Robust).
+            </p>
+
+            <h3 class="h4">States and Properties</h3>
             
 
         </article>
