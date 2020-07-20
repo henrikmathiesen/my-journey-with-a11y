@@ -5,15 +5,15 @@
             <h2>ARIA - Tabs</h2>
 
             <div>
-                <div class="row">
+                <div class="row" role="tablist" aria-label="A label that describes the purpose of the set of tabs">
                     <div class="col-4 col-lg-3">
-                        <button class="btn btn-link app-tab-button app-tab-button-active" data-tab="tab-1">TAB 1</button>
+                        <button id="tab-button-1" class="btn btn-link app-tab-button app-tab-button-active" role="tab" aria-selected="true" aria-controls="tab-1">TAB 1</button>
                     </div>
                     <div class="col-4 col-lg-3">
-                        <button class="btn btn-link app-tab-button" data-tab="tab-2">TAB 2</button>
+                        <button id="tab-button-2" class="btn btn-link app-tab-button" role="tab" aria-selected="false" aria-controls="tab-2">TAB 2</button>
                     </div>
                     <div class="col-4 col-lg-3">
-                        <button class="btn btn-link app-tab-button" data-tab="tab-3">TAB 3</button>
+                        <button id="tab-button-3" class="btn btn-link app-tab-button" role="tab" aria-selected="false" aria-controls="tab-3">TAB 3</button>
                     </div>
                 </div>
                 <div class="row">
@@ -23,23 +23,32 @@
                 </div>
                 <div class="row my-4 px-4">
                     <div class="col-12">
-                        <div class="app-tab" id="tab-1">
+                        <div id="tab-1" class="app-tab" role="tabpanel" aria-labelledby="tab-button-1">
                             <h3>TAB 1</h3>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
                             </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 1</button>
+                            </div>
                         </div>
-                        <div class="d-none app-tab" id="tab-2">
+                        <div id="tab-2" class="d-none app-tab" role="tabpanel" aria-labelledby="tab-button-2">
                             <h3>TAB 2</h3>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
                             </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 2</button>
+                            </div>
                         </div>
-                        <div class="d-none app-tab" id="tab-3">
+                        <div id="tab-3" class="d-none app-tab" role="tabpanel" aria-labelledby="tab-button-3">
                             <h3>TAB 3</h3>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
                             </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 3</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,11 +66,15 @@
             const $tabs = document.querySelectorAll('.app-tab');
 
             function onTabButtonClick(ev) {
-                $tabButtons.forEach(button => button.classList.remove('app-tab-button-active'));
+                $tabButtons.forEach(button => {
+                    button.classList.remove('app-tab-button-active');
+                    button.setAttribute('aria-selected', 'false');
+                });
                 ev.target.classList.add('app-tab-button-active');
+                ev.target.setAttribute('aria-selected', 'true');
 
                 $tabs.forEach(tab => tab.classList.add('d-none'));
-                const idForActiveTab = ev.target.getAttribute('data-tab');
+                const idForActiveTab = ev.target.getAttribute('aria-controls');
                 document.getElementById(idForActiveTab).classList.remove('d-none');
             }
 
