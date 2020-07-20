@@ -4,8 +4,69 @@
         <div class="col-lg-8">
             <h2>ARIA - Tabs</h2>
 
-            
+            <div>
+                <div class="row">
+                    <div class="col-4 col-lg-3">
+                        <button class="btn btn-link app-tab-button app-tab-button-active" data-tab="tab-1">TAB 1</button>
+                    </div>
+                    <div class="col-4 col-lg-3">
+                        <button class="btn btn-link app-tab-button" data-tab="tab-2">TAB 2</button>
+                    </div>
+                    <div class="col-4 col-lg-3">
+                        <button class="btn btn-link app-tab-button" data-tab="tab-3">TAB 3</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-tab-border"></div>
+                    </div>
+                </div>
+                <div class="row my-4 px-4">
+                    <div class="col-12">
+                        <div class="app-tab" id="tab-1">
+                            <h3>TAB 1</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                        </div>
+                        <div class="d-none app-tab" id="tab-2">
+                            <h3>TAB 2</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                        </div>
+                        <div class="d-none app-tab" id="tab-3">
+                            <h3>TAB 3</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-tab-border"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        {{/inline}}
-        {{/base}}
+        <script>
+            const $tabButtons = document.querySelectorAll('.app-tab-button');
+            const $tabs = document.querySelectorAll('.app-tab');
+
+            function onTabButtonClick(ev) {
+                $tabButtons.forEach(button => button.classList.remove('app-tab-button-active'));
+                ev.target.classList.add('app-tab-button-active');
+
+                $tabs.forEach(tab => tab.classList.add('d-none'));
+                const idForActiveTab = ev.target.getAttribute('data-tab');
+                document.getElementById(idForActiveTab).classList.remove('d-none');
+            }
+
+            $tabButtons.forEach(button => button.addEventListener('click', onTabButtonClick));
+        </script>
+
+    {{/inline}}
+    {{/base}}
