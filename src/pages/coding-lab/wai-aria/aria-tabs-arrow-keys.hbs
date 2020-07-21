@@ -1,0 +1,96 @@
+{{#> base title="ARIA - Tabs" homeref="../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2>ARIA - Tabs</h2>
+
+                <p>
+                    TODO: here Iam going to use arrow keys for navigation.
+                </p>
+            </div>
+
+            <div>
+                <div class="row" role="tablist" aria-label="A label that describes the purpose of the set of tabs">
+                    <div class="col-4 col-lg-3">
+                        <button id="tab-button-1" class="btn btn-link app-tab-button app-tab-button-active" role="tab" aria-selected="true" aria-controls="tab-1">TAB 1</button>
+                    </div>
+                    <div class="col-4 col-lg-3">
+                        <button id="tab-button-2" class="btn btn-link app-tab-button" role="tab" aria-selected="false" aria-controls="tab-2">TAB 2</button>
+                    </div>
+                    <div class="col-4 col-lg-3">
+                        <button id="tab-button-3" class="btn btn-link app-tab-button" role="tab" aria-selected="false" aria-controls="tab-3">TAB 3</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-tab-border"></div>
+                    </div>
+                </div>
+                <div class="row my-4 px-4">
+                    <div class="col-12">
+                        <div id="tab-1" class="app-tab" role="tabpanel" aria-labelledby="tab-button-1">
+                            <h3 tabindex="-1">TAB 1</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 1</button>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="d-none app-tab" role="tabpanel" aria-labelledby="tab-button-2">
+                            <h3 tabindex="-1">TAB 2</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 2</button>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="d-none app-tab" role="tabpanel" aria-labelledby="tab-button-3">
+                            <h3 tabindex="-1">TAB 3</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, delectus cumque voluptatum quae, magnam fugiat debitis exercitationem ipsa mollitia esse eos assumenda rem cum officiis sint ipsam veritatis in commodi.
+                            </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in TAB 3</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-tab-border"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            const $tabButtons = document.querySelectorAll('.app-tab-button');
+            const $tabs = document.querySelectorAll('.app-tab');
+
+            function onTabButtonClick(ev) {
+
+                // Reset tab buttons and set state for the one clicked
+                $tabButtons.forEach(button => {
+                    button.classList.remove('app-tab-button-active');
+                    button.setAttribute('aria-selected', 'false');
+                });
+                ev.target.classList.add('app-tab-button-active');
+                ev.target.setAttribute('aria-selected', 'true');
+
+                // Reset tabs and set state for the one active
+                $tabs.forEach(tab => tab.classList.add('d-none'));
+                const idForActiveTab = ev.target.getAttribute('aria-controls');
+                const $activeTab = document.getElementById(idForActiveTab);
+                $activeTab.classList.remove('d-none');
+                $activeTab.querySelector('h3').focus();
+            }
+
+            $tabButtons.forEach(button => button.addEventListener('click', onTabButtonClick));
+        </script>
+
+    {{/inline}}
+    {{/base}}
