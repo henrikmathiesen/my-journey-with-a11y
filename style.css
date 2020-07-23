@@ -141,3 +141,37 @@ main {
 .form-control:focus {
     border-color: #007bff;
 }
+
+.app-tab-button {
+    background-color: #fcfcfc;
+    border: 2px solid #666;
+    border-bottom-color:#fcfcfc;
+    border-bottom: 0;
+    width: 100%;
+    color: #666;
+    font-weight: 900;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.app-tab-button:visited, .app-tab-button:hover, .app-tab-button:active {  
+    color: #666;
+}
+
+.app-tab-button-active {
+    background-color: #666;
+    border-bottom-color:#666;
+    color: #FFF;
+}
+
+.app-tab-button-active:visited, .app-tab-button-active:hover, .app-tab-button-active:active {  
+    color: #FFF;
+}
+
+.app-tab-border {
+    border-bottom: 2px solid #666;
+    position: relative;
+    top: -2px;
+}

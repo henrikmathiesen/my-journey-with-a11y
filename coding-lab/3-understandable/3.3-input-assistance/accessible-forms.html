@@ -15,6 +15,11 @@
         if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
             Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
         }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
     </script>
 </head>
 
@@ -71,6 +76,18 @@
                             <input type="text" name="favoriteFood" id="favoriteFood" class="form-control">
                         </div>
 
+                        <fieldset class="form-group">
+                            <legend class="h5">Additional information</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="lorem" id="lorem">
+                                <label class="form-check-label" for="lorem">Lorem</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="ipsum" id="ipsum" checked>
+                                <label class="form-check-label" for="ipsum">Ipsum</label>
+                            </div>
+                        </fieldset>
+
                         <div>
                             <button id="submitButton" class="btn btn-primary btn-block">Submit</button>
                         </div>
@@ -93,7 +110,7 @@
             function validateAll(e) {
                 e.preventDefault();
 
-                setTimeout(() => { 
+                setTimeout(() => {
                     $requiredInputs.forEach(input => validateRequired(input));
                     $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
 

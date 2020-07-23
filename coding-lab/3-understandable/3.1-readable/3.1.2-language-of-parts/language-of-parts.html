@@ -15,6 +15,11 @@
         if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
             Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
         }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
     </script>
 </head>
 

@@ -15,6 +15,11 @@
         if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
             Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
         }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
     </script>
 </head>
 
@@ -538,10 +543,10 @@
                             <a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html" target="_blank">WCAG: Understanding 1.4.13: Content on Hover or Focus</a>
                         </td>
                         <td>
-                            Close custom tooltips on ESC.
                             Allow user to hover out on hover trigger without removing the triggered content.
                             The triggered content should persist until user hovers out on the triggered content or closes it (status messages that changes are excempt, like a "busy" message thats no longer valid).
-                            HTML title are excempt. Content which can be triggered via pointer hover should also be able to be triggered by keyboard focus. Use role=tooltip.
+                            HTML title are excempt. Content which can be triggered via pointer hover should also be able to be triggered by keyboard focus. 
+                            Use role=tooltip. Close custom tooltips on ESC. Prefer showing tooltip on click/enter.
                         </td>
                     </tr>
                     <tr>
@@ -1245,12 +1250,24 @@
                             </a>
                         </td>
                         <td>
-                            It is perfectly acceptable to indicate the error in other ways such as image, color etc, but errors must also be identified using text.<br>
+                            It is perfectly acceptable to indicate the error in other ways such as image, color etc, but errors must also be identified using text.
+                            <br>
                             Identify input that has error programmatically with aria-invalid.
-                            aria-describedby can be used together with aria-invalid to programmatically connect error messages to the input that has the error.<br>
-                            <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21" target="_blank">ARIA21: Using Aria-Invalid to Indicate An Error Field (Example 2)</a><br>
-                            Can also place an element with role=alert before the form and put the validation messages there. <br>
+                            aria-describedby can be used together with aria-invalid to programmatically connect error messages to the input that has the error.
+                            <br>
+                            <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21" target="_blank">ARIA21: Using Aria-Invalid to Indicate An Error Field (Example 2)</a>
+                            <br><br>
+                            
+                            Can also place an element with role=alert before the form and put the validation messages there.
+                            <br>
                             <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19" target="_blank">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a>
+                            
+                            <br><br>
+                    
+                            More of the same really.
+                            <br>
+                            <a href="https://www.w3.org/WAI/tutorials/forms/notifications/" target="_blank">User Notifications - WAI Web Accessibility Tutorials</a>
+                    
                             <br><br>
                             If using server side validation, it could be a good idea to return the page with the string "validation error" in the page title.
                         </td>
@@ -1267,7 +1284,7 @@
                             </a>
                         </td>
                         <td>
-                            Use labels for inputs, fieldsets and legends, and connect them with for and id (see also 1.3.1: Info and Relationships). <br>
+                            Use labels for inputs and connect them with for and id attributes, use fieldsets and legends (see also 1.3.1: Info and Relationships). <br>
                             Make sure form control labels are descriptive <br>
                             Provide examples of the expected values and format (preferebly not in placeholder, since contrast issues (1.4.3 Contrast (Minimum)), put it in the label) <br>
                             <br><br>
@@ -1417,7 +1434,15 @@
                             </a>
                         </td>
                         <td>
-                            Make sure assistive technologies can recieve status messages that are not focusable (change of content).<br>
+                            Make sure assistive technologies can recieve status messages that are not given focus (either programmatically or naturally because of change of context).
+                    
+                            <br><br>
+                            <em>
+                                Opening a new window, moving focus to a different component, going to a new page (including anything that would look to a user as if they had moved to a new page), 
+                                opening a modal, or significantly re-arranging the content of a page are examples of changes of context.
+                            </em>
+                            <br><br>
+                    
                             Also communicate when status messages are hidden. <br>
                             Use role=status. <br>
                             Use aria-live=assertive or role=alert for error/warning messages.<br>
@@ -1426,7 +1451,7 @@
                             <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions" target="_blank">MDN: ARIA live regions</a>, 
                             string search for "Preferring specialized live region roles", also for "aria-atomic". <br><br>
                     
-                            The container must be present in the DOM on page load for the message to be spoken by most screen readers. (<- string search)<br>
+                            The container must be present in the DOM on page load for the message to be spoken by most screen readers. (<- string search), also for "aria-atomic".<br>
                             <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19" target="_blank">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a>
                         </td>
                     </tr>

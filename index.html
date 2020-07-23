@@ -15,6 +15,11 @@
         if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
             Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
         }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
     </script>
 </head>
 
@@ -34,8 +39,6 @@
             <p>
                 I'am a front end developer in the pursuit of leveling up my skills in WCAG and web accessibility in
                 general.
-                In the future I aim to take the <a href="http://www.iaapnordic.org/certifiering/was/"
-                    target="_blank">Web Accessibility Specialist (WAS) certificate (Swedish)</a>.
             </p>
             <p>
                 This site will be the hub for my studies. The focus is on accessibility resources and experimenting
@@ -68,86 +71,39 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="https://iaap.membershipsoftware.org/files/103119_IAAP%20WAS%20BOK.pdf" target="_blank">WAS 2.1 Body
-                            of Knowledge (pdf)</a>
+                        Overview
                         <ul>
-                            <li>
-                                Guidelines and best practices
-                                <ul>
-                                    <li>WCAG 2.0</li>
-                                    <li>WCAG 2.1</li>
-                                    <li>ATAG</li>
-                                    <li>WAI ARIA</li>
-                                    <li>Other best practices</li>
-                                </ul>
-                            </li>
-                            <li>
-                                Develop
-                                <ul>
-                                    <li>Working with accessibility throughout the project (agile/waterfall) and for
-                                        different disciplines</li>
-                                    <li>Build modern web apps with ajax and widgets and accessibility</li>
-                                </ul>
-                            </li>
-                            <li>
-                                Test
-                                <ul>
-                                    <li>Get to know assistive technologies for different platforms and how people
-                                        with different disabilities use them</li>
-                                    <li>Get to know testing tools and their strength and limitations</li>
-                                </ul>
-                            </li>
-                            <li>
-                                Fix accessibility issues
-                                <ul>
-                                    <li>Prioritize fixing accessibility issues in web apps, best and good enough
-                                        solutions, take into consideration target group, the team and resources</li>
-                                </ul>
-                            </li>
+                            <li>WCAG 2.0</li>
+                            <li>WCAG 2.1</li>
+                            <li>WAI-ARIA</li>
+                            <li>Be more comfortable with screen readers</li>
                         </ul>
                     </li>
                     <li>
                         Resources
                         <ul>
                             <li>
-                                <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG</a>
-                            </li>
-                            <li>
-                                <a href="https://www.boia.org/wcag-2.1-a/aa-principles-and-checkpoints" target="_blank">Bureau of
-                                    Internet Accessibility, WCAG</a>
-                            </li>
-                            <li>
-                                <a href="https://webaim.org/" target="_blank">WebAIM: Web Accessibility In Mind</a>
-                            </li>
-                            <li>
-                                <a href="http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf" target="_blank">HTML
-                                    sectioning flowchart (pdf)</a>
-                            </li>
-                            <li>
-                                Modals
+                                General
                                 <ul>
                                     <li>
-                                        <a href="https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html"
-                                            target="_blank">
-                                            WAI - Modal Dialog Example
-                                        </a>
+                                        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG</a>
                                     </li>
                                     <li>
-                                        <a href="https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/"
-                                            target="_blank">
-                                            The current state of modal dialog accessibility, 2018
-                                        </a>
+                                        <a href="https://www.boia.org/wcag-2.1-a/aa-principles-and-checkpoints" target="_blank">Bureau of
+                                            Internet Accessibility, WCAG</a>
                                     </li>
                                     <li>
-                                        <a href="https://developer.yoast.com/the-a11y-monthly-making-modals-accessible/"
-                                            target="_blank">
-                                            The a11y Monthly: Making modals accessible
-                                        </a>
+                                        <a href="https://webaim.org/" target="_blank">WebAIM: Web Accessibility In Mind</a>
                                     </li>
                                     <li>
-                                        <a href="https://getbootstrap.com/docs/4.4/components/modal/" target="_blank">
-                                            Bootstrap - Modals
-                                        </a>
+                                        <a href="http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf" target="_blank">HTML
+                                            sectioning flowchart (pdf)</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.a11yproject.com/" target="_blank">The A11Y Project</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/watch?v=HtTyRajRuyY&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g" target="_blank">A11ycasts, Youtube</a>
                                     </li>
                                 </ul>
                             </li>
@@ -155,18 +111,15 @@
                                 WCAG Success Criteria Specific
                                 <ul>
                                     <li>
-                                        <a href="https://www.w3.org/WAI/GL/wiki/ARIATechnique_usingImgRole_with_aria-label_forCSS-backgroundImage"
-                                            target="_blank">1.1.1 Non-text content: W3 - Accessible CSS background images</a>
+                                        <a href="https://www.w3.org/WAI/GL/wiki/ARIATechnique_usingImgRole_with_aria-label_forCSS-backgroundImage" target="_blank">1.1.1 Non-text content: W3 - Accessible CSS background images</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.powermapper.com/tests/screen-readers/media/audio-aria-label/"
-                                            target="_blank">1.1.1 Non-text content: Powermapper - aria-label for audio, Screen
+                                        <a href="https://www.powermapper.com/tests/screen-readers/media/audio-aria-label/" target="_blank">1.1.1 Non-text content: Powermapper - aria-label for audio, Screen
                                             reader
                                             compatibility</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.powermapper.com/tests/screen-readers/media/video-aria-label/"
-                                            target="_blank">1.1.1 Non-text content: Powermapper - aria-label for video, Screen
+                                        <a href="https://www.powermapper.com/tests/screen-readers/media/video-aria-label/" target="_blank">1.1.1 Non-text content: Powermapper - aria-label for video, Screen
                                             reader
                                             compatibility</a>
                                     </li>
@@ -175,8 +128,7 @@
                                             Use of Color: Bootstrap default links might violate</a>
                                     </li>
                                     <li>
-                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete"
-                                            target="_blank">1.3.5 Identify Input Purpose: MDN - The HTML autocomplete
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete" target="_blank">1.3.5 Identify Input Purpose: MDN - The HTML autocomplete
                                             attribute</a>
                                     </li>
                                     <li>
@@ -189,6 +141,63 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                WAI-ARIA Specific
+                                <ul>
+                                    <li>
+                                        <a href="https://www.youtube.com/watch?v=g9Qff0b-lHk&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=13" target="_blank">Intro to ARIA -- A11ycasts #13</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/watch?v=88tfx3jLV_M&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=14" target="_blank">Intro to ARIA -- A11ycasts #14</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">ARIA - Accessibility | MDN</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques" target="_blank">Using ARIA: Roles, states, and properties - Accessibility | MDN</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://w3c.github.io/using-aria/#html5na" target="_blank">Using ARIA - 2.14 Aria Roles and Properties Not Available as Features in HTML</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#aria_ex" target="_blank">ARIA Authoring Practices 1.1 - Widget Patterns</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://webaim.org/articles/label-name/#ariaLabels" target="_blank">WebAIM: ARIA Labels Always Win</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://medium.com/accessibility-a11y/best-practices-on-aria-label-aria-labelledby-and-aria-describedby-913fc9e396ae" target="_blank">Best Practices on aria-label, aria-labelledby and aria-describedby</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://stackoverflow.com/questions/37733795/read-label-of-aria-live-region" target="_blank">aria-live ignores aria-labelledby and aria-describedby</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Modals
+                                <ul>
+                                    <li>
+                                        <a href="https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html" target="_blank">
+                                            WAI - Modal Dialog Example
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/" target="_blank">
+                                            The current state of modal dialog accessibility, 2018
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://developer.yoast.com/the-a11y-monthly-making-modals-accessible/" target="_blank">
+                                            The a11y Monthly: Making modals accessible
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://getbootstrap.com/docs/4.4/components/modal/" target="_blank">
+                                            Bootstrap - Modals
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -196,6 +205,9 @@
                         <ul>
                             <li>
                                 <a href="https://www.nvaccess.org/" target="_blank">NVDA Screen Reader</a>
+                            </li>
+                            <li>
+                                <a href="https://webaim.org/resources/shortcuts/nvda" target="_blank">WebAIM: NVDA Screen Reader Shortcuts</a>
                             </li>
                         </ul>
                     </li>
@@ -220,6 +232,12 @@
                             <li>
                                 <a href="https://www.powermapper.com/tests/screen-readers/aria/" target="_blank">PowerMapper - Screen reader compatibility</a>
                             </li>
+                            <li>
+                                <a href="https://www.html5accessibility.com/" target="_blank">HTML5 accessibility Support</a>
+                            </li>
+                            <li>
+                                <a href="https://a11ysupport.io/" target="_blank">Accessibility Support</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -231,18 +249,29 @@
                         </ul>
                     </li>
                     <li>
+                        <hr>
                         My Resources
                         <ul>
-                            <li><a href="understanding-wcag.html">Understanding WCAG</a></li>
-                            <li><a href="wcag-table.html">WCAG table</a></li>
-                            <li><a href="a-brief-summary-of-swedish-law.html">A brief summary of Swedish Law (Swedish)</a></li>
+                            <li>
+                                <a href="understanding-wcag.html">Understanding WCAG</a>
+                            </li>
+                            <li>
+                                <a href="wcag-table.html">WCAG table</a>
+                            </li>
+                            <li>
+                                <a href="a-brief-summary-of-swedish-law.html">A brief summary of Swedish Law (Swedish)</a>
+                            </li>
+                            <li>
+                                <a href="understanding-aria.html">Understanding WAI-ARIA</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
                         My External Resources
                         <ul>
-                            <li><a href="https://github.com/henrikmathiesen/wcag-etc" target="_blank">GitHub:
-                                    henrikmathiesen/wcag-etc</a></li>
+                            <li>
+                                <a href="https://github.com/henrikmathiesen/wcag-etc" target="_blank">GitHub: henrikmathiesen/wcag-etc</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -252,20 +281,17 @@
                                 WCAG
                                 <ul>
                                     <li>
-                                        <a
-                                            href="coding-lab/1-perceivable/1.1-text-alternatives/1.1.1-non-text-content/longer-descriptions.html">
+                                        <a href="coding-lab/1-perceivable/1.1-text-alternatives/1.1.1-non-text-content/longer-descriptions.html">
                                             1.1.1 Non-text content: Longer descriptions
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="coding-lab/2-operable/2.1-keyboard-accessible/2.1.1-keyboard/mouse-over-and-focus.html">
+                                        <a href="coding-lab/2-operable/2.1-keyboard-accessible/2.1.1-keyboard/mouse-over-and-focus.html">
                                             2.1.1 Keyboard: Mouse over and focus
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="coding-lab/2-operable/2.1-keyboard-accessible/2.1.1-keyboard/click-event-enter-key.html">
+                                        <a href="coding-lab/2-operable/2.1-keyboard-accessible/2.1.1-keyboard/click-event-enter-key.html">
                                             2.1.1 Keyboard: Click event and enter key
                                         </a>
                                     </li>
@@ -285,8 +311,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="coding-lab/2-operable/2.4-navigable/2.4.4-link-purpose-in-context/links-context.html">
+                                        <a href="coding-lab/2-operable/2.4-navigable/2.4.4-link-purpose-in-context/links-context.html">
                                             2.4.4 Link Purpose (In Context): Links context
                                         </a>
                                     </li>
@@ -296,16 +321,25 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="coding-lab/3-understandable/3.1-readable/3.1.2-language-of-parts/language-of-parts.html">
+                                        <a href="coding-lab/3-understandable/3.1-readable/3.1.2-language-of-parts/language-of-parts.html">
                                             3.1.2 Language of parts
                                         </a>
                                     </li>
                                     <li>
-                                        <a
-                                            href="coding-lab/3-understandable/3.3-input-assistance/accessible-forms.html">
+                                        <a href="coding-lab/3-understandable/3.3-input-assistance/accessible-forms.html">
                                             3.3 Input Assistance - Accessible Forms
                                         </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                WAI ARIA
+                                <ul>
+                                    <li>
+                                        <a href="coding-lab/wai-aria/aria-tabs.html">ARIA - Tabs</a>
+                                    </li>
+                                    <li>
+                                        <a href="coding-lab/wai-aria/aria-tabs-arrow-keys.html">ARIA - Tabs with arrow keys</a>
                                     </li>
                                 </ul>
                             </li>
