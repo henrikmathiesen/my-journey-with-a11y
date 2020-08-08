@@ -11,26 +11,26 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1">
+                            <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1" data-is-pristine="true">
                             <p class="invalid-feedback" id="firstName-validation-message-1">Please enter first name</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
-                            <input type="text" name="lastName" id="lastName" class="form-control" required data-required="lastName-validation-message-1">
+                            <input type="text" name="lastName" id="lastName" class="form-control" required data-required="lastName-validation-message-1" data-is-pristine="true">
                             <p class="invalid-feedback" id="lastName-validation-message-1">Please enter last name</p>
                         </div>
 
                         <div class="form-group">
                             <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span>)</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required="dateOfBirth-validation-message-1" data-required-format-date="dateOfBirth-validation-message-2">
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required="dateOfBirth-validation-message-1" data-required-format-date="dateOfBirth-validation-message-2" data-is-pristine="true">
                             <p class="invalid-feedback" id="dateOfBirth-validation-message-1">Please enter date</p>
                             <p class="invalid-feedback" id="dateOfBirth-validation-message-2">Please enter date of birth in format <span aria-label="yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span></p>
                         </div>
 
                         <div class="form-group">
                             <label for="city">City (required)</label>
-                            <select name="city" id="city" class="form-control" required data-required="city-validation-message-1">
+                            <select name="city" id="city" class="form-control" required data-required="city-validation-message-1" data-is-pristine="true">
                                 <option value="">Select One</option>
                                 <option value="Adamsburg">Adamsburg</option>
                                 <option value="Bertilsburg">Bertilsburg</option>
@@ -71,9 +71,12 @@
             const $requiredInputs = document.querySelectorAll('[data-required]');
             const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
 
-            $requiredInputs.forEach(input => input.addEventListener('blur', _ => validateRequired(input)));
-            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => validateDateFormat(input)));
+            $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
             document.getElementById('submitButton').addEventListener('click', validateAll);
+
+            $requiredInputs.forEach(input => input.addEventListener('input', _ => { input.setAttribute('data-is-pristine', false) }));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('input', _ => { input.setAttribute('data-is-pristine', false) }));
 
             function validateAll(e) {
                 e.preventDefault();
@@ -149,8 +152,12 @@
                 input.removeAttribute('data-error-' + errorType);
             }
 
-            function hasErrorRequired(input) { 
+            function hasErrorRequired(input) {
                 return input.getAttribute('data-error-required') == 'true';
+            }
+
+            function isPristine(input) { 
+                return input.getAttribute('data-is-pristine') == 'true';
             }
 
         </script>
