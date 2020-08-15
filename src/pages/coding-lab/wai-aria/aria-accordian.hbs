@@ -2,12 +2,50 @@
     {{#*inline "content"}}
 
         <div class="col-lg-8">
-            <h2>ARIA - Accordian</h2>
+            <div class="mb-5">
+                <h2>ARIA - Accordian</h2>
+            </div>
+
+
+            <div class="app-accordian-container">
+                <div class="row">
+                    <div class="col">
+                        <!-- Can give h3 background color -->
+                        <h3>
+                            <button class="btn btn-link btn-block text-left app-accordian-button">
+                                One Accordian
+                                <span class="fa fa-chevron-down app-accordian-icon" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-accordian-border"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!-- Can give div background color -->
+                        <div class="p-4">
+                            <p>
+                                The accordian body.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda iure, veritatis ea reprehenderit fugiat animi similique. Quos magnam, eligendi, nam minima possimus explicabo, totam dicta ad aspernatur earum quaerat culpa.
+                            </p>
+                            <div>
+                                <button class="btn btn-primary">A place of focus in accordian body</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
         <script>
-            
+
         </script>
 
     {{/inline}}
