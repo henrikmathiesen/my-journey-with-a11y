@@ -14,7 +14,7 @@
                         <h3>
                             <button class="btn btn-link btn-block text-left app-accordian-button">
                                 One Accordian
-                                <span class="fa fa-chevron-down app-accordian-icon" aria-hidden="true"></span>
+                                <span class="fa fa-chevron-down app-accordian-icon app-accordian-icon-closed" aria-hidden="true"></span>
                             </button>
                         </h3>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="app-accordian-border"></div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row app-accordian-body app-accordian-body-closed">
                     <div class="col">
                         <!-- Can give div background color -->
                         <div class="p-4">
@@ -35,7 +35,7 @@
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda iure, veritatis ea reprehenderit fugiat animi similique. Quos magnam, eligendi, nam minima possimus explicabo, totam dicta ad aspernatur earum quaerat culpa.
                             </p>
                             <div>
-                                <button class="btn btn-primary">A place of focus in accordian body</button>
+                                <button class="btn btn-primary app-accordian-body-btn">A place of focus in accordian body</button>
                             </div>
                         </div>
                     </div>
@@ -45,6 +45,34 @@
         </div>
 
         <script>
+            let accordianOpen = false;
+            const $btn = document.querySelector('.app-accordian-button');
+            const $icon = document.querySelector('.app-accordian-icon');
+            const $body = document.querySelector('.app-accordian-body');
+            const $bodyBtn = document.querySelector('.app-accordian-body-btn');
+
+            $btn.addEventListener('click', toggleAccordian);
+            $bodyBtn.addEventListener('click', _ => console.log('A place of focus in accordian body'));    // should not fire when accordian is closed
+
+            function toggleAccordian() {
+                if (accordianOpen) {
+                    // close
+                    $icon.classList.remove('app-accordian-icon-opened');
+                    $body.classList.remove('app-accordian-body-opened');
+
+                    $icon.classList.add('app-accordian-icon-closed');
+                    $body.classList.add('app-accordian-body-closed');
+                } else {
+                    // open
+                    $icon.classList.remove('app-accordian-icon-closed');
+                    $body.classList.remove('app-accordian-body-closed');
+
+                    $icon.classList.add('app-accordian-icon-opened');
+                    $body.classList.add('app-accordian-body-opened');
+                }
+
+                accordianOpen = !accordianOpen;
+            }
 
         </script>
 

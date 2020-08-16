@@ -142,6 +142,8 @@ main {
     border-color: #007bff;
 }
 
+/* Tabs */
+
 .app-tab-button,
 .app-accordian-button {
     color: #666 !important;
@@ -174,6 +176,8 @@ main {
     color: #FFF !important;
 }
 
+/* Accordian */
+
 .app-accordian-container {
     border: 1px solid #666;
 }
@@ -186,4 +190,27 @@ main {
 .app-accordian-icon {
     position: absolute;
     right: 15px;
+    top: 10px;
+    transition: transform 0.5s;
+}
+
+.app-accordian-icon-closed {
+    transform: rotate(0deg);
+}
+
+.app-accordian-icon-opened {
+    transform: rotate(-180deg);
+}
+
+.app-accordian-body {
+    transition: max-height 0.25s;
+    overflow: hidden;
+}
+
+.app-accordian-body-closed {
+    max-height: 0;
+}
+
+.app-accordian-body-opened {
+    max-height: 500px;
 }
