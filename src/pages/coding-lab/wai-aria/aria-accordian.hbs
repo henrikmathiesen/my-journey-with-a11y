@@ -12,7 +12,7 @@
                     <div class="col">
                         <!-- Can give h3 background color -->
                         <h3>
-                            <button class="btn btn-link btn-block text-left app-accordian-button">
+                            <button id="accordian-button-1" class="btn btn-link btn-block text-left app-accordian-button" aria-controls="accordian-1" aria-expanded="false">
                                 One Accordian
                                 <span class="fa fa-chevron-down app-accordian-icon app-accordian-icon-closed" aria-hidden="true"></span>
                             </button>
@@ -24,7 +24,7 @@
                         <div class="app-accordian-border"></div>
                     </div>
                 </div>
-                <div class="row app-accordian-body app-accordian-body-closed">
+                <div id="accordian-1" class="row app-accordian-body app-accordian-body-closed" aria-labelledby="accordian-button-1">
                     <div class="col">
                         <!-- Can give div background color -->
                         <div class="p-4">
@@ -62,6 +62,8 @@
 
                     $icon.classList.add('app-accordian-icon-closed');
                     $body.classList.add('app-accordian-body-closed');
+
+                    $btn.setAttribute('aria-expanded', 'false');
                 } else {
                     // open
                     $icon.classList.remove('app-accordian-icon-closed');
@@ -69,6 +71,8 @@
 
                     $icon.classList.add('app-accordian-icon-opened');
                     $body.classList.add('app-accordian-body-opened');
+
+                    $btn.setAttribute('aria-expanded', 'true');
                 }
 
                 accordianOpen = !accordianOpen;
