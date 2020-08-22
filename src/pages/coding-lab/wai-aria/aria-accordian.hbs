@@ -24,7 +24,7 @@
                         <div class="app-accordian-border"></div>
                     </div>
                 </div>
-                <div id="accordian-1" class="row app-accordian-body app-accordian-body-closed" aria-labelledby="accordian-button-1">
+                <div id="accordian-1" class="row app-accordian-body app-accordian-body-closed d-none" aria-labelledby="accordian-button-1">
                     <div class="col">
                         <!-- Can give div background color -->
                         <div class="p-4">
@@ -51,8 +51,15 @@
             const $body = document.querySelector('.app-accordian-body');
             const $bodyBtn = document.querySelector('.app-accordian-body-btn');
 
+            document.querySelector('.app-accordian-body').addEventListener('transitionend', () => {
+                if (accordianOpen === false) {
+                    // A1) Add display none when closing animation (showing less and less of the body) is done. So element inside accordian can not recieve focus.
+                    $body.classList.add('d-none');
+                }
+            });
+
             $btn.addEventListener('click', toggleAccordian);
-            $bodyBtn.addEventListener('click', _ => console.log('A place of focus in accordian body'));    // should not fire when accordian is closed
+            $bodyBtn.addEventListener('click', _ => console.log('A place of focus in accordian body'));    // should not fire when accordian is closed.
 
             function toggleAccordian() {
                 if (accordianOpen) {
@@ -66,13 +73,22 @@
                     $btn.setAttribute('aria-expanded', 'false');
                 } else {
                     // open
-                    $icon.classList.remove('app-accordian-icon-closed');
-                    $body.classList.remove('app-accordian-body-closed');
+                    $body.classList.remove('d-none');   // A2) Remove display none directly when open, so animation works (showing more and more of the body).
 
-                    $icon.classList.add('app-accordian-icon-opened');
-                    $body.classList.add('app-accordian-body-opened');
+                    // Care should be taken when using a transition immediately after:
+                    // removing an element's display: none; property. (like we do above)
+                    // The easy way to overcome this limitation is to apply a window.setTimeout()
+                    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+                    setTimeout(_ => {
+                        $icon.classList.remove('app-accordian-icon-closed');
+                        $body.classList.remove('app-accordian-body-closed');
 
-                    $btn.setAttribute('aria-expanded', 'true');
+                        $icon.classList.add('app-accordian-icon-opened');
+                        $body.classList.add('app-accordian-body-opened');
+
+                        $btn.setAttribute('aria-expanded', 'true');
+                    });
+
                 }
 
                 accordianOpen = !accordianOpen;
