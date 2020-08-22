@@ -142,36 +142,75 @@ main {
     border-color: #007bff;
 }
 
+/* Tabs */
+
+.app-tab-button,
+.app-accordian-button {
+    color: #666 !important;
+    font-weight: 900;
+}
+
+.app-tab-border,
+.app-accordian-border {
+    border-bottom: 2px solid #666;
+    position: relative;
+}
+
+.app-tab-border {
+    top: -2px;
+}
+
 .app-tab-button {
     background-color: #fcfcfc;
     border: 2px solid #666;
-    border-bottom-color:#fcfcfc;
     border-bottom: 0;
     width: 100%;
-    color: #666;
-    font-weight: 900;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     position: relative;
     z-index: 2;
 }
 
-.app-tab-button:visited, .app-tab-button:hover, .app-tab-button:active {  
-    color: #666;
-}
-
 .app-tab-button-active {
     background-color: #666;
-    border-bottom-color:#666;
-    color: #FFF;
+    color: #FFF !important;
 }
 
-.app-tab-button-active:visited, .app-tab-button-active:hover, .app-tab-button-active:active {  
-    color: #FFF;
+/* Accordian */
+
+.app-accordian-container {
+    border: 1px solid #666;
 }
 
-.app-tab-border {
-    border-bottom: 2px solid #666;
+.app-accordian-button {
     position: relative;
-    top: -2px;
+    border-radius: 0;
+}
+
+.app-accordian-icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    transition: transform 0.5s;
+}
+
+.app-accordian-icon-closed {
+    transform: rotate(0deg);
+}
+
+.app-accordian-icon-opened {
+    transform: rotate(-180deg);
+}
+
+.app-accordian-body {
+    transition: max-height 0.25s;
+    overflow: hidden;
+}
+
+.app-accordian-body-closed {
+    max-height: 0;
+}
+
+.app-accordian-body-opened {
+    max-height: 500px;
 }

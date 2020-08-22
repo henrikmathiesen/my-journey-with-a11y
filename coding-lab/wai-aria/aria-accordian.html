@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ARIA - Accordian - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h2>ARIA - Accordian</h2>
+            </div>
+
+
+            <div class="app-accordian-container">
+                <div class="row">
+                    <div class="col">
+                        <!-- Can give h3 background color -->
+                        <h3>
+                            <button id="accordian-button-1" class="btn btn-link btn-block text-left app-accordian-button" aria-controls="accordian-1" aria-expanded="false">
+                                One Accordian
+                                <span class="fa fa-chevron-down app-accordian-icon app-accordian-icon-closed" aria-hidden="true"></span>
+                            </button>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="app-accordian-border"></div>
+                    </div>
+                </div>
+                <div id="accordian-1" class="row app-accordian-body app-accordian-body-closed d-none" aria-labelledby="accordian-button-1">
+                    <div class="col">
+                        <!-- Can give div background color -->
+                        <div class="p-4">
+                            <p>
+                                The accordian body.
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda iure, veritatis ea reprehenderit fugiat animi similique. Quos magnam, eligendi, nam minima possimus explicabo, totam dicta ad aspernatur earum quaerat culpa.
+                            </p>
+                            <div>
+                                <button class="btn btn-primary app-accordian-body-btn">A place of focus in accordian body</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            let accordianOpen = false;
+            const $btn = document.querySelector('.app-accordian-button');
+            const $icon = document.querySelector('.app-accordian-icon');
+            const $body = document.querySelector('.app-accordian-body');
+            const $bodyBtn = document.querySelector('.app-accordian-body-btn');
+
+            document.querySelector('.app-accordian-body').addEventListener('transitionend', () => {
+                if (accordianOpen === false) {
+                    // A1) Add display none when closing animation (showing less and less of the body) is done. So element inside accordian can not recieve focus.
+                    $body.classList.add('d-none');
+                }
+            });
+
+            $btn.addEventListener('click', toggleAccordian);
+            $bodyBtn.addEventListener('click', _ => console.log('A place of focus in accordian body'));    // should not fire when accordian is closed.
+
+            function toggleAccordian() {
+                if (accordianOpen) {
+                    // close
+                    $icon.classList.remove('app-accordian-icon-opened');
+                    $body.classList.remove('app-accordian-body-opened');
+
+                    $icon.classList.add('app-accordian-icon-closed');
+                    $body.classList.add('app-accordian-body-closed');
+
+                    $btn.setAttribute('aria-expanded', 'false');
+                } else {
+                    // open
+                    $body.classList.remove('d-none');   // A2) Remove display none directly when open, so animation works (showing more and more of the body).
+
+                    // Care should be taken when using a transition immediately after:
+                    // removing an element's display: none; property. (like we do above)
+                    // The easy way to overcome this limitation is to apply a window.setTimeout()
+                    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+                    setTimeout(_ => {
+                        $icon.classList.remove('app-accordian-icon-closed');
+                        $body.classList.remove('app-accordian-body-closed');
+
+                        $icon.classList.add('app-accordian-icon-opened');
+                        $body.classList.add('app-accordian-body-opened');
+
+                        $btn.setAttribute('aria-expanded', 'true');
+                    });
+
+                }
+
+                accordianOpen = !accordianOpen;
+            }
+
+        </script>
+
+
+        </main>
+    </div>
+</body>
+
+</html>

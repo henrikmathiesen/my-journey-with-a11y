@@ -8,6 +8,7 @@
     <title>ARIA - Tabs with arrow keys - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
     <script>
@@ -99,7 +100,7 @@
         <script>
             const KEY_LEFT = 37;
             const KEY_RIGHT = 39;
-            let activeTabButtonIndex = 0;
+            var activeTabButtonIndex = 0;
 
             const $tabButtons = document.querySelectorAll('.app-tab-button');
             const $tabs = document.querySelectorAll('.app-tab');

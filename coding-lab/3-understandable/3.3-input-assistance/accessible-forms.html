@@ -8,6 +8,7 @@
     <title>3.3 Input Assistance - Accessible Forms - My journey with a11y</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../style.css">
     <script>
@@ -41,34 +42,36 @@
             <form novalidate>
 
                 <div class="form-row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="form-group">
                             <label for="firstName">First Name (required)</label>
-                            <input type="text" name="firstName" id="firstName" class="form-control" required>
-                            <p class="invalid-feedback" id="firstName-validation-message">Please enter first name</p>
+                            <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1" data-is-pristine="true">
+                            <p class="invalid-feedback" id="firstName-validation-message-1">Please enter first name</p>
                         </div>
 
                         <div class="form-group">
                             <label for="lastName">Last Name (required)</label>
-                            <input type="text" name="lastName" id="lastName" class="form-control" required>
-                            <p class="invalid-feedback" id="lastName-validation-message">Please enter last name</p>
+                            <input type="text" name="lastName" id="lastName" class="form-control" required data-required="lastName-validation-message-1" data-is-pristine="true">
+                            <p class="invalid-feedback" id="lastName-validation-message-1">Please enter last name</p>
                         </div>
 
                         <div class="form-group">
-                            <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span>)</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required-format-date>
-                            <p class="invalid-feedback" id="dateOfBirth-validation-message">Please enter date of birth in format <span aria-label="yyyy-mm-dd, for example 1990-12-24">yyyy-mm-dd</span></p>
+                            <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span>)</label>
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required="dateOfBirth-validation-message-1" data-required-format-date="dateOfBirth-validation-message-2" data-is-pristine="true">
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message-1">Please enter date</p>
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message-2">Please enter date of birth in format <span aria-label="yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span></p>
                         </div>
 
                         <div class="form-group">
                             <label for="city">City (required)</label>
-                            <select name="city" id="city" class="form-control" required>
+                            <select name="city" id="city" class="form-control" required data-required="city-validation-message-1" data-is-pristine="false">
+                                <!-- data-is-pristine="false" because FF has problem with input event for SELECT -->
                                 <option value="">Select One</option>
                                 <option value="Adamsburg">Adamsburg</option>
                                 <option value="Bertilsburg">Bertilsburg</option>
                                 <option value="Ceasarsburg">Ceasarsburg</option>
                             </select>
-                            <p class="invalid-feedback" id="city-validation-message">Please select a city</p>
+                            <p class="invalid-feedback" id="city-validation-message-1">Please select a city</p>
                         </div>
 
                         <div class="form-group">
@@ -100,52 +103,62 @@
 
         <script>
 
-            const $requiredInputs = document.querySelectorAll('[required]');
+            const $requiredInputs = document.querySelectorAll('[data-required]');
             const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
 
-            $requiredInputs.forEach(input => input.addEventListener('blur', _ => validateRequired(input)));
-            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => validateDateFormat(input)));
-            document.getElementById('submitButton').addEventListener('click', validateAll);
+            $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
+            document.getElementById('submitButton').addEventListener('click', submit);
 
-            function validateAll(e) {
+            $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+            function submit(e) {
                 e.preventDefault();
 
-                setTimeout(() => {
-                    $requiredInputs.forEach(input => validateRequired(input));
-                    $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
+                $requiredInputs.forEach(input => validateRequired(input));
+                $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
 
-                    const $invalidInputs = document.querySelectorAll('.is-invalid');
+                const $invalidInputs = document.querySelectorAll('.is-invalid');
 
-                    if ($invalidInputs.length) {
-                        $invalidInputs[0].focus();
-                    }
-                });
-
+                if ($invalidInputs.length) {
+                    $invalidInputs[0].focus();
+                }
             }
 
             function validateRequired(input) {
                 if (input.value === '') {
-                    setInvalid(input);
+                    setInvalid(input, input.getAttribute('data-required'), 'required');
                 } else {
-                    setValid(input);
+                    setValid(input, 'required');
                 }
             }
 
             function validateDateFormat(input) {
-                const pattern = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
 
-                if (input.value.match(pattern) == null) {
-                    setInvalid(input);
+                if (hasErrorRequired(input)) {
+                    return;
+                }
+
+                if (isCorrectDateFormat(input.value) == false) {
+                    setInvalid(input, input.getAttribute('data-required-format-date'), 'required-format-date');
                 } else {
-                    if (isCorrectDate(input.value) == false) {
-                        setInvalid(input);
-                    } else {
-                        setValid(input);
-                    }
+                    setValid(input, 'required-format-date');
                 }
             }
 
-            function isCorrectDate(value) {
+            function isCorrectDateFormat(value) {
+                const pattern01 = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
+                const pattern02 = /^\d{4}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
+
+                const isValidPattern = pattern01.test(value) || pattern02.test(value);
+
+                if (isValidPattern === false) {
+                    return false;
+                }
+
+                // Is reasonable date
+
                 const noDashes = value.replace(/-/g, '');
 
                 const yearPart = noDashes.slice(0, 4);
@@ -157,18 +170,32 @@
                 return dateObj.getFullYear() === +yearPart &&
                     (dateObj.getMonth() + 1) === +monthPart &&
                     dateObj.getDate() === +dayPart;
+
             }
 
-            function setInvalid(input) {
+            function setInvalid(input, idForValidationMessage, errorType) {
                 input.classList.add('is-invalid');
                 input.setAttribute('aria-invalid', 'true')
-                input.setAttribute('aria-describedBy', input.getAttribute('id') + '-validation-message');
+                input.setAttribute('aria-describedBy', idForValidationMessage);
+                input.setAttribute('data-error-' + errorType, 'true');
+
+                document.querySelectorAll('#' + input.getAttribute('id') + '~.invalid-feedback').forEach(v => v.classList.add('d-none'));
+                document.getElementById(idForValidationMessage).classList.remove('d-none');
             }
 
-            function setValid(input) {
+            function setValid(input, errorType) {
                 input.classList.remove('is-invalid');
                 input.removeAttribute('aria-invalid');
                 input.removeAttribute('aria-describedBy');
+                input.removeAttribute('data-error-' + errorType);
+            }
+
+            function hasErrorRequired(input) {
+                return input.getAttribute('data-error-required') == 'true';
+            }
+
+            function isPristine(input) {
+                return input.getAttribute('data-is-pristine') == 'true';
             }
 
         </script>
