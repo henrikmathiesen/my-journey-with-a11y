@@ -203,7 +203,8 @@ main {
 }
 
 .app-accordian-body {
-    transition: max-height 0.25s;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function */
+    transition: max-height 0.25s linear;
     overflow: hidden;
 }
 
