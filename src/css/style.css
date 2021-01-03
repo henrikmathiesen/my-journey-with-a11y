@@ -62,7 +62,7 @@ h2, .h2, .h4 {
 }
 
 * + .h4 {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 * + .h5 {
