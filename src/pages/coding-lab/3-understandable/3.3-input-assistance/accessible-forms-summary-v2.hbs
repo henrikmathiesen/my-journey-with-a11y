@@ -1,0 +1,214 @@
+{{#> base title="3.3 Input Assistance - Accessible Forms With Summary" homeref="../../../" }}
+    {{#*inline "content"}}
+
+        <div class="col-lg-9">
+
+            <h2>3.3 Input Assistance - Accessible Forms With Summary</h2>
+
+            <form novalidate>
+
+                <!-- role="alert" not needed since we set focus on the header -->
+                <div>
+                    <div id="form-validation-summary" class="d-none">
+                        <h3 id="form-validation-summary-header" class="h4 form-validation-summary-header" tabindex="-1">There was a problem with the form</h3>
+                        <ul id="form-validation-summary-list">
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <label for="firstName">First Name (required)</label>
+                            <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1" data-is-pristine="true">
+                            <p class="invalid-feedback" id="firstName-validation-message-1">Please enter first name</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name (required)</label>
+                            <input type="text" name="lastName" id="lastName" class="form-control" required data-required="lastName-validation-message-1" data-is-pristine="true">
+                            <p class="invalid-feedback" id="lastName-validation-message-1">Please enter last name</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span>)</label>
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required="dateOfBirth-validation-message-1" data-required-format-date="dateOfBirth-validation-message-2" data-is-pristine="true">
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message-1">Please enter date</p>
+                            <p class="invalid-feedback" id="dateOfBirth-validation-message-2">Please enter date of birth in format <span aria-label="yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City (required)</label>
+                            <select name="city" id="city" class="form-control" required data-required="city-validation-message-1" data-is-pristine="true">
+                                <option value="">Select One</option>
+                                <option value="Adamsburg">Adamsburg</option>
+                                <option value="Bertilsburg">Bertilsburg</option>
+                                <option value="Ceasarsburg">Ceasarsburg</option>
+                            </select>
+                            <p class="invalid-feedback" id="city-validation-message-1">Please select a city</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="favoriteFood">Favorite Food</label>
+                            <input type="text" name="favoriteFood" id="favoriteFood" class="form-control">
+                        </div>
+
+                        <fieldset class="form-group">
+                            <legend class="h5">Additional information</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="lorem" id="lorem">
+                                <label class="form-check-label" for="lorem">Lorem</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="ipsum" id="ipsum" checked>
+                                <label class="form-check-label" for="ipsum">Ipsum</label>
+                            </div>
+                        </fieldset>
+
+                        <div>
+                            <button id="submitButton" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <script>
+
+            const $requiredInputs = document.querySelectorAll('[data-required]');
+            const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
+            const $formValidationSummary = document.getElementById('form-validation-summary');
+            const $formValidationSummaryHeader = document.getElementById('form-validation-summary-header');
+            const $formValidationSummaryList = document.getElementById('form-validation-summary-list');
+
+            $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
+            document.getElementById('submitButton').addEventListener('click', submit);
+
+            $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+            $requiredFormatDatesInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+            function submit(e) {
+                e.preventDefault();
+
+                $requiredInputs.forEach(input => validateRequired(input));
+                $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
+
+                const $invalidInputs = document.querySelectorAll('.is-invalid');
+
+                if ($invalidInputs.length) {
+                    populateValidationSummaryList($invalidInputs);
+                    $formValidationSummary.classList.remove('d-none');
+                    $formValidationSummaryHeader.focus();
+                } else {
+                    $formValidationSummary.classList.add('d-none');
+                }
+            }
+
+            function validateRequired(input) {
+                if (input.value === '') {
+                    setInvalid(input, input.getAttribute('data-required'), 'required');
+                } else {
+                    setValid(input, 'required');
+                }
+            }
+
+            function validateDateFormat(input) {
+
+                if (hasErrorRequired(input)) {
+                    return;
+                }
+
+                if (isCorrectDateFormat(input.value) == false) {
+                    setInvalid(input, input.getAttribute('data-required-format-date'), 'required-format-date');
+                } else {
+                    setValid(input, 'required-format-date');
+                }
+            }
+
+            function isCorrectDateFormat(value) {
+                const pattern01 = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
+                const pattern02 = /^\d{4}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
+
+                const isValidPattern = pattern01.test(value) || pattern02.test(value);
+
+                if (isValidPattern === false) {
+                    return false;
+                }
+
+                // Is reasonable date
+
+                const noDashes = value.replace(/-/g, '');
+
+                const yearPart = noDashes.slice(0, 4);
+                const monthPart = noDashes.slice(4, 6);
+                const dayPart = noDashes.slice(6, 8);
+
+                const dateObj = new Date(`${yearPart}-${monthPart}-${dayPart}`);
+
+                return dateObj.getFullYear() === +yearPart &&
+                    (dateObj.getMonth() + 1) === +monthPart &&
+                    dateObj.getDate() === +dayPart;
+
+            }
+
+            function setInvalid(input, idForValidationMessage, errorType) {
+                input.classList.add('is-invalid');
+                input.setAttribute('aria-invalid', 'true')
+                input.setAttribute('aria-describedBy', idForValidationMessage);
+                input.setAttribute('data-error-' + errorType, 'true');
+
+                document.querySelectorAll('#' + input.getAttribute('id') + '~.invalid-feedback').forEach(v => v.classList.add('d-none'));
+                document.getElementById(idForValidationMessage).classList.remove('d-none');
+            }
+
+            function setValid(input, errorType) {
+                input.classList.remove('is-invalid');
+                input.removeAttribute('aria-invalid');
+                input.removeAttribute('aria-describedBy');
+                input.removeAttribute('data-error-' + errorType);
+            }
+
+            function hasErrorRequired(input) {
+                return input.getAttribute('data-error-required') == 'true';
+            }
+
+            function isPristine(input) {
+                return input.getAttribute('data-is-pristine') == 'true';
+            }
+
+            function populateValidationSummaryList(invalidInputs) {
+
+                // clear list of old errors
+
+                const $currentListItems = $formValidationSummaryList.querySelectorAll('li');
+
+                if ($currentListItems.length) {
+                    $currentListItems.forEach(cli => $formValidationSummaryList.removeChild(cli));
+                }
+
+                // populate errors
+
+                invalidInputs.forEach((ii) => {
+                    const l = document.createElement('li');
+                    const a = document.createElement('a');
+                    
+                    const ariaDescribedBy = ii.getAttribute('aria-describedby');
+                    const $idOfErrorMessage = document.getElementById(ariaDescribedBy);
+                    const t = document.createTextNode($idOfErrorMessage.innerText);
+
+                    a.setAttribute('href', `#${ii.getAttribute('id')}`);
+                    a.appendChild(t);
+                    l.appendChild(a);
+
+                    $formValidationSummaryList.appendChild(l);
+                });
+            }
+
+        </script>
+
+    {{/inline}}
+    {{/base}}
