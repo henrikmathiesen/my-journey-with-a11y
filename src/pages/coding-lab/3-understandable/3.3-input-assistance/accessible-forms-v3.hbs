@@ -1,21 +1,11 @@
-{{#> base title="3.3 Input Assistance - Accessible Forms With Summary" homeref="../../../" }}
+{{#> base title="3.3 Input Assistance - Accessible Forms" homeref="../../../" }}
     {{#*inline "content"}}
 
-        <div class="col-lg-9">
+        <div class="col-lg-8">
 
-            <h2>3.3 Input Assistance - Accessible Forms With Summary - V2</h2>
+            <h2>3.3 Input Assistance - Accessible Forms - V3</h2>
 
             <form novalidate>
-
-                <!-- role="alert" not needed since we set focus on the header -->
-                <div>
-                    <div id="form-validation-summary" class="d-none">
-                        <h3 id="form-validation-summary-header" class="h4 form-validation-summary-header" tabindex="-1">There was a problem with the form</h3>
-                        <ul id="form-validation-summary-list">
-
-                        </ul>
-                    </div>
-                </div>
 
                 <div class="form-row">
                     <div class="col-lg-7">
@@ -80,9 +70,6 @@
 
             const $requiredInputs = document.querySelectorAll('[data-required]');
             const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
-            const $formValidationSummary = document.getElementById('form-validation-summary');
-            const $formValidationSummaryHeader = document.getElementById('form-validation-summary-header');
-            const $formValidationSummaryList = document.getElementById('form-validation-summary-list');
 
             $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
             $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
@@ -100,11 +87,7 @@
                 const $invalidInputs = document.querySelectorAll('.is-invalid');
 
                 if ($invalidInputs.length) {
-                    populateValidationSummaryList($invalidInputs);
-                    $formValidationSummary.classList.remove('d-none');
-                    $formValidationSummaryHeader.focus();
-                } else {
-                    $formValidationSummary.classList.add('d-none');
+                    $invalidInputs[0].focus();
                 }
             }
 
@@ -178,34 +161,6 @@
 
             function isPristine(input) {
                 return input.getAttribute('data-is-pristine') == 'true';
-            }
-
-            function populateValidationSummaryList(invalidInputs) {
-
-                // clear list of old errors
-
-                const $currentListItems = $formValidationSummaryList.querySelectorAll('li');
-
-                if ($currentListItems.length) {
-                    $currentListItems.forEach(cli => $formValidationSummaryList.removeChild(cli));
-                }
-
-                // populate errors
-
-                invalidInputs.forEach((ii) => {
-                    const l = document.createElement('li');
-                    const a = document.createElement('a');
-                    
-                    const ariaDescribedBy = ii.getAttribute('aria-describedby');
-                    const $idOfErrorMessage = document.getElementById(ariaDescribedBy);
-                    const t = document.createTextNode($idOfErrorMessage.innerText);
-
-                    a.setAttribute('href', `#${ii.getAttribute('id')}`);
-                    a.appendChild(t);
-                    l.appendChild(a);
-
-                    $formValidationSummaryList.appendChild(l);
-                });
             }
 
         </script>
