@@ -9,26 +9,26 @@
 
                 <div class="form-row">
                     <div class="col-lg-7">
-                        <div class="form-group">
+                        <div class="form-group" aria-live="assertive">
                             <label for="firstName">First Name (required)</label>
                             <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1" data-is-pristine="true">
                             <p class="invalid-feedback" id="firstName-validation-message-1">Please enter first name</p>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" aria-live="assertive">
                             <label for="lastName">Last Name (required)</label>
                             <input type="text" name="lastName" id="lastName" class="form-control" required data-required="lastName-validation-message-1" data-is-pristine="true">
                             <p class="invalid-feedback" id="lastName-validation-message-1">Please enter last name</p>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" aria-live="assertive">
                             <label for="dateOfBirth">Date of birth (required, <span aria-label="in format yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span>)</label>
                             <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required data-required="dateOfBirth-validation-message-1" data-required-format-date="dateOfBirth-validation-message-2" data-is-pristine="true">
                             <p class="invalid-feedback" id="dateOfBirth-validation-message-1">Please enter date</p>
                             <p class="invalid-feedback" id="dateOfBirth-validation-message-2">Please enter date of birth in format <span aria-label="yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or yyyymmdd</span></p>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" aria-live="assertive">
                             <label for="city">City (required)</label>
                             <select name="city" id="city" class="form-control" required data-required="city-validation-message-1" data-is-pristine="true">
                                 <option value="">Select One</option>
@@ -141,7 +141,6 @@
             function setInvalid(input, idForValidationMessage, errorType) {
                 input.classList.add('is-invalid');
                 input.setAttribute('aria-invalid', 'true')
-                input.setAttribute('aria-describedBy', idForValidationMessage);
                 input.setAttribute('data-error-' + errorType, 'true');
 
                 document.querySelectorAll('#' + input.getAttribute('id') + '~.invalid-feedback').forEach(v => v.classList.add('d-none'));
@@ -151,7 +150,6 @@
             function setValid(input, errorType) {
                 input.classList.remove('is-invalid');
                 input.removeAttribute('aria-invalid');
-                input.removeAttribute('aria-describedBy');
                 input.removeAttribute('data-error-' + errorType);
             }
 
