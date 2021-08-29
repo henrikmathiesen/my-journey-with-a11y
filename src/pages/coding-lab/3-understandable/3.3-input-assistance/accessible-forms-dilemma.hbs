@@ -18,13 +18,17 @@
                     <p>
                         Before we dive into the concrete dilemma we need some prepping.
                     </p>
+                </div>
+            </div>
 
+            <div class="row mt-3">
+                <div class="col">
                     <h3 class="h4">Terminology</h3>
                 </div>
             </div>
 
-            <div class="row mt-2">
-                <div class="col">
+            <div class="row">
+                <div class="col-lg-4">
                     <h4 class="h5">Events</h4>
                     <ul>
                         <li class="mb-1"><strong class="text-primary">Focus:</strong> Input has focus, either by the user clicks on it or tabs to it</li>
@@ -32,7 +36,7 @@
                         <li class="mb-1"><strong class="text-primary">Submit:</strong> The user clicks on the submit button (could have different copy), tabs to the submit button and presses enter, or an input (that is not a textarea) has focus and user presses enter</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-lg-4">
                     <h4 class="h5">Input states</h4>
                     <ul>
                         <li class="mb-1"><strong class="text-primary">Untouched:</strong> The input has never recieved focus</li>
@@ -41,13 +45,79 @@
                         <li class="mb-1"><strong class="text-primary">Dirty:</strong> The input has a value or has had a value</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-lg-4">
                     <h4 class="h5">Input Validation Rules</h4>
                     <ul>
                         <li class="mb-1"><strong class="text-primary">Required:</strong> The input is considered invalid if left blank or a placeholder selection is selected</li>
                         <li class="mb-1"><strong class="text-primary">Pattern:</strong> The input is considered invalid if value not following a certain pattern, for example only numbers or a date in a specific format</li>
                         <li class="mb-1"><strong class="text-primary">As a side note:</strong> Required and Pattern can not be invalid at the same time, since Pattern invalid requires a value</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="h5">Attributes</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">for:</strong> placed on a label, programmaticaly connects it with an inputs id</li>
+                        <li class="mb-1"><strong class="text-primary">aria-label:</strong> a screen reader will read its value instead of the value in the tag the attribute is placed on</li>
+                        <li class="mb-1"><strong class="text-primary">required:</strong> placed on an input, programmaticaly mark it as required</li>
+                        <li class="mb-1"><strong class="text-primary">aria-invalid:</strong> placed on an invalid input, programmaticaly mark it as invalid if true</li>
+                        <li class="mb-1"><strong class="text-primary">aria-describedby:</strong> placed on an invalid input, programmaticaly connect it with the id of the element containing a validation message</li>
+                        <li class="mb-1"><strong class="text-primary">aria-live:</strong> placed on an element (should exist in DOM), tell screen readers to announce dynamic content in the element, politly or assertive</li>
+                        <li class="mb-1"><strong class="text-primary">role= alert | status:</strong> same as aria-live= assertive | polite</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h5">Other</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Validation message:</strong> Text communicating to the user why an input is invalid</li>
+                        <li class="mb-1"><strong class="text-primary">Error summary:</strong> All validation messages listed, as links, pointing to the invalid input</li>
+                        <li class="mb-1"><strong class="text-primary">display none:</strong> Hidden with css, not read by screen readers</li>
+                        <li class="mb-1"><strong class="text-primary">display block:</strong> Visible with css, read by screen readers</li>
+                        <li class="mb-1"><strong class="text-primary">inject:</strong> Element with content is injected into DOM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h3 class="h4">Three brave forms and their validation UX</h3>
+                    <p>
+                        What all forms have in common is...
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="h5">Version 1 (my prefered version)</h4>
+                    <p>Describe ux</p>
+                    <ul>
+                        <li>
+                            <a href="accessible-forms-v1.html">Version 1, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v1.html">Version 1, with error summary</a>
+                        </li>
+                    </ul>
+                    <h5 class="h6 text-success">Good</h5>
+                    <h5 class="h6 text-danger">Bad</h5>
+                </div>
+                <div class="col-lg-4">
+                    TODO
+                </div>
+                <div class="col-lg-4">
+                    TODO
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h3 class="h4">The dilemma</h3>
+                    <p>
+                        Descibe it and put references here (dequeuniversity, mdn on aria-live, 4.1.3 Status Messages, DIGG).
+                    </p>
                 </div>
             </div>
 
