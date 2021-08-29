@@ -1,9 +1,55 @@
 {{#> base title="Accessible Forms dilemma" homeref="../../../" }}
     {{#*inline "content"}}
 
-        <div class="col-lg-9">
+        <div class="col-lg-12">
 
-            <h2>Accessible Forms dilemma</h2>
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2>Accessible Forms dilemma</h2>
+
+                    <p>
+                        The dilemma is communicating validation errors effectivly to different screen readers (testing with NVDA and VoiceOver),
+                        in a form that should be modern and pleasing from an UX point of view.
+                    </p>
+                    <p>
+                        My experience is also that the information on this subject is rather scarce and bits and pieces here and there are sometimes
+                        conflicting and hard to glue together.
+                    </p>
+                    <p>
+                        Before we dive into the concrete dilemma we need some prepping.
+                    </p>
+
+                    <h3 class="h4">Terminology</h3>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <h4 class="h5">Events</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Focus:</strong> Input has focus, either by the user clicks on it or tabs to it</li>
+                        <li class="mb-1"><strong class="text-primary">Blur:</strong> Input loses focus, either by the user clicks outside it or tabs away from it</li>
+                        <li class="mb-1"><strong class="text-primary">Submit:</strong> The user clicks on the submit button (could have different copy), tabs to the submit button and presses enter, or an input (that is not a textarea) has focus and user presses enter</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4 class="h5">Input states</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Untouched:</strong> The input has never recieved focus</li>
+                        <li class="mb-1"><strong class="text-primary">Touched:</strong> The input has had focus</li>
+                        <li class="mb-1"><strong class="text-primary">Pristine:</strong> The input has never had a value (if input has a placeholder, it has never had another value than the placeholder value)</li>
+                        <li class="mb-1"><strong class="text-primary">Dirty:</strong> The input has a value or has had a value</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4 class="h5">Input Validation Rules</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Required:</strong> The input is considered invalid if left blank or a placeholder selection is selected</li>
+                        <li class="mb-1"><strong class="text-primary">Pattern:</strong> The input is considered invalid if value not following a certain pattern, for example only numbers or a date in a specific format</li>
+                        <li class="mb-1"><strong class="text-primary">As a side note:</strong> Required and Pattern can not be invalid at the same time, since Pattern invalid requires a value</li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
 
