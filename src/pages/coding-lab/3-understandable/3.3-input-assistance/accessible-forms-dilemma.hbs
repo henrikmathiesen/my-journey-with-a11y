@@ -92,30 +92,34 @@
                         Required inputs are marked with required. When invalid, the inputs get an aria-invalid attribute.
                     </p>
                     <p>
-                        Both required and pattern validation hit when input dirty + invalid + blur (some call this direct validation or dynamic validation).
+                        Both required and pattern validation hit when input dirty + invalid/valid + blur (some call this direct validation or dynamic validation).
                     </p>
                     <p>
-                        Both required and pattern validation hit when input invalid + submit. 
+                        Both required and pattern validation hit when input invalid/valid + submit. 
                         Focus is then placed on the first invalid input, or for the subversion with error summary
                         focus is placed on the (now visible) error summary's header.
                     </p>
                     <p>
                         Each validation message are placed in a p tag that is a sibbling to the input tag, Bootstrap's CSS rule makes them display none.
                         When an input is invalid it gets a CSS class, is-invalid, and then Bootstrap's CSS sibbling rule makes the p tag display block,
-                        showing the validation message.
+                        showing the validation message. When valid the is-invalid css class is removed.
                     </p>
                     <p>
                         However the error summary works like this: In DOM there is an ul tag with an id, when error summary is shown
                         li and a tags are injected into the ul tag. Because I need to clear the list.
                     </p>
+                    <h4 class="h5">Bellow I'll describe what differs between them</h3>
                 </div>
             </div>
 
             <div class="row mt-5">
-                <div class="col-lg-4">
+                <div class="col-lg-4 d-flex flex-column">
                     <h4 class="h5">Version 1 (my prefered version)</h4>
-                    <p>Describe ux</p>
-                    <ul>
+                    <p>
+                        When an input is invalid, it gets an aria-describedBy attribute, pointing to the id of the p tag containing the validation message.
+                        When valid, the aria-describedBy attribute is removed.
+                    </p>
+                    <ul class="mt-auto">
                         <li>
                             <a href="accessible-forms-v1.html">Version 1, without error summary</a>
                         </li>
@@ -124,10 +128,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 d-flex flex-column">
                     <h4 class="h5">Version 2</h4>
-                    <p>Describe ux</p>
-                    <ul>
+                    <p>
+                        An aria-live assertive is placed on the container div that is wrapping label, input and p tag(s) with validation message.
+                        I did not put aria-live directly on the p tag(s) with validation message because of the information here (see conclusion)
+                        <a href="https://www.davidmacd.com/blog/test-aria-live-display-none.html">Testing ARIA-LIVE.</a>
+                    </p>
+                    <ul class="mt-auto">
                         <li>
                             <a href="accessible-forms-v2.html">Version 2, without error summary</a>
                         </li>
@@ -136,10 +144,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 d-flex flex-column">
                     <h4 class="h5">Version 3</h4>
-                    <p>Describe ux</p>
-                    <ul>
+                    <p>A combination of 1 and 2 (so both aria-describedBy and aria-live).</p>
+                    <ul class="mt-auto">
                         <li>
                             <a href="accessible-forms-v3.html">Version 3, without error summary</a>
                         </li>
