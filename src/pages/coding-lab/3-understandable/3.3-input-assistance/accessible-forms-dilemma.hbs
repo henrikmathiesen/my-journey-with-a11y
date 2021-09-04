@@ -171,6 +171,7 @@
                     <h4 class="h5 mb-3">Version 1</h4>
                     <p>
                         What I like about version 1 is that the aria-describedBy approach aligns with Success Critera 1.3.1 (Info and Relationships) and Success Critera 4.1.2 (Name, Role, Value)(?).
+                        Also Dequeuniversity recommends it <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Error Message Characteristics)</a>
                     </p>
                     <p>
                         Also, the combination of aria-invalid and aria-describedBy means that if the user tabs to next input and then back, the information about that the input is invalid and its validation message is read again.
@@ -191,15 +192,20 @@
                         I think this approach is good enough, however with the other two versions I try to use aria-live on the validation messages.
                         All though Dequeuniversity recommends against it: <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Dynamic Error Detection)</a>
                     </p>
+                    <p>
+                        As a side note <a href="https://www.accessibilityassociation.org/s/prepareforwas">Dequeuniversity is a recommended course provider when preparing for the WAS certification (string search Deque)</a>.
+                    </p>
 
                     <h4 class="h5 mb-3">Version 2</h4>
                     <p>
                         Todo ...
+                        <!-- lose the error info when tabbing back. Read double. -->
                     </p>
 
                     <h4 class="h5 mb-3">Version 3</h4>
                     <p>
                         Todo ...
+                        <!-- A mess, validation message are read 3 times -->
                     </p>
 
                     <h4 class="h5 mb-3">Other</h4>
@@ -207,6 +213,9 @@
                         Funka takes another approach. They use aria-invalid on the invalid field, but puts the error message in the label.
                         <a href="https://www.funka.com/kurser/kurser-i-digital-tillganglighet/introduktion-till-tillganglighet/">Funka form</a>.
                         However when I test with NVDA, dirty + invalid + blur does not result in the validation message is read, thus violating 4.1.3.
+                    </p>
+                    <p>
+                        As a side note <a href="https://www.accessibilityassociation.org/s/prepareforwas">Funka is a recommended course provider when preparing for the WAS certification (string search Funka)</a>.
                     </p>
                     <p>
                         This method is recommended here also 
