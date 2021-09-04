@@ -13,10 +13,10 @@
                     </p>
                     <p>
                         My experience is also that the information on this subject is rather scarce and bits and pieces here and there are sometimes
-                        conflicting and hard to glue together. <!-- TODO: give examples (further down) -->
+                        conflicting and hard to glue together.
                     </p>
                     <p>
-                        Before we dive into the concrete dilemma we need some prepping.
+                        Before we dive into the concrete dilemma we need some prepping, for easier discussion.
                     </p>
                 </div>
             </div>
@@ -117,7 +117,10 @@
                     <h4 class="h5">Version 1 (my prefered version)</h4>
                     <p>
                         When an input is invalid, it gets an aria-describedBy attribute, pointing to the id of the p tag containing the validation message.
-                        When valid, the aria-describedBy attribute is removed.
+                        When valid, the aria-describedBy attribute is removed. As seen in 
+                        <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21">ARIA21: Using Aria-Invalid to Indicate An Error Field (string search Example 2: Identifying errors in data format)</a>.
+                        And also in <a href="https://www.w3.org/WAI/tutorials/forms/notifications/#after-submit">WAI Web Accessibility Tutorials (although they only validate on submit)</a>.
+                        And also in <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Error Detection on Submit)</a>.
                     </p>
                     <ul class="mt-auto">
                         <li>
@@ -146,7 +149,10 @@
                 </div>
                 <div class="col-lg-4 d-flex flex-column">
                     <h4 class="h5">Version 3</h4>
-                    <p>A combination of 1 and 2 (so both aria-describedBy and aria-live).</p>
+                    <p>
+                        A combination of 1 and 2 (so both aria-describedBy and aria-live).
+                        As seen in <a href="https://www.w3.org/WAI/tutorials/forms/notifications/#on-focus-change">WAI Web Accessibility Tutorials</a>
+                    </p>
                     <ul class="mt-auto">
                         <li>
                             <a href="accessible-forms-v3.html">Version 3, without error summary</a>
@@ -161,8 +167,50 @@
             <div class="row mt-5">
                 <div class="col">
                     <h3 class="h4">The dilemma</h3>
+
+                    <h4 class="h5 mb-3">Version 1</h4>
                     <p>
-                        Descibe it and put references here (dequeuniversity, mdn on aria-live, 4.1.3 Status Messages, DIGG).
+                        What I like about version 1 is that the aria-describedBy approach aligns with Success Critera 1.3.1 (Info and Relationships) and Success Critera 4.1.2 (Name, Role, Value)(?).
+                    </p>
+                    <p>
+                        Also, the combination of aria-invalid and aria-describedBy means that if the user tabs to next input and then back, the information about that the input is invalid and its validation message is read again.
+                    </p>
+                    <p>
+                        When dirty + invalid + blur, NVDA reads the validation message, satisfying Success Critera 4.1.3 (Status Messages). 
+                        This is <strong>also something DIGG has pointed out -- "Make sure assistive technologies can recieve status messages that are not given focus"</strong>.
+                    </p>
+                    <p>
+                        However, when dirty + invalid + blur, Voice Over does <strong>not</strong> read the validation message, violating 4.1.3.
+                    </p>
+                    <p>
+                        In my opinion, there is a safety net to Voice Over's inability to read the validation message when dirty + invalid + blur:
+                        On input invalid + submit, focus is placed on first invalid input / error summary (depending of sub version), and the message is read then.
+                        But still, it violates 4.1.3.
+                    </p>
+                    <p>
+                        I think this approach is good enough, however with the other two versions I try to use aria-live on the validation messages.
+                        All though Dequeuniversity recommends against it: <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Dynamic Error Detection)</a>
+                    </p>
+
+                    <h4 class="h5 mb-3">Version 2</h4>
+                    <p>
+                        Todo ...
+                    </p>
+
+                    <h4 class="h5 mb-3">Version 3</h4>
+                    <p>
+                        Todo ...
+                    </p>
+
+                    <h4 class="h5 mb-3">Other</h4>
+                    <p>
+                        Funka takes another approach. They use aria-invalid on the invalid field, but puts the error message in the label.
+                        <a href="https://www.funka.com/kurser/kurser-i-digital-tillganglighet/introduktion-till-tillganglighet/">Funka form</a>.
+                        However when I test with NVDA, dirty + invalid + blur does not result in the validation message is read, thus violating 4.1.3.
+                    </p>
+                    <p>
+                        This method is recommended here also 
+                        <a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G83">Providing text descriptions to identify required fields that were not completed (string search A client-side script modifies the label of the field)</a>
                     </p>
                 </div>
             </div>
