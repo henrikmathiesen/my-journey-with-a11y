@@ -72,7 +72,7 @@
                     <h4 class="h5">Other</h4>
                     <ul>
                         <li class="mb-1"><strong class="text-primary">Validation message:</strong> Text communicating to the user why an input is invalid</li>
-                        <li class="mb-1"><strong class="text-primary">Error summary:</strong> All validation messages listed, as links, pointing to the invalid input</li>
+                        <li class="mb-1"><strong class="text-primary">Error summary:</strong> All validation messages listed, as links, pointing to the invalid input by an href with inputs id</li>
                         <li class="mb-1"><strong class="text-primary">display none:</strong> Hidden with css, not read by screen readers</li>
                         <li class="mb-1"><strong class="text-primary">display block:</strong> Visible with css, read by screen readers</li>
                         <li class="mb-1"><strong class="text-primary">inject:</strong> Element with content is injected into DOM</li>
@@ -84,13 +84,34 @@
                 <div class="col">
                     <h3 class="h4">Three brave forms and their validation UX</h3>
                     <p>
-                        What all forms have in common is...
-                        <!-- Maybe better to have required validation hit on submit instead. -->
+                        Each version has two sub versions, one is with an error summary and one without.
+                    </p>
+                    <h4 class="h5 mb-3">What they all have in common</h4>
+                    <p>
+                        Each input has an associated label. The date input's label and pattern validation message p tag has a span with an aria-label further explaining valid patterns.
+                        Required inputs are marked with required. When invalid, the inputs get an aria-invalid attribute.
+                    </p>
+                    <p>
+                        Both required and pattern validation hit when input dirty + invalid + blur (some call this direct validation or dynamic validation).
+                    </p>
+                    <p>
+                        Both required and pattern validation hit when input invalid + submit. 
+                        Focus is then placed on the first invalid input, or for the subversion with error summary
+                        focus is placed on the (now visible) error summary's header.
+                    </p>
+                    <p>
+                        Each validation message are placed in a p tag that is a sibbling to the input tag, Bootstrap's CSS rule makes them display none.
+                        When an input is invalid it gets a CSS class, is-invalid, and then Bootstrap's CSS sibbling rule makes the p tag display block,
+                        showing the validation message.
+                    </p>
+                    <p>
+                        However the error summary works like this: In DOM there is an ul tag with an id, when error summary is shown
+                        li and a tags are injected into the ul tag. Because I need to clear the list.
                     </p>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-lg-4">
                     <h4 class="h5">Version 1 (my prefered version)</h4>
                     <p>Describe ux</p>
@@ -102,14 +123,30 @@
                             <a href="accessible-forms-summary-v1.html">Version 1, with error summary</a>
                         </li>
                     </ul>
-                    <h5 class="h6 text-success">Good</h5>
-                    <h5 class="h6 text-danger">Bad</h5>
                 </div>
                 <div class="col-lg-4">
-                    TODO
+                    <h4 class="h5">Version 2</h4>
+                    <p>Describe ux</p>
+                    <ul>
+                        <li>
+                            <a href="accessible-forms-v2.html">Version 2, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v2.html">Version 2, with error summary</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-lg-4">
-                    TODO
+                    <h4 class="h5">Version 3</h4>
+                    <p>Describe ux</p>
+                    <ul>
+                        <li>
+                            <a href="accessible-forms-v3.html">Version 3, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v3.html">Version 3, with error summary</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -118,9 +155,6 @@
                     <h3 class="h4">The dilemma</h3>
                     <p>
                         Descibe it and put references here (dequeuniversity, mdn on aria-live, 4.1.3 Status Messages, DIGG).
-                        <!-- 4.1.3 NVDA vs VoiceOver -->
-                        <!-- aria-live and error summary, conflict of focus -->
-                        <!-- aria-live for 1 element and not for another, think about maintanence -->
                     </p>
                 </div>
             </div>
