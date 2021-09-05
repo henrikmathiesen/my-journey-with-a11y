@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accessible Forms dilemma - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2>Accessible Forms dilemma</h2>
+
+                    <p>
+                        The dilemma is communicating validation errors effectivly to different screen readers (testing with NVDA and VoiceOver),
+                        in a form that should be modern and pleasing from an UX point of view.
+                    </p>
+                    <p>
+                        My experience is also that the information on this subject is rather scarce and bits and pieces here and there are sometimes
+                        conflicting and hard to glue together.
+                    </p>
+                    <p>
+                        Before we dive into the concrete dilemma we need some prepping, for easier discussion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <h3 class="h4">Terminology</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4 class="h5">Events</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Focus:</strong> Input has focus, either by the user clicks on it or tabs to it</li>
+                        <li class="mb-1"><strong class="text-primary">Blur:</strong> Input loses focus, either by the user clicks outside it or tabs away from it</li>
+                        <li class="mb-1"><strong class="text-primary">Submit:</strong> The user clicks on the submit button (could have different copy), tabs to the submit button and presses enter, or an input (that is not a textarea) has focus and user presses enter</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="h5">Input states</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Untouched:</strong> The input has never recieved focus</li>
+                        <li class="mb-1"><strong class="text-primary">Touched:</strong> The input has had focus</li>
+                        <li class="mb-1"><strong class="text-primary">Pristine:</strong> The input has never had a value (if input has a placeholder, it has never had another value than the placeholder value)</li>
+                        <li class="mb-1"><strong class="text-primary">Dirty:</strong> The input has a value or has had a value</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="h5">Input Validation Rules</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Required:</strong> The input is considered invalid if left blank or a placeholder selection is selected</li>
+                        <li class="mb-1"><strong class="text-primary">Pattern:</strong> The input is considered invalid if value not following a certain pattern, for example only numbers or a date in a specific format</li>
+                        <li class="mb-1"><strong class="text-primary">As a side note:</strong> Required and Pattern can not be invalid at the same time, since Pattern invalid requires a value</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="h5">Attributes</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">for:</strong> placed on a label, programmaticaly connects it with an inputs id</li>
+                        <li class="mb-1"><strong class="text-primary">aria-label:</strong> a screen reader will read its value instead of the value in the tag the attribute is placed on</li>
+                        <li class="mb-1"><strong class="text-primary">required:</strong> placed on an input, programmaticaly mark it as required</li>
+                        <li class="mb-1"><strong class="text-primary">aria-invalid:</strong> placed on an invalid input, programmaticaly mark it as invalid if true</li>
+                        <li class="mb-1"><strong class="text-primary">aria-describedby:</strong> placed on an invalid input, programmaticaly connect it with the id of the element containing a validation message</li>
+                        <li class="mb-1"><strong class="text-primary">aria-live:</strong> placed on an element (should exist in DOM), tell screen readers to announce dynamic content in the element, politly or assertive</li>
+                        <li class="mb-1"><strong class="text-primary">role= alert | status:</strong> same as aria-live= assertive | polite</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h5">Other</h4>
+                    <ul>
+                        <li class="mb-1"><strong class="text-primary">Validation message:</strong> Text communicating to the user why an input is invalid</li>
+                        <li class="mb-1"><strong class="text-primary">Error summary:</strong> All validation messages listed, as links, pointing to the invalid input by an href with inputs id</li>
+                        <li class="mb-1"><strong class="text-primary">display none:</strong> Hidden with css, not read by screen readers</li>
+                        <li class="mb-1"><strong class="text-primary">display block:</strong> Visible with css, read by screen readers</li>
+                        <li class="mb-1"><strong class="text-primary">inject:</strong> Element with content is injected into DOM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h3 class="h4">Three brave forms and their validation UX</h3>
+                    <p>
+                        Each version has two sub versions, one is with an error summary and one without.
+                    </p>
+                    <h4 class="h5 mb-3">What they all have in common</h4>
+                    <p>
+                        Each input has an associated label. The date input's label and pattern validation message p tag has a span with an aria-label further explaining valid patterns.
+                        Required inputs are marked with required. When invalid, the inputs get an aria-invalid attribute.
+                    </p>
+                    <p>
+                        Both required and pattern validation hit when input dirty + invalid/valid + blur (some call this direct validation or dynamic validation).
+                    </p>
+                    <p>
+                        Both required and pattern validation hit when input invalid/valid + submit. 
+                        Focus is then placed on the first invalid input, or for the subversion with error summary
+                        focus is placed on the (now visible) error summary's header.
+                    </p>
+                    <p>
+                        Each validation message is placed in a p tag that is a sibbling to the input tag, Bootstrap's CSS rule makes them display none.
+                        When an input is invalid it gets a CSS class, is-invalid, and then Bootstrap's CSS sibbling rule makes the p tag display block,
+                        showing the validation message. When valid the is-invalid css class is removed.
+                    </p>
+                    <p>
+                        However the error summary works like this: In DOM there is an ul tag with an id, when error summary is shown (display:none -> display:block)
+                        li and a tags are injected into the ul tag. Because I need to clear the list.
+                    </p>
+                    <h4 class="h5">Bellow I'll describe what differs between them and provide links to them</h3>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-4 d-flex flex-column">
+                    <h4 class="h5">Version 1 (my prefered version)</h4>
+                    <p>
+                        When an input is invalid, it gets an aria-describedBy attribute, pointing to the id of the p tag containing the validation message.
+                        When valid, the aria-describedBy attribute is removed. As seen in 
+                        <a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21">ARIA21: Using Aria-Invalid to Indicate An Error Field (string search Example 2: Identifying errors in data format)</a>.
+                        And also in <a href="https://www.w3.org/WAI/tutorials/forms/notifications/#after-submit">WAI Web Accessibility Tutorials (although they only validate on submit)</a>.
+                        And also in <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Error Detection on Submit)</a>.
+                    </p>
+                    <ul class="mt-auto">
+                        <li>
+                            <a href="accessible-forms-v1.html">Version 1, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v1.html">Version 1, with error summary</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 d-flex flex-column">
+                    <h4 class="h5">Version 2</h4>
+                    <p>
+                        An aria-live assertive is placed on the container div that is wrapping label, input and p tag(s) with validation message.
+                        I did not put aria-live directly on the p tag(s) with validation message because of the information here (see conclusion)
+                        <a href="https://www.davidmacd.com/blog/test-aria-live-display-none.html">Testing ARIA-LIVE.</a>
+                    </p>
+                    <ul class="mt-auto">
+                        <li>
+                            <a href="accessible-forms-v2.html">Version 2, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v2.html">Version 2, with error summary</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 d-flex flex-column">
+                    <h4 class="h5">Version 3</h4>
+                    <p>
+                        A combination of 1 and 2 (so both aria-describedBy and aria-live).
+                        As seen in <a href="https://www.w3.org/WAI/tutorials/forms/notifications/#on-focus-change">WAI Web Accessibility Tutorials</a>
+                    </p>
+                    <ul class="mt-auto">
+                        <li>
+                            <a href="accessible-forms-v3.html">Version 3, without error summary</a>
+                        </li>
+                        <li>
+                            <a href="accessible-forms-summary-v3.html">Version 3, with error summary</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <h3 class="h4">The dilemma</h3>
+
+                    <h4 class="h5 mb-3">Version 1</h4>
+                    <p>
+                        What I like about version 1 is that the aria-describedBy approach aligns with Success Critera 1.3.1 (Info and Relationships) and Success Critera 4.1.2 (Name, Role, Value)(?).
+                        Also Dequeuniversity recommends it <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Error Message Characteristics)</a>
+                    </p>
+                    <p>
+                        Also, the combination of aria-invalid and aria-describedBy means that if the user tabs to next input and then back (blur -> focus), the information about that the input is invalid and its validation message is read again.
+                    </p>
+                    <p>
+                        When dirty + invalid + blur, NVDA reads the validation message, satisfying Success Critera 4.1.3 (Status Messages). 
+                        This is <strong>also something DIGG has pointed out -- "Make sure assistive technologies can recieve status messages that are not given focus"</strong>.
+                    </p>
+                    <p>
+                        However, when dirty + invalid + blur, Voice Over does <strong>not</strong> read the validation message, violating 4.1.3.
+                    </p>
+                    <p>
+                        In my opinion, there is a safety net to Voice Over's inability to read the validation message when dirty + invalid + blur:
+                        On input invalid + submit, focus is placed on first invalid input / error summary (depending of sub version), and the message is read then.
+                        But still, it violates 4.1.3.
+                    </p>
+                    <p>
+                        I think this approach is good enough, however with the other two versions I try to use aria-live on the validation messages.
+                        All though Dequeuniversity recommends against it: <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Dynamic Error Detection)</a>
+                    </p>
+                    <p>
+                        As a side note <a href="https://www.accessibilityassociation.org/s/prepareforwas">Dequeuniversity is a recommended course provider when preparing for the WAS certification (string search Deque)</a>.
+                    </p>
+
+                    <h4 class="h5 mb-3">Version 2</h4>
+                    <p>
+                        What I like about version 2 is that on dirty + invalid + blur <strong>both</strong> NVDA and Voice Over read the validation message satisfying 4.1.3. So aria-live at work.
+                    </p>
+                    <p>
+                        What I dont like is that if the user tabs to next input and then back (blur -> focus), then the validation message is not read (only that it is invalid, thanks to aria-invalid).
+                        So, besause omitting aria-describedBy, we loose this nice feature, in my opinion.
+                    </p>
+                    <p>
+                        Another thing I dont like is when invalid + submit, all validation messages are logged in NVDA (although not read out load) at the same time as the first invalid field / error summary gets focus and is read out load.
+                        An overload of information?
+                    </p>
+
+                    <h4 class="h5 mb-3">Version 3</h4>
+                    <p>
+                        One would think that this version combines the best of two worlds. 
+                        aria-describedBy makes the semantic connection of invalid input and validation message, so if user blur the field and then give it focus, the validation message is read again, and that is true.
+                        It is also true that both NVDA and Voice Over reads the validation message on dirty + invalid + blur, thanks to aria-live.
+                    </p>
+                    <p>
+                        But this version is just a mess!
+                        On dirty + invalid + blur, in NVDA, the validation message is actually read out load three times.
+                        And on invalid + submit results in the same problem as version 2.
+                    </p>
+
+                    <h4 class="h5 mb-3">Other</h4>
+                    <p>
+                        Funka takes another approach. They use aria-invalid on the invalid field, but puts the error message in the label.
+                        <a href="https://www.funka.com/kurser/kurser-i-digital-tillganglighet/introduktion-till-tillganglighet/">Funka form</a>.
+                        However when I test with NVDA, dirty + invalid + blur does not result in the validation message is read, thus violating 4.1.3.
+                    </p>
+                    <p>
+                        When blur -> focus (tabbing away from an invalid input and then back to it), then the validation message is read, because of
+                        the semantic connection between label[for] and input[id]. Good.
+                    </p>
+                    <p>
+                        As a side note <a href="https://www.accessibilityassociation.org/s/prepareforwas">Funka is a recommended course provider when preparing for the WAS certification (string search Funka)</a>.
+                    </p>
+                    <p>
+                        This method is recommended here also 
+                        <a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G83">Providing text descriptions to identify required fields that were not completed (string search A client-side script modifies the label of the field)</a>
+                    </p>
+                    <p>
+                        I also remember a teacher in a Pluralsight course doing it that way.
+                    </p>
+
+                    <h3 class="h4 mt-5 mb-4">The dilemma in a nutshell</h3>
+                    <p>
+                        Version 1 would, in my opinion be perfect if Voice Over would have read the validation message on dirty + invalid + blur. But sadly Voice Over doesnt.
+                    </p>
+                    <p>
+                        Version 2 and 3 fail because of the overload of information that can be triggered, basicly.
+                        Also Dequeuniversity recommends against aria-live and Funka is not using it.
+                    </p>
+                    <h4 class="h5">A way out?</h4>
+                    <p>
+                        One thing Iam thinking about is having duplicate p tags with duplicate validation messages (so 2 validation messages for required and 2 for pattern, for each input).
+                        One of the p tags should have aria-live and one p tag should not. They have a different id of course.
+                        When dirty + invalid + blur then the one p tag with aria-live is display:none -> display:block and the invalid input's aria-describedBy points to that p tags id.
+                        When invalid + submit, then the other p tag without aria-live is display:none -> display:block (the first p tag is display:none), and the invalid input's aria-describedBy points to the other p tag.
+                    </p>
+                    <p>
+                        However coding this, with or without using bootstrap is, well, cumbersome.
+                    </p>
+                    <h4 class="h5">What do I really think</h4>
+                    <p>
+                        In my very humble opinion, I think that version 1 is the very best version, followed by Funkas version. 
+                        The screen reader user experience regarding validation messages communication is the same really, with the only difference
+                        that version 1 satisfies 4.1.3 in NVDA while Funkas version does not.
+                    </p>
+                    <p>
+                        I think it is good enough, and accessibility resources might be better put to use elsewhere.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        </main>
+    </div>
+</body>
+
+</html>
