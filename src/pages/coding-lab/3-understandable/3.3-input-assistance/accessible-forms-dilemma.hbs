@@ -105,10 +105,10 @@
                         showing the validation message. When valid the is-invalid css class is removed.
                     </p>
                     <p>
-                        However the error summary works like this: In DOM there is an ul tag with an id, when error summary is shown
+                        However the error summary works like this: In DOM there is an ul tag with an id, when error summary is shown (display:none -> display:block)
                         li and a tags are injected into the ul tag. Because I need to clear the list.
                     </p>
-                    <h4 class="h5">Bellow I'll describe what differs between them</h3>
+                    <h4 class="h5">Bellow I'll describe what differs between them and provide links to them</h3>
                 </div>
             </div>
 
@@ -174,7 +174,7 @@
                         Also Dequeuniversity recommends it <a href="https://dequeuniversity.com/checklists/web/form-validation-feedback">Dequeuniversity - Form Validation and Feedback (string search Error Message Characteristics)</a>
                     </p>
                     <p>
-                        Also, the combination of aria-invalid and aria-describedBy means that if the user tabs to next input and then back, the information about that the input is invalid and its validation message is read again.
+                        Also, the combination of aria-invalid and aria-describedBy means that if the user tabs to next input and then back (blur -> focus), the information about that the input is invalid and its validation message is read again.
                     </p>
                     <p>
                         When dirty + invalid + blur, NVDA reads the validation message, satisfying Success Critera 4.1.3 (Status Messages). 
@@ -198,14 +198,27 @@
 
                     <h4 class="h5 mb-3">Version 2</h4>
                     <p>
-                        Todo ...
-                        <!-- lose the error info when tabbing back. Read double. -->
+                        What I like about version 2 is that on dirty + invalid + blur <strong>both</strong> NVDA and Voice Over read the validation message satisfying 4.1.3. So aria-live at work.
+                    </p>
+                    <p>
+                        What I dont like is that if the user blur -> focus the invalid input, then the validation message is not read (only that it is invalid, thanks to aria-invalid).
+                        So, besause omitting aria-describedBy, we loose this nice feature, in my opinion.
+                    </p>
+                    <p>
+                        Another thing I dont like is when invalid + submit, all validation messages are logged in NVDA (although not read out load) at the same time as the first invalid field / error summary gets focus and is read out load.
+                        An overload of information?
                     </p>
 
                     <h4 class="h5 mb-3">Version 3</h4>
                     <p>
-                        Todo ...
-                        <!-- A mess, validation message are read 3 times -->
+                        One would think that this version combines the best of two worlds. 
+                        aria-describedBy makes the semantic connection of invalid input and validation message, so if user blur the field and then give it focus, the validation message is read again, and that is true.
+                        It is also true that both NVDA and Voice Over reads the validation message on dirty + invalid + blur, thanks to aria-live.
+                    </p>
+                    <p>
+                        But this version is just a mess!
+                        On dirty + invalid + blur, in NVDA, the validation message is actually read out load three times.
+                        And on invalid + submit results in the same problem as version 2.
                     </p>
 
                     <h4 class="h5 mb-3">Other</h4>
@@ -215,11 +228,46 @@
                         However when I test with NVDA, dirty + invalid + blur does not result in the validation message is read, thus violating 4.1.3.
                     </p>
                     <p>
+                        When blur -> focus (tabbing away from an invalid input and then back to it), then the validation message is read, because of
+                        the semantic connection between label[for] and input[id]. Good.
+                    </p>
+                    <p>
                         As a side note <a href="https://www.accessibilityassociation.org/s/prepareforwas">Funka is a recommended course provider when preparing for the WAS certification (string search Funka)</a>.
                     </p>
                     <p>
                         This method is recommended here also 
                         <a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G83">Providing text descriptions to identify required fields that were not completed (string search A client-side script modifies the label of the field)</a>
+                    </p>
+                    <p>
+                        I also remember a teacher in a Pluralsight course doing it that way.
+                    </p>
+
+                    <h3 class="h4 mt-5 mb-4">The dilemma in a nutshell</h3>
+                    <p>
+                        Version 1 would, in my opinion be perfect if Voice Over would have read the validation message on dirty + invalid + blur. But sadly Voice Over doesnt.
+                    </p>
+                    <p>
+                        Version 2 and 3 fail because of the overload of information when invalid + submitting, basicly.
+                        Also Dequeuniversity recommends against aria-live and Funka is not using it.
+                    </p>
+                    <h4 class="h5">A way out?</h4>
+                    <p>
+                        One thing Iam thinking about is having duplicate p tags with duplicate validation messages (so 2 validation messages for required and 2 for pattern, for each input).
+                        One of the p tags should have aria-live and one p tag should not. They have a different id of course.
+                        When dirty + invalid + blur then the one p tag with aria-live is display:none -> display:block and the invalid input's aria-describedBy points to that p tags id.
+                        When invalid + submit, then the other p tag without aria-live is display:none -> display:block (the first p tag is display:none), and the invalid input's aria-describedBy points to the other p tag.
+                    </p>
+                    <p>
+                        However coding this, with or without using bootstrap is, well, cumbersome.
+                    </p>
+                    <h4 class="h5">What do I really think</h4>
+                    <p>
+                        In my very humble opinion, I think that version 1 is the very best version, followed by Funkas version. 
+                        The screen reader user experience regarding validation messages communication is the same really, with the only difference
+                        that version 1 satisfies 4.1.3 in NVDA while Funkas version does not.
+                    </p>
+                    <p>
+                        I think it is good enough, and accessibility resources might be better put to use elsewhere.
                     </p>
                 </div>
             </div>
