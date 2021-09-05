@@ -100,7 +100,7 @@
                         focus is placed on the (now visible) error summary's header.
                     </p>
                     <p>
-                        Each validation message are placed in a p tag that is a sibbling to the input tag, Bootstrap's CSS rule makes them display none.
+                        Each validation message is placed in a p tag that is a sibbling to the input tag, Bootstrap's CSS rule makes them display none.
                         When an input is invalid it gets a CSS class, is-invalid, and then Bootstrap's CSS sibbling rule makes the p tag display block,
                         showing the validation message. When valid the is-invalid css class is removed.
                     </p>
@@ -201,7 +201,7 @@
                         What I like about version 2 is that on dirty + invalid + blur <strong>both</strong> NVDA and Voice Over read the validation message satisfying 4.1.3. So aria-live at work.
                     </p>
                     <p>
-                        What I dont like is that if the user blur -> focus the invalid input, then the validation message is not read (only that it is invalid, thanks to aria-invalid).
+                        What I dont like is that if the user tabs to next input and then back (blur -> focus), then the validation message is not read (only that it is invalid, thanks to aria-invalid).
                         So, besause omitting aria-describedBy, we loose this nice feature, in my opinion.
                     </p>
                     <p>
@@ -247,7 +247,7 @@
                         Version 1 would, in my opinion be perfect if Voice Over would have read the validation message on dirty + invalid + blur. But sadly Voice Over doesnt.
                     </p>
                     <p>
-                        Version 2 and 3 fail because of the overload of information when invalid + submitting, basicly.
+                        Version 2 and 3 fail because of the overload of information that can be triggered, basicly.
                         Also Dequeuniversity recommends against aria-live and Funka is not using it.
                     </p>
                     <h4 class="h5">A way out?</h4>
