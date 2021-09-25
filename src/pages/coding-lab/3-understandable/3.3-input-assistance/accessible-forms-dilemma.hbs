@@ -250,16 +250,6 @@
                         Version 2 and 3 fail because of the overload of information that can be triggered, basicly.
                         Also Dequeuniversity recommends against aria-live and Funka is not using it.
                     </p>
-                    <h4 class="h5">A way out?</h4>
-                    <p>
-                        One thing Iam thinking about is having duplicate p tags with duplicate validation messages (so 2 validation messages for required and 2 for pattern, for each input).
-                        One of the p tags should have aria-live and one p tag should not. They have a different id of course.
-                        When dirty + invalid + blur then the one p tag with aria-live is display:none -> display:block and the invalid input's aria-describedBy points to that p tags id.
-                        When invalid + submit, then the other p tag without aria-live is display:none -> display:block (the first p tag is display:none), and the invalid input's aria-describedBy points to the other p tag.
-                    </p>
-                    <p>
-                        However coding this, with or without using bootstrap is, well, cumbersome.
-                    </p>
                     <h4 class="h5">What do I really think</h4>
                     <p>
                         In my very humble opinion, I think that version 1 is the very best version, followed by Funkas version. 
