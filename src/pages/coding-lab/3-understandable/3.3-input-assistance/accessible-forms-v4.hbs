@@ -13,24 +13,27 @@
 
                 <div class="form-group">
                     <label for="firstName">First Name (required)</label>
-                    <input type="text" name="firstName" id="firstName" class="form-control" required>
+                    <input type="text" name="firstName" id="firstName" class="form-control" required
+                        data-is-pristine="true">
                 </div>
 
                 <div class="form-group">
                     <label for="lastName">Last Name (required)</label>
-                    <input type="text" name="lastName" id="lastName" class="form-control" required>
+                    <input type="text" name="lastName" id="lastName" class="form-control" required
+                        data-is-pristine="true">
                 </div>
 
                 <div class="form-group">
                     <label for="dateOfBirth">Date of birth (required, <span
                             aria-label="in format yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or
                             yyyymmdd</span>)</label>
-                    <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required>
+                    <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required
+                        data-required-format-date="" data-is-pristine="true">
                 </div>
 
                 <div class="form-group">
                     <label for="city">City (required)</label>
-                    <select name="city" id="city" class="form-control" required>
+                    <select name="city" id="city" class="form-control" required data-is-pristine="true">
                         <option value="">Select One</option>
                         <option value="Adamsburg">Adamsburg</option>
                         <option value="Bertilsburg">Bertilsburg</option>
@@ -68,7 +71,15 @@
 
 <script>
 
-    console.log('working');
+    const $requiredInputs = document.querySelectorAll('[required]');
+    const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
+
+    $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+
+    function isPristine(input) {
+        return input.getAttribute('data-is-pristine') == 'true';
+    }
 
 </script>
 
