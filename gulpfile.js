@@ -44,6 +44,13 @@ function copyCssTask(cb) {
     cb();
 }
 
+function copyJsTask(cb) {
+    src(config.path.src + '/js/util.js')
+        .pipe(dest(config.path.bld));
+
+    cb();
+}
+
 function miniFyAndCopyCss(cb) {
     src(config.path.src + '/css/style.css')
         .pipe(minifyCSS())
@@ -66,8 +73,8 @@ function watchTask(cb) {
     cb();
 }
 
-const runTask = series(cleanBuildFolderTask, parallel(handlebarsTask, copyCssTask));
-const BuildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss));
+const runTask = series(cleanBuildFolderTask, parallel(handlebarsTask, copyCssTask, copyJsTask));
+const BuildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss, copyJsTask));
 
 exports.build = BuildTask;
 exports.default = series(runTask, parallel(watchTask, connectTask));
