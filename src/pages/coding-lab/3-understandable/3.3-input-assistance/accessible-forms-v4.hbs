@@ -73,12 +73,44 @@
 
     const $requiredInputs = document.querySelectorAll('[required]');
     const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
+    const $submitButton = document.getElementById('submitButton');
 
+    $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
     $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+    $submitButton.addEventListener('click', submit);
 
+    function submit(e) {
+        e.preventDefault();
+
+        $requiredInputs.forEach(input => validateRequired(input));
+
+        const $invalidInputs = document.querySelectorAll('.is-invalid');
+
+        if ($invalidInputs.length) {
+            $invalidInputs[0].focus();
+        }
+    }
+
+    function validateRequired(input) {
+        if (input.value === '') {
+            setInvalid(input);
+        } else {
+            setValid(input);
+        }
+    }
 
     function isPristine(input) {
         return input.getAttribute('data-is-pristine') == 'true';
+    }
+
+    function setInvalid(input) {
+        input.classList.add('is-invalid');
+        input.setAttribute('aria-invalid', 'true')
+    }
+
+    function setValid(input) {
+        input.classList.remove('is-invalid');
+        input.removeAttribute('aria-invalid');
     }
 
 </script>
