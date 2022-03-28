@@ -1,5 +1,3 @@
-const app = window.app || {};
-
 app.util = {};
 
 app.util.isCorrectDateFormat = function (value) {
