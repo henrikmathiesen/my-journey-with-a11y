@@ -2,6 +2,7 @@ const { series, parallel, src, dest, watch } = require('gulp');
 const handlebars = require('gulp-compile-handlebars');
 const rename = require('gulp-rename');
 const minifyCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify-es').default;
 const del = require('del');
 const connect = require('gulp-connect');
 
@@ -38,24 +39,31 @@ function handlebarsTask(cb) {
 }
 
 function copyCssTask(cb) {
-    src(config.path.src + '/css/style.css')
+    src(config.path.src + '/css/*.css')
         .pipe(dest(config.path.bld));
 
     cb();
 }
 
 function copyJsTask(cb) {
-    src(config.path.src + '/js/util.js')
+    src(config.path.src + '/js/*.js')
         .pipe(dest(config.path.bld));
 
     cb();
 }
 
 function miniFyAndCopyCss(cb) {
-    src(config.path.src + '/css/style.css')
+    src(config.path.src + '/css/*.css')
         .pipe(minifyCSS())
         .pipe(dest(config.path.bld))
 
+    cb();
+}
+
+function minifyAndCopyJs(cb) {
+    src(config.path.src + '/js/*.js')
+        .pipe(uglify())
+        .pipe(dest(config.path.bld));
     cb();
 }
 
@@ -74,7 +82,7 @@ function watchTask(cb) {
 }
 
 const runTask = series(cleanBuildFolderTask, parallel(handlebarsTask, copyCssTask, copyJsTask));
-const BuildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss, copyJsTask));
+const BuildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss, minifyAndCopyJs));
 
 exports.build = BuildTask;
 exports.default = series(runTask, parallel(watchTask, connectTask));
