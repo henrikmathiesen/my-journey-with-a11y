@@ -128,6 +128,7 @@
     function validateDateFormat(input) {
 
         if (hasError(input, 'required')) {
+            input.removeAttribute('data-error-' + 'required-format-date');
             return;
         }
 
