@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.3 Input Assistance - Accessible Forms - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+    <script>
+        const app = {};
+    </script>
+    <script src="../../../util.js"></script>
+
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+<div class="col-lg-8">
+
+    <h2>3.3 Input Assistance - Accessible Forms - V4</h2>
+
+    <form novalidate>
+
+        <div class="form-row">
+
+            <div class="col-lg-8">
+
+                <div class="form-group">
+                    <label for="firstName">
+                        <span>First Name (required)</span>
+                        <span id="firstName-error-message"></span>
+                    </label>
+                    <input type="text" name="firstName" id="firstName" class="form-control" required
+                        data-is-pristine="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">
+                        <span>Last Name (required)</span>
+                        <span id="lastName-error-message"></span>
+                    </label>
+                    <input type="text" name="lastName" id="lastName" class="form-control" required
+                        data-is-pristine="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">
+                        <span>
+                            Date of birth (required, <span
+                                aria-label="in format yyyy-mm-dd or yyyymmdd, for example 1990-12-24">yyyy-mm-dd or
+                                yyyymmdd</span>)
+                        </span>
+                        <span id="dateOfBirth-error-message"></span>
+                    </label>
+                    <input type="text" name="dateOfBirth" id="dateOfBirth" class="form-control" required
+                        data-required-format-date="" data-is-pristine="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">
+                        <span>City (required)</span>
+                        <span id="city-error-message"></span>
+                    </label>
+                    <select name="city" id="city" class="form-control" required data-is-pristine="true">
+                        <option value="">Select One</option>
+                        <option value="Adamsburg">Adamsburg</option>
+                        <option value="Bertilsburg">Bertilsburg</option>
+                        <option value="Ceasarsburg">Ceasarsburg</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="favoriteFood">Favorite Food</label>
+                    <input type="text" name="favoriteFood" id="favoriteFood" class="form-control">
+                </div>
+
+                <fieldset class="form-group">
+                    <legend class="h5">Additional information</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="lorem" id="lorem">
+                        <label class="form-check-label" for="lorem">Lorem</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="ipsum" id="ipsum" checked>
+                        <label class="form-check-label" for="ipsum">Ipsum</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <button id="submitButton" class="btn btn-primary btn-block">Submit</button>
+                </div>
+
+            </div>
+
+    </form>
+
+
+</div>
+
+<script>
+
+    const $requiredInputs = document.querySelectorAll('[required]');
+    const $requiredFormatDatesInputs = document.querySelectorAll('[data-required-format-date]');
+    const $submitButton = document.getElementById('submitButton');
+
+    $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
+    $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
+
+    $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+    // In case there is a date field, not required, this is needed
+    $requiredFormatDatesInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+    $submitButton.addEventListener('click', submit);
+
+    function submit(e) {
+        e.preventDefault();
+
+        $requiredInputs.forEach(input => validateRequired(input));
+        $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
+
+        const $invalidInputs = document.querySelectorAll('.is-invalid');
+
+        if ($invalidInputs.length) {
+            $invalidInputs[0].focus();
+        }
+    }
+
+    function validateRequired(input) {
+        if (input.value === '') {
+            setInvalid(input, 'required');
+        } else {
+            setValid(input, 'required');
+        }
+    }
+
+    function validateDateFormat(input) {
+
+        if (hasError(input, 'required')) {
+            input.removeAttribute('data-error-' + 'required-format-date');
+            return;
+        }
+
+        if (app.util.isCorrectDateFormat(input.value) == false) {
+            setInvalid(input, 'required-format-date');
+        } else {
+            setValid(input, 'required-format-date');
+        }
+    }
+
+    function isPristine(input) {
+        return input.getAttribute('data-is-pristine') == 'true';
+    }
+
+    function hasError(input, errorType) {
+        return input.getAttribute('data-error-' + errorType) == 'true';
+    }
+
+    function setInvalid(input, errorType) {
+        input.classList.add('is-invalid');
+        input.setAttribute('aria-invalid', 'true')
+        input.setAttribute('data-error-' + errorType, 'true');
+        setErrorMessage(input, errorType, false);
+    }
+
+    function setValid(input, errorType) {
+        input.classList.remove('is-invalid');
+        input.removeAttribute('aria-invalid');
+        input.removeAttribute('data-error-' + errorType);
+        setErrorMessage(input, errorType, true);
+    }
+
+    function setErrorMessage(input, errorType, shouldClear) {
+        const name = input.getAttribute('name');
+        const $errorMessage = document.getElementById(name + '-error-message');
+
+        if (shouldClear) {
+            $errorMessage.innerHTML = '';
+            return;
+        }
+
+        $errorMessage.innerHTML = getErrorMessageForInput(name, errorType);
+    }
+
+    function getErrorMessageForInput(inputName, errorType) {
+        const requiredErrorMessages = {
+            firstName: 'Please enter first name',
+            lastName: 'Please enter last name',
+            dateOfBirth: 'Please enter date',
+            city: 'Please select a city'
+        };
+
+        const requiredFormatDateErrorMessages = {
+            dateOfBirth: 'Please enter date of birth in format yyyy-mm-dd or yyyymmdd'
+        };
+
+        switch (errorType) {
+            case 'required': {
+                return requiredErrorMessages[inputName];
+            }
+            case 'required-format-date': {
+                return requiredFormatDateErrorMessages[inputName];
+            }
+        }
+
+    }
+
+</script>
+
+
+        </main>
+    </div>
+</body>
+
+</html>

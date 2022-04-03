@@ -1,0 +1,1 @@
+app.util={},app.util.isCorrectDateFormat=function(t){if(!1===(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/.test(t)||/^\d{4}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/.test(t)))return!1;const e=t.replace(/-/g,""),r=e.slice(0,4),a=e.slice(4,6),i=e.slice(6,8),l=new Date(`${r}-${a}-${i}`);return l.getFullYear()===+r&&l.getMonth()+1===+a&&l.getDate()===+i};

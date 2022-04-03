@@ -22,6 +22,11 @@
             Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
         }
     </script>
+    <script>
+        const app = {};
+    </script>
+            <script src="../../../util.js"></script>
+
 </head>
 
 <body>
@@ -42,7 +47,7 @@
             <form novalidate>
 
                 <div class="form-row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-8">
                         <div class="form-group" aria-live="assertive">
                             <label for="firstName">First Name (required)</label>
                             <input type="text" name="firstName" id="firstName" class="form-control" required data-required="firstName-validation-message-1" data-is-pristine="true">
@@ -139,37 +144,11 @@
                     return;
                 }
 
-                if (isCorrectDateFormat(input.value) == false) {
+                if (app.util.isCorrectDateFormat(input.value) == false) {
                     setInvalid(input, input.getAttribute('data-required-format-date'), 'required-format-date');
                 } else {
                     setValid(input, 'required-format-date');
                 }
-            }
-
-            function isCorrectDateFormat(value) {
-                const pattern01 = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
-                const pattern02 = /^\d{4}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
-
-                const isValidPattern = pattern01.test(value) || pattern02.test(value);
-
-                if (isValidPattern === false) {
-                    return false;
-                }
-
-                // Is reasonable date
-
-                const noDashes = value.replace(/-/g, '');
-
-                const yearPart = noDashes.slice(0, 4);
-                const monthPart = noDashes.slice(4, 6);
-                const dayPart = noDashes.slice(6, 8);
-
-                const dateObj = new Date(`${yearPart}-${monthPart}-${dayPart}`);
-
-                return dateObj.getFullYear() === +yearPart &&
-                    (dateObj.getMonth() + 1) === +monthPart &&
-                    dateObj.getDate() === +dayPart;
-
             }
 
             function setInvalid(input, idForValidationMessage, errorType) {
