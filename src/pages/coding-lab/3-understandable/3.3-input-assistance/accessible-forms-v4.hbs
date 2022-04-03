@@ -1,7 +1,7 @@
 {{#> base title="3.3 Input Assistance - Accessible Forms" homeref="../../../" }}
 
 {{#*inline "js"}}
-    <script src="../../../util.js"></script>
+<script src="../../../util.js"></script>
 {{/inline}}
 
 {{#*inline "content"}}
@@ -81,13 +81,20 @@
     const $submitButton = document.getElementById('submitButton');
 
     $requiredInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateRequired(input)));
+    $requiredFormatDatesInputs.forEach(input => input.addEventListener('blur', _ => !isPristine(input) && validateDateFormat(input)));
+
     $requiredInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
+    // In case there is a date field, not required, this is needed
+    $requiredFormatDatesInputs.forEach(input => input.addEventListener('input', _ => input.setAttribute('data-is-pristine', false)));
+
     $submitButton.addEventListener('click', submit);
 
     function submit(e) {
         e.preventDefault();
 
         $requiredInputs.forEach(input => validateRequired(input));
+        $requiredFormatDatesInputs.forEach(input => validateDateFormat(input));
 
         const $invalidInputs = document.querySelectorAll('.is-invalid');
 
@@ -98,9 +105,21 @@
 
     function validateRequired(input) {
         if (input.value === '') {
-            setInvalid(input);
+            setInvalid(input, 'required');
         } else {
-            setValid(input);
+            setValid(input, 'required');
+        }
+    }
+
+    function validateDateFormat(input) {
+        if (hasError(input, 'required')) {
+            return;
+        }
+
+        if (app.util.isCorrectDateFormat(input.value) == false) {
+            setInvalid(input, 'required-format-date');
+        } else {
+            setValid(input, 'required-format-date');
         }
     }
 
@@ -108,14 +127,20 @@
         return input.getAttribute('data-is-pristine') == 'true';
     }
 
-    function setInvalid(input) {
-        input.classList.add('is-invalid');
-        input.setAttribute('aria-invalid', 'true')
+    function hasError(input, errorType) {
+        return input.getAttribute('data-error-' + errorType) == 'true';
     }
 
-    function setValid(input) {
+    function setInvalid(input, errorType) {
+        input.classList.add('is-invalid');
+        input.setAttribute('aria-invalid', 'true')
+        input.setAttribute('data-error-' + errorType, 'true');
+    }
+
+    function setValid(input, errorType) {
         input.classList.remove('is-invalid');
         input.removeAttribute('aria-invalid');
+        input.removeAttribute('data-error-' + errorType);
     }
 
 </script>
