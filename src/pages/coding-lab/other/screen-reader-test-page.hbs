@@ -1,9 +1,60 @@
 {{#> base title="Screen Reader Test Page" homeref="../../" }}
-    {{#*inline "content"}}
+{{#*inline "content"}}
 
-        <div class="col-lg-8">
-            <h2>Screen Reader Test Page</h2>
-        </div>
+<div class="col-lg-6">
+    <h2>Screen Reader Test Page (h2)</h2>
+    <p>
+        Paragraph under heading level 2.
+    </p>
 
-    {{/inline}}
-    {{/base}}
+    <h3 class="h4">Sub header 1 (h3)</h3>
+    <p>
+        Paragraph under first sub header, level 3.
+    </p>
+
+    <h3 class="h4">Sub header 2 (h3)</h3>
+    <p>
+        Paragraph under second sub header, level 3.
+    </p>
+
+    <h4 class="h5">Sub header 3 (h4)</h4>
+    <p>
+        Paragraph under first sub header, level 4.
+    </p>
+
+    <h4 class="h5">Sub header 4 (h4)</h4>
+    <p>
+        Paragraph under second sub header, level 4.
+    </p>
+</div>
+
+<div class="col-lg-6">
+    <div>
+        <ul>
+            <li>Adam</li>
+            <li>Bertil</li>
+            <li>Ceasar</li>
+        </ul>
+
+        <ol>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ol>
+    </div>
+
+    <div class="mt-5">
+        <a href="https://github.com/">Github</a>
+        <a href="https://www.google.com/">Google</a>
+        <a href="https://stackoverflow.com/">Stack Overflow</a>
+    </div>
+
+    <div class="mt-5">
+        <button type="button" class="btn btn-primary">Button 1</button>
+        <button type="button" class="btn btn-secondary">Button 2</button>
+        <button type="button" class="btn btn-secondary">Button 3</button>
+    </div>
+</div>
+
+{{/inline}}
+{{/base}}
