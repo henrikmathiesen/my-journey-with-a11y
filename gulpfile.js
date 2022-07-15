@@ -82,7 +82,7 @@ function watchTask(cb) {
 }
 
 const runTask = series(cleanBuildFolderTask, parallel(handlebarsTask, copyCssTask, copyJsTask));
-const BuildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss, minifyAndCopyJs));
+const buildTask = series(cleanBuildFolderTask, parallel(handlebarsTask, miniFyAndCopyCss, minifyAndCopyJs));
 
-exports.build = BuildTask;
+exports.build = buildTask;
 exports.default = series(runTask, parallel(watchTask, connectTask));
