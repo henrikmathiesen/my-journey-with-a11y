@@ -154,8 +154,53 @@
             </p>
 
             <h4 class="h5">Lists</h4>
+            <p>
+                You are not required to use lists, but they can be really usefull and used for a lot of things. They are relevant to (WCAG 1.3.1).
+            </p>
+            <p>
+                If a list is ordered, use the ol tag. Use ul tag for generic list with no order. Description list is used with dl tag (name and value pairs (glossary or FAQ for example)).
+            </p>
+            <h5 class="h6">Why bother with lists?</h5>
+            <p>
+                Better semantic. A screen reader user can discover the lists, gets information about the type of list and how many items it contains.
+            </p>
+
             <h4 class="h5">Navigation and Skip Links</h4>
+            <p>
+                Consistent navigation, multiple ways to find a page, meaningful links, consistent overall interface, skip links.
+            </p>
+            <p>
+                Use ul or ol tags in the nav element (WCAG 1.3.1).
+            </p>
+            <p>
+                Dont use images of text, use proper text (WCAG 1.4.5) also (WCAG 1.4.4)
+            </p>
+            <ul>
+                <li>(WCAG 3.2.3) says that navigation should be consistent (in the same place on every page and in the same order).</li>
+                <li class="mt-2">(WCAG 2.4.5) says that there should be multiple ways to find a page (link, sitemap, search functionality (role=search, type=search)).</li>
+                <li class="mt-2">(WCAG 3.2.4) says that components with the same functionality should be identified consistently (dont switch things up).</li>
+                <li class="mt-2">(WCAG 2.4.4) says that links purpose can be determined from the link text alone or together with its programmatically context (for example aria-labelledby)</li>
+                <li class="mt-2">(WCAG 2.4.1) bypass blocks, used to skip to main content, bypassing content that are repeated on multiple pages (for example a manu). Use proper semantics and landmarks. Skip links are extra nice for keyboard users not using assistive technology.</li>
+            </ul>
+
             <h4 class="h5">Tables</h4>
+            <p>
+                (WCAG 1.3.1) is important with tables. Dont use tables for layout (we are past that now, heh).
+                Again, assistive technologies uses the semantics of a table to better present the content to the user.
+            </p>
+            <ul>
+                <li>Might use a caption (use instead of a header or an intro), but not required</li>
+                <li>thead, tfoot, tbody: used for structure (optional in simple cases)</li>
+                <li>tr, th, td</li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope">scope</a> or
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-headers">headers</a>
+                </li>
+            </ul>
+            <p>
+                Screen readers can have problems with complex tables (nested headers)...
+            </p>
+
             <h4 class="h5">Forms, focus and Color Contrast</h4>
 
             <h3 class="h4">Media</h3>
