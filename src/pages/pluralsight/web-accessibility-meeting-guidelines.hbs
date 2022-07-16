@@ -4,7 +4,7 @@
         <article class="col-lg-8">
             <h2>Meeting Web Accessibility Guidelines (WCAG 2.1)</h2>
             <p>
-                <a href="https://app.pluralsight.com/library/courses/web-accessibility-meeting-guidelines/table-of-contents">Link to course</a>
+                <a href="https://app.pluralsight.com/library/courses/web-accessibility-meeting-guidelines/table-of-contents" target="_blank">Link to course</a>
             </p>
 
             <h3 class="h4">Course Overview</h3>
@@ -34,10 +34,10 @@
                 Section 508 VS Web Content Accessibility Guidelines (WCAG) 2.1.
             </p>
             <p>
-                Guidelines provides help for us to make user interfaces accessible to people with disabilities.
+                Guidelines provide help for us to make user interfaces accessible to people with disabilities.
                 They also protect against lawsuits (it does happen), but we should rather focus on the possitive,
                 in essence make accessible interfaces for all users and better SEO. Following guidelines also
-                future proof our site and alo future proof ourselves (because of old age can impact vision and mobility).
+                future proof our site and alo future proof ourselves (because old age can impact vision and mobility).
             </p>
             <h4 class="h5">Section 508 (USA)</h4>
             <p>
@@ -120,9 +120,39 @@
                 <strong>Semantic HTML is accessible and has been since the beginning of the web.</strong>
             </p>
             <h4 class="h5">Document Structure and Landmarks</h4>
+            <h5 class="h6">Head tag</h5>
             <p>
-                
+                Make sure there is a valid doctype (WCAG 4.1.1), and HTML is valid, with no duplicate IDs.
+                Also use the lang attribute (WCAG 3.1.1) on the HTML tag.
+                Each page should have a good title (WCAG 2.4.2) unique for every page.
+                Set the viewport meta (WCAG 1.4.4), allow users to pinch and zoom. Also use relative units (REM/EM/PERCENT) (WCAG 1.4.4).
+                Use a good responsive design.
             </p>
+            <h5 class="h6">Body tag - landmarks</h5>
+            <p>
+                Focusing on the content in the body tag, we should section our content with landmarks (HTML 5), (WCAG 1.3.1).
+            </p>
+            <ul>
+                <li>Header</li>
+                <li>Nav (if several, use an aria-label)</li>
+                <li>Main (can only be used once on a page)</li>
+                <li>Footer</li>
+                <li>Aside</li>
+            </ul>
+            <p>
+                Users with assistive technologies can discover these elements.
+            </p>
+            <h5 class="h6">Body tag - headers</h5>
+            <p>
+                Think of headers as the table of content for the page (WCAG 1.3.1).
+                H1 tag is required and should appear only once, and the rest of headers should be in an logical order and describing the content of their section (WCAG 2.4.6).
+                Preferebly the H1 should be the first element in the main section. Also think about H1 matching the title of the page.
+            </p>
+            <p>
+                Screen reader users will often use the headers to navigate the page, so it is important that they are in a logical order.
+                H1, H2, H3 etc. (We can style them with CSS).
+            </p>
+
             <h4 class="h5">Lists</h4>
             <h4 class="h5">Navigation and Skip Links</h4>
             <h4 class="h5">Tables</h4>
