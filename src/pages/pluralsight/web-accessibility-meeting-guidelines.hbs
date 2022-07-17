@@ -262,9 +262,113 @@
                 Also note (WCAG 2.2.1), if a timer is involved in filling out the form (also applies to automatically logout).
             </p>
             
-           
-
             <h3 class="h4">Media</h3>
+            <p>
+                (WCAG 1.1.1) is very important here, it states that: All non text content that is presented to the user has a text alternative that serves the equivalent purpose.
+                Users that are visually impaired or hearing impaired need to be able to perceive the content.
+            </p>
+            <h4 class="h5">Images</h4>
+            <p>
+                Assistive technologies can not read text in images, so images need a text alternative (exception beeing purely decorative images) (WCAG 1.4.5).
+            </p>
+            <p>
+                Images that does not contain text also need a text alternative that serves the equivalent purpose (WCAG 1.1.1). Use the alt attribute.
+                If an image is used purely for decoration, set the alt attribute to an empty string.
+            </p>
+            <p>
+                Tips for writing alt text:
+            </p>
+            <ul>
+                <li>Dont describe the image literally</li>
+                <li>Avoid words like "This is an image of" or "A picture of", a screen reader will know this</li>
+                <li>Describe the meaning or purpose of the image. Why did you pick that image?</li>
+                <li>Also, include any text in the image</li>
+            </ul>
+            <h4 class="h5">Background images via CSS</h4>
+            <p>
+                Put a span inside the element with the background image, with sr-only and the alt text.
+            </p>
+            <p>
+                span class="some-icon" span class="sr-only" The alt text /span /span
+            </p>
+            <h4 class="h5">SVG</h4>
+            <p>
+                We should tell assistive technologies that this is an image, by adding role="img" directly on the svg tag.
+                Also use the title tag (first child in the svg tag) to label the svg. For extra support, can give title an
+                id and reference it using aria-labelledby on the svg tag.
+            </p>
+            <p>
+                Could also use aria-describedby or aria-labelledby to another tags id (?).
+            </p>
+            <h4 class="h5">Audio</h4>
+            <p>
+                Falls under a category WCAG calls Time based media, and need to be accessible to people with hearing impairment.
+                Examples are: podcasts, radio newscasts (recorded), tv or movie sound bites.
+            </p>
+            <p>
+                (WCAG 1.2.1) states that for prerecorded audio only and prerecorded video only media, an alternative is provided
+                that present equivalent information. Also (WCAG 1.1.1) states that we should provide text for non text content.
+            </p>
+            <p>
+                So, for audio, we should provide a transcript of the audio.
+            </p>
+            <ul>
+                <li>Paid service</li>
+                <li>
+                    Speech recognition
+                    <ul>
+                        <li>Google Docs Voice Typing</li>
+                        <li>Windows Speech Recognition</li>
+                        <li>Apple Dictation</li>
+                        <li>Dragon Naturally Speaking (not free)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                Include name of the speakers. Describe the tone and expression, door slams, thunder outside, visual cues like someone covers his moth, represent the same story.
+            </p>
+            <p>
+                You then could present the transcript inline, under the audio player or link to it.
+            </p>
+            <h4 class="h5">Video</h4>
+            <p>
+                (WCAG 1.2.3) states that we need to provide content in an alternative way.
+                And again (WCAG 1.1.1). Also (WCAG 1.2.5) audio description of the media (all none dialog elements that contributes to the meaning of the video).
+            </p>
+            <p>
+                The techer recomment using a transcript (can be read, resized, read out loud by screen reader, converted to braile). Se above under Audio.
+            </p>
+            <h5 class="h6">Captions</h5>
+            <p>
+                (WCAG 1.2.1) requires captions for prerecorded media and (WCAG 1.2.4) requires captions for live media.
+            </p>
+            <p>
+                There are 2 types of captions: open caption, "burnt" into the media always visible and closed caption that users toggle on or off.
+            </p>
+            <p>
+                Youtube has an auto subtitle service that one can use when uploading a video. You could also upload a transcript and sync it to the video. Or do it manually.
+            </p>
+            <p>
+                There are of course profesional captioning services.
+            </p>
+            <p>
+                For live media, you need to hire a subtitler professional that does it live.
+            </p>
+            <h4 class="h5">Other Guidelines</h4>
+            <p>
+                (WCAG 1.4.2) states that audio on a page, that plays automatically, for more than 3 seconds, users should be able to turn it off or pause or lower the volume (independant of the system volume).
+                In most cases, avoid this.
+            </p>
+            <p>
+                (WCAG 2.2.2) states that content that is blinking, moving or autoupdating, users should be able to pause, stop or hide.
+                Could apply to image galleries, stock tickers or social media feeds.
+            </p>
+            <p>
+                (WCAG 2.3.1) dont flash content more than 3 times in a second.
+            </p>
+            <p>
+                (WCAG 2.4.1) and (WCAG 4.1.2) states that embedded media via iframe, the iframe should have a title attribute.
+            </p>
 
             <h3 class="h4">Responsive Web Design and Accessibility</h3>
             
