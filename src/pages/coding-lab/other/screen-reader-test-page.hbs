@@ -82,8 +82,12 @@
             </table>
         </div>
     </div>
-    <aside>
-        <!-- https://stackoverflow.com/questions/38023089/should-i-have-aside-element-ouside-or-inside-of-main-element -->
+    <aside class="mt-5">
+        <!-- 
+            More logical if this is a sibbling to main. It is valid to have it inside main, like we do (see StackOverflow).
+            However VoiceOver landmark navigation will treat it as it is outside main.
+            https://stackoverflow.com/questions/38023089/should-i-have-aside-element-ouside-or-inside-of-main-element
+        -->
         <h2>This is aside content</h2>
         <p>
             Lorem ipsum dolores es sita met.
