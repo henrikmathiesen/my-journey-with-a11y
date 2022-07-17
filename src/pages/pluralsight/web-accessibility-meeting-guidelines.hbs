@@ -123,7 +123,7 @@
             <h5 class="h6">Head tag</h5>
             <p>
                 Make sure there is a valid doctype (WCAG 4.1.1), and HTML is valid, with no duplicate IDs.
-                Also use the lang attribute (WCAG 3.1.1) on the HTML tag.
+                Also use the lang attribute (WCAG 3.1.1) on the HTML tag. (If using another language in a section, set lang on container (WCAG 3.1.2))
                 Each page should have a good title (WCAG 2.4.2) unique for every page.
                 Set the viewport meta (WCAG 1.4.4), allow users to pinch and zoom. Also use relative units (REM/EM/PERCENT) (WCAG 1.4.4).
                 Use a good responsive design.
@@ -179,7 +179,7 @@
                 <li>(WCAG 3.2.3) says that navigation should be consistent (in the same place on every page and in the same order).</li>
                 <li class="mt-2">(WCAG 2.4.5) says that there should be multiple ways to find a page (link, sitemap, search functionality (role=search, type=search)).</li>
                 <li class="mt-2">(WCAG 3.2.4) says that components with the same functionality should be identified consistently (dont switch things up).</li>
-                <li class="mt-2">(WCAG 2.4.4) says that links purpose can be determined from the link text alone or together with its programmatically context (for example aria-labelledby)</li>
+                <li class="mt-2">(WCAG 2.4.4) says that links purpose can be determined from the link text alone or together with its programmatically context (for example aria-labelledby) (teacher uses .sr-only text)</li>
                 <li class="mt-2">(WCAG 2.4.1) bypass blocks, used to skip to main content, bypassing content that are repeated on multiple pages (for example a manu). Use proper semantics and landmarks. Skip links are extra nice for keyboard users not using assistive technology.</li>
             </ul>
 
@@ -202,9 +202,61 @@
             </p>
 
             <h4 class="h5">Forms, focus and Color Contrast</h4>
+            <ul>
+                <li>Accessible Forms</li>
+                <li>Error Identification</li>
+                <li>Use of Color</li>
+                <li>Keyboard Navigation and Focus Indication</li>
+            </ul>
             <p>
-
+                Avoid placeholder text, they have low contrast (WCAG 1.4.3) and dissapear when typing, use proper labels instead (WCAG 1.3.1) (WCAG 2.4.6) (WCAG 3.3.2) (with for attribute or as a parent to the input).
+                Also interface components should have a good contrast (WCAG 1.4.11).
             </p>
+            <p>
+                Provide instructions (in the label) for required formats, like email or a date (WCAG 3.3.2).
+            </p>
+            <p>
+                If building our own widgets, they must follow (WCAG 4.1.2), so in essence provide the same accessibility as native components.
+            </p>
+            <p>
+                Structure the form logically (WCAG 1.3.1) and give instructions (WCAG 3.3.2), use fieldsets and legends (important for radios) (legend is technically optional but should be used), use labels.
+                Prefebly put overview instructions about the form outside the form tag, since screen readers enter a special form mode inside a form and focus should then be on the controls.
+                Do not give general instructions like "red color indicates error" (WCAG 1.3.3). It is however ok to write "Required fields are marked with *", since text (a star) can be seen visually (and rezised) and read.
+            </p>
+            <p>
+                All form controls should be accessible with keyboard navigation (WCAG 2.1.1), and no keyboard trap (WCAG 2.1.2).
+                A proper focus indicator is also important (WCAG 2.4.7).
+            </p>
+            <p>
+                If providing keyboard shortcuts, users should be able to turn them off or remap them (WCAG 2.1.4). 
+                For example in an email application, D key deletes an email, if a user uses dictation and says "David", an email could be accedently deleted.
+                Best to avoid them.
+            </p>
+            <p>
+                Errors should be presented to the user (WCAG 3.3.1).
+                Errors should not be presented only by, for example, red color (WCAG 1.4.1).
+                Provide suggestion for how to fix the error (WCAG 3.3.3), important for pattern validation like dates.
+            </p>
+            <h5 class="h6">More info and Validation logic</h5>
+            <p>
+                Use the novalidate attribute on the form, so no native validation happens (it is not accessible, 2019).
+            </p>
+            <p>
+                Use required attribute for required fields and set aria-invalid dynamic on fields with errors (WCAG 4.1.2 ?).
+            </p>
+            <p>
+                Use HTML input types, like email and tel, it gives better semantic and can give features with auto fill and matching digital keyboard (WCAG 1.3.1).
+            </p>
+            <p>
+                Provide an error summary that triggers on submit (see lab page), set focus on it (tabindex -1) (might user aria-live also, but I think focus is enough).
+            </p>
+            <p>
+                Provide error messages related to the field that has the error, and connect them semantically.
+                The teacher puts the error messages in a span, that is display none, inside the label, and toogle display to inline-block when showing them.
+                But, UX might not want error messages to be in the label. Moving them with CSS is not ok (WCAG 1.3.2). Aria-describedby is more flexible.
+            </p>
+            
+           
 
             <h3 class="h4">Media</h3>
 
