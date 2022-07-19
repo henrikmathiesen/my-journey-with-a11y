@@ -1,436 +1,521 @@
 {{#> base title="Meeting Web Accessibility Guidelines" homeref="../../../" }}
-    {{#*inline "content"}}
+{{#*inline "content"}}
 
-        <article class="col-lg-8">
-            <h2>Meeting Web Accessibility Guidelines (WCAG 2.1)</h2>
-            <p>
-                <a href="https://app.pluralsight.com/library/courses/web-accessibility-meeting-guidelines/table-of-contents" target="_blank">Link to course</a>
-            </p>
+<article class="col-lg-8">
+    <h2>Meeting Web Accessibility Guidelines (WCAG 2.1)</h2>
+    <p>
+        <a href="https://app.pluralsight.com/library/courses/web-accessibility-meeting-guidelines/table-of-contents"
+            target="_blank">Link to course</a>
+    </p>
 
-            <h3 class="h4">Course Overview</h3>
-            <p>
-                Section 508 vs WCAG 2.1. Which guideline to choose?
-            </p>
+    <h3 class="h4">Course Overview</h3>
+    <p>
+        Section 508 vs WCAG 2.1. Which guideline to choose?
+    </p>
+    <ul>
+        <li>Semantic HTML</li>
+        <li>Lists and navigation</li>
+        <li>Accessible tables</li>
+        <li>Accessible forms</li>
+        <li>Accessible media</li>
+        <li>Responsive web design and mobile devices</li>
+    </ul>
+    <p>
+        Some screen reader testing.
+    </p>
+    <p>
+        Accessibility is not a checklist. Meeting guidelines is dependent on each use case.
+    </p>
+    <p>
+        This course is 100% applicable to WCAG 1.0 through WCAG 2.1.
+    </p>
+
+    <h3 class="h4">Choosing a Web Conformance Guideline</h3>
+    <p>
+        Section 508 VS Web Content Accessibility Guidelines (WCAG) 2.1.
+    </p>
+    <p>
+        Guidelines provide help for us to make user interfaces accessible to people with disabilities.
+        They also protect against lawsuits (it does happen), but we should rather focus on the possitive,
+        in essence make accessible interfaces for all users and better SEO. Following guidelines also
+        future proof our site and alo future proof ourselves (because old age can impact vision and mobility).
+    </p>
+    <h4 class="h5">Section 508 (USA)</h4>
+    <p>
+        1986 amendment to Rehabilitation Act of 1973, updated in 2017.
+        Targeting websites developed or used by federal agencies, or funded by a federal agency.
+        <a href="https://www.section508.gov/" target="_blank">section508.gov</a>
+    </p>
+
+    <h4 class="h5">WCAG 2.1 (W3C)</h4>
+    <p>
+        WCAG 2.1 was released in 2018 by the WCAG Working Group (WCAG WG),
+        which is part of the World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI).
+        It is meant to be a globaly accepted standard of accessibility.
+    </p>
+    <p>
+        WCAG 2.1 has <strong>78 criteria</strong> organized under <strong>13 guidelines</strong>
+        under <strong>4 principles</strong>.
+        These principles are: Perceivable, Operable, Understandable, Robust (POUR).
+    </p>
+    <h5 class="h6">Perceivable</h5>
+    <p>
+        Users must be able to perceive the information being presented, the content must be available to everyone.
+        Blind users should be able to perceive what information images convey. Videos should have captions so hearing
+        impaired
+        users can perceive them.
+    </p>
+    <h5 class="h6">Operable</h5>
+    <p>
+        Users must be able to operate the interface: mouse, keyboard, touch or other method. A physical dissibility
+        should not get in the way.
+    </p>
+    <h5 class="h6">Understandable</h5>
+    <p>
+        Users must be able to understand the information and the user interface.
+    </p>
+    <h5 class="h6">Robust</h5>
+    <p>
+        Users must be able to access the content as technologies advance (there are many browsers, devices, screen
+        readers).
+    </p>
+    <h5 class="h6">Level of Conformance</h5>
+    <p>
+        Each criteria is labeled a level of conformance, ranging from A to AA to AAA.
+        Level AAA contains Level AA that contains Level A.
+    </p>
+    <ul>
+        <li>Level A: Most basic of web accessibility features</li>
+        <li>Level AA: Biggest and most common barries</li>
+        <li>Level AAA: Highest level of accessibility</li>
+    </ul>
+    <p>
+        <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG 2 Overview | Web Accessibility
+            Initiative (WAI) | W3C</a>
+    </p>
+    <h3 class="h4">Section 508 VS WCAG</h3>
+    <p>
+        You should choose WCAG 2.1 AA (achieving AAA is very difficult and sometimes not realistic)
+    </p>
+    <p>
+        Section 508 is only scoped to the USA and limited to federal agencies.
+        WCAG has global acceptance.
+    </p>
+    <p>
+        Also, meeting WCAG 2.1 AA covers all of Section 508.
+    </p>
+    <p>
+        Rest of the course will focus on WCAG 2.1 AA.
+    </p>
+
+    <h3 class="h4">HTML</h3>
+    <p>
+        One big secret to great accessibility lies in the markup, the type of HTML we choose to build our site.
+        It kind of makes it easy because "it is just HTML", but it makes it hard because we actually need to know how to
+        use HTML.
+    </p>
+    <p>
+        HTML = Semantic = very important to accessibility. We get so much accessibility for free if we use HTML
+        properly.
+    </p>
+    <p>
+        Building a site with div and span tags, styling it with CSS and create interactivity with JavaScript "will work"
+        --
+        but it is definitely not accessible. You could kind of make it accessible by using aria, but that would be a
+        long
+        and hard round trip to fix everything you stripped out.
+    </p>
+    <p>
+        <strong>Semantic HTML is accessible and has been since the beginning of the web.</strong>
+    </p>
+    <h4 class="h5">Document Structure and Landmarks</h4>
+    <h5 class="h6">Head tag</h5>
+    <p>
+        Make sure there is a valid doctype (WCAG 4.1.1), and HTML is valid, with no duplicate IDs.
+        Also use the lang attribute (WCAG 3.1.1) on the HTML tag. (If using another language in a section, set lang on
+        container (WCAG 3.1.2))
+        Each page should have a good title (WCAG 2.4.2) unique for every page.
+        Set the viewport meta (WCAG 1.4.4), allow users to pinch and zoom. Also use relative units (REM/EM/PERCENT)
+        (WCAG 1.4.4).
+        Use a good responsive design.
+    </p>
+    <h5 class="h6">Body tag - landmarks</h5>
+    <p>
+        Focusing on the content in the body tag, we should section our content with landmarks (HTML 5), (WCAG 1.3.1).
+    </p>
+    <ul>
+        <li>Header</li>
+        <li>Nav (if several, use an aria-label)</li>
+        <li>Main (can only be used once on a page)</li>
+        <li>Footer</li>
+        <li>Aside (teacher puts this as a sibbling to main)</li>
+    </ul>
+    <p>
+        Users with assistive technologies can discover these elements.
+    </p>
+    <h5 class="h6">Body tag - headers</h5>
+    <p>
+        Think of headers as the table of content for the page (WCAG 1.3.1).
+        H1 tag is required and should appear only once, and the rest of headers should be in an logical order and
+        describing the content of their section (WCAG 2.4.6).
+        Preferebly the H1 should be the first element in the main section. Also think about H1 matching the title of the
+        page.
+    </p>
+    <p>
+        Screen reader users will often use the headers to navigate the page, so it is important that they are in a
+        logical order.
+        H1, H2, H3 etc. (We can style them with CSS).
+    </p>
+
+    <h4 class="h5">Lists</h4>
+    <p>
+        You are not required to use lists, but they can be really usefull and used for a lot of things. They are
+        relevant to (WCAG 1.3.1).
+    </p>
+    <p>
+        If a list is ordered, use the ol tag. Use ul tag for generic list with no order. Description list is used with
+        dl tag (name and value pairs (glossary or FAQ for example)).
+    </p>
+    <h5 class="h6">Why bother with lists?</h5>
+    <p>
+        Better semantic. A screen reader user can discover the lists, gets information about the type of list and how
+        many items it contains.
+    </p>
+
+    <h4 class="h5">Navigation and Skip Links</h4>
+    <p>
+        Consistent navigation, multiple ways to find a page, meaningful links, consistent overall interface, skip links.
+    </p>
+    <p>
+        Use ul or ol tags in the nav element (WCAG 1.3.1).
+    </p>
+    <p>
+        Dont use images of text, use proper text (WCAG 1.4.5) also (WCAG 1.4.4)
+    </p>
+    <ul>
+        <li>(WCAG 3.2.3) says that navigation should be consistent (in the same place on every page and in the same
+            order).</li>
+        <li class="mt-2">(WCAG 2.4.5) says that there should be multiple ways to find a page (link, sitemap, search
+            functionality (role=search, type=search)).</li>
+        <li class="mt-2">(WCAG 3.2.4) says that components with the same functionality should be identified consistently
+            (dont switch things up).</li>
+        <li class="mt-2">(WCAG 2.4.4) says that links purpose can be determined from the link text alone or together
+            with its programmatically context (for example aria-labelledby) (teacher uses .sr-only text)</li>
+        <li class="mt-2">(WCAG 2.4.1) bypass blocks, used to skip to main content, bypassing content that are repeated
+            on multiple pages (for example a menu). Use proper semantics and landmarks. Skip links are extra nice for
+            keyboard users not using assistive technology.</li>
+    </ul>
+
+    <h4 class="h5">Tables</h4>
+    <p>
+        (WCAG 1.3.1) is important with tables. Dont use tables for layout (we are past that now, heh).
+        Again, assistive technologies uses the semantics of a table to better present the content to the user.
+    </p>
+    <ul>
+        <li>Might use a caption (use instead of a header or an intro), but not required</li>
+        <li>thead, tfoot, tbody: used for structure (optional in simple cases)</li>
+        <li>tr, th, td</li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope">scope</a> or
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-headers">headers</a>
+        </li>
+    </ul>
+    <p>
+        Screen readers can have problems with complex tables (multiple headers with the headers attribute)...
+    </p>
+
+    <h4 class="h5">Forms, focus and Color Contrast</h4>
+    <ul>
+        <li>Accessible Forms</li>
+        <li>Error Identification</li>
+        <li>Use of Color</li>
+        <li>Keyboard Navigation and Focus Indication</li>
+    </ul>
+    <p>
+        Avoid placeholder text, they have low contrast (WCAG 1.4.3) and dissapear when typing, use proper labels instead
+        (WCAG 1.3.1) (WCAG 2.4.6) (WCAG 3.3.2) (with for attribute or as a parent to the input).
+        Also interface components should have a good contrast (WCAG 1.4.11).
+    </p>
+    <p>
+        Provide instructions (in the label) for required formats, like email or a date (WCAG 3.3.2).
+    </p>
+    <p>
+        If building our own widgets, they must follow (WCAG 4.1.2), so in essence provide the same accessibility as
+        native components.
+    </p>
+    <p>
+        Structure the form logically (WCAG 1.3.1) and give instructions (WCAG 3.3.2), use fieldsets and legends
+        (important for radios) (legend is technically optional but should be used), use labels.
+        Prefebly put overview instructions about the form outside the form tag, since screen readers enter a special
+        form mode inside a form and focus should then be on the controls.
+        Do not give general instructions like "red color indicates error" (WCAG 1.3.3). It is however ok to write
+        "Required fields are marked with *", since text (a star) can be seen visually (and rezised) and read.
+    </p>
+    <p>
+        All form controls should be accessible with keyboard navigation (WCAG 2.1.1), and no keyboard trap (WCAG 2.1.2).
+        A proper focus indicator is also important (WCAG 2.4.7).
+    </p>
+    <p>
+        If providing keyboard shortcuts, users should be able to turn them off or remap them (WCAG 2.1.4).
+        For example in an email application, D key deletes an email, if a user uses dictation and says "David", an email
+        could be accedently deleted.
+        Best to avoid them.
+    </p>
+    <p>
+        Errors should be presented to the user (WCAG 3.3.1).
+        Errors should not be presented only by, for example, red color (WCAG 1.4.1).
+        Provide suggestion for how to fix the error (WCAG 3.3.3), important for pattern validation like dates.
+    </p>
+    <h5 class="h6">More info and Validation logic</h5>
+    <p>
+        Use the novalidate attribute on the form, so no native validation happens (it is not accessible, 2019).
+    </p>
+    <p>
+        Use required attribute for required fields and set aria-invalid dynamic on fields with errors (WCAG 4.1.2 ?).
+    </p>
+    <p>
+        Use HTML input types, like email and tel, it gives better semantic and can give features with auto fill and
+        matching digital keyboard (WCAG 1.3.1).
+    </p>
+    <p>
+        Provide an error summary that triggers on submit (see lab page), set focus on it (tabindex -1) (might user
+        aria-live also, but I think focus is enough).
+    </p>
+    <p>
+        Provide error messages related to the field that has the error, and connect them semantically.
+        The teacher puts the error messages in a span, that is display none, inside the label, and toogle display to
+        inline-block when showing them.
+        But, UX might not want error messages to be in the label. Moving them with CSS is not ok (WCAG 1.3.2).
+        Aria-describedby is more flexible.
+    </p>
+    <p>
+        Also note (WCAG 3.3.4), Error Prevention (Legal, Financial, Data), for certain use cases.
+    </p>
+    <p>
+        Also note (WCAG 2.2.1), if a timer is involved in filling out the form (also applies to automatically logout).
+    </p>
+
+    <h3 class="h4">Media</h3>
+    <p>
+        (WCAG 1.1.1) is very important here, it states that: All non text content that is presented to the user has a
+        text alternative that serves the equivalent purpose.
+        Users that are visually impaired or hearing impaired need to be able to perceive the content.
+    </p>
+    <h4 class="h5">Images</h4>
+    <p>
+        Assistive technologies can not read text in images, so images need a text alternative (exception beeing purely
+        decorative images) (WCAG 1.4.5).
+    </p>
+    <p>
+        Images that does not contain text also need a text alternative that serves the equivalent purpose (WCAG 1.1.1).
+        Use the alt attribute.
+        If an image is used purely for decoration, set the alt attribute to an empty string.
+    </p>
+    <p>
+        Tips for writing alt text:
+    </p>
+    <ul>
+        <li>Dont describe the image literally</li>
+        <li>Avoid words like "This is an image of" or "A picture of", a screen reader will know this</li>
+        <li>Describe the meaning or purpose of the image. Why did you pick that image?</li>
+        <li>Also, include any text in the image</li>
+    </ul>
+    <h4 class="h5">Background images via CSS</h4>
+    <p>
+        Put a span inside the element with the background image, with sr-only and the alt text.
+    </p>
+    <p>
+        span class="some-icon" span class="sr-only" The alt text /span /span
+    </p>
+    <h4 class="h5">SVG</h4>
+    <p>
+        We should tell assistive technologies that this is an image, by adding role="img" directly on the svg tag.
+        Also use the title tag (first child in the svg tag) to label the svg. For extra support, can give title an
+        id and reference it using aria-labelledby on the svg tag.
+    </p>
+    <p>
+        Could also use aria-describedby or aria-labelledby to another tags id (?).
+    </p>
+    <h4 class="h5">Audio</h4>
+    <p>
+        Falls under a category WCAG calls Time based media, and need to be accessible to people with hearing impairment.
+        Examples are: podcasts, radio newscasts (recorded), tv or movie sound bites.
+    </p>
+    <p>
+        (WCAG 1.2.1) states that for prerecorded audio only and prerecorded video only media, an alternative is provided
+        that present equivalent information. Also (WCAG 1.1.1) states that we should provide text for non text content.
+    </p>
+    <p>
+        So, for audio, we should provide a transcript of the audio.
+    </p>
+    <ul>
+        <li>Paid service</li>
+        <li>
+            Speech recognition
             <ul>
-                <li>Semantic HTML</li>
-                <li>Lists and navigation</li>
-                <li>Accessible tables</li>
-                <li>Accessible forms</li>
-                <li>Accessible media</li>
-                <li>Responsive web design and mobile devices</li>
+                <li>Google Docs Voice Typing</li>
+                <li>Windows Speech Recognition</li>
+                <li>Apple Dictation</li>
+                <li>Dragon Naturally Speaking (not free)</li>
             </ul>
-            <p>
-                Some screen reader testing.
-            </p>
-            <p>
-                Accessibility is not a checklist. Meeting guidelines is dependent on each use case.
-            </p>
-            <p>
-                This course is 100% applicable to WCAG 1.0 through WCAG 2.1.
-            </p>
+        </li>
+    </ul>
+    <p>
+        Include name of the speakers. Describe the tone and expression, door slams, thunder outside, visual cues like
+        someone covers his moth, represent the same story.
+    </p>
+    <p>
+        You then could present the transcript inline, under the audio player or link to it.
+    </p>
+    <h4 class="h5">Video</h4>
+    <p>
+        (WCAG 1.2.3) states that we need to provide content in an alternative way.
+        And again (WCAG 1.1.1). Also (WCAG 1.2.5) audio description of the media (all none dialog elements that
+        contributes to the meaning of the video).
+    </p>
+    <p>
+        The techer recomment using a transcript (can be read, resized, read out loud by screen reader, converted to
+        braile). Se above under Audio.
+    </p>
+    <h5 class="h6">Captions</h5>
+    <p>
+        (WCAG 1.2.1) requires captions for prerecorded media and (WCAG 1.2.4) requires captions for live media.
+    </p>
+    <p>
+        There are 2 types of captions: open caption, "burnt" into the media always visible and closed caption that users
+        toggle on or off.
+    </p>
+    <p>
+        Youtube has an auto subtitle service that one can use when uploading a video. You could also upload a transcript
+        and sync it to the video. Or do it manually.
+    </p>
+    <p>
+        There are of course profesional captioning services.
+    </p>
+    <p>
+        For live media, you need to hire a subtitler professional that does it live.
+    </p>
 
-            <h3 class="h4">Choosing a Web Conformance Guideline</h3>
-            <p>
-                Section 508 VS Web Content Accessibility Guidelines (WCAG) 2.1.
-            </p>
-            <p>
-                Guidelines provide help for us to make user interfaces accessible to people with disabilities.
-                They also protect against lawsuits (it does happen), but we should rather focus on the possitive,
-                in essence make accessible interfaces for all users and better SEO. Following guidelines also
-                future proof our site and alo future proof ourselves (because old age can impact vision and mobility).
-            </p>
-            <h4 class="h5">Section 508 (USA)</h4>
-            <p>
-                1986 amendment to Rehabilitation Act of 1973, updated in 2017.
-                Targeting websites developed or used by federal agencies, or funded by a federal agency.
-                <a href="https://www.section508.gov/" target="_blank">section508.gov</a>
-            </p>
+    <hr class="mt-4">
+    <h4 class="h5">More about guideline 1.2 Time Based Media</h4>
+    <p>
+        The purpose of this guideline is to provide access to time-based and synchronized media. This includes media that is:
+    </p>
+    <ul>
+        <li>audio-only</li>
+        <li>video-only</li>
+        <li>audio-video</li>
+        <li>audio and/or video combined with interaction</li>
+    </ul>
+    <p>
+        To make it easy for authors to quickly determine which success criteria apply to their content, the type of
+        media each success criterion applies to is included in its short name.
 
-            <h4 class="h5">WCAG 2.1 (W3C)</h4>
-            <p>
-                WCAG 2.1 was released in 2018 by the WCAG Working Group (WCAG WG), 
-                which is part of the World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI).
-                It is meant to be a globaly accepted standard of accessibility.
-            </p>
-            <p>
-                WCAG 2.1 has <strong>78 criteria</strong> organized under <strong>13 guidelines</strong>
-                under <strong>4 principles</strong>. 
-                These principles are: Perceivable, Operable, Understandable, Robust (POUR).
-            </p>
-            <h5 class="h6">Perceivable</h5>
-            <p>
-                Users must be able to perceive the information being presented, the content must be available to everyone.
-                Blind users should be able to perceive what information images convey. Videos should have captions so hearing impaired
-                users can perceive them.
-            </p>
-            <h5 class="h6">Operable</h5>
-            <p>
-                Users must be able to operate the interface: mouse, keyboard, touch or other method. A physical dissibility should not get in the way. 
-            </p>
-            <h5 class="h6">Understandable</h5>
-            <p>
-                Users must be able to understand the information and the user interface.
-            </p>
-            <h5 class="h6">Robust</h5>
-            <p>
-                Users must be able to access the content as technologies advance (there are many browsers, devices, screen readers).
-            </p>
-            <h5 class="h6">Level of Conformance</h5>
-            <p>
-                Each criteria is labeled a level of conformance, ranging from A to AA to AAA.
-                Level AAA contains Level AA that contains Level A.
-            </p>
-            <ul>
-                <li>Level A: Most basic of web accessibility features</li>
-                <li>Level AA: Biggest and most common barries</li>
-                <li>Level AAA: Highest level of accessibility</li>
-            </ul>
-            <p>
-                <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG 2 Overview | Web Accessibility Initiative (WAI) | W3C</a>
-            </p>
-            <h3 class="h4">Section 508 VS WCAG</h3>
-            <p>
-                You should choose WCAG 2.1 AA (achieving AAA is very difficult and sometime not realistic)
-            </p>
-            <p>
-                Section 508 is only scoped to the USA and limited to federal agencies.
-                WCAG has global acceptance.
-            </p>
-            <p>
-                Also, meeting WCAG 2.1 AA covers all of Section 508.
-            </p>
-            <p>
-                Rest of the course will focus on WCAG 2.1 AA.
-            </p>
+        For audio-only or video-only media, you only need to apply the success criteria that say "audio-only" or
+        "video-only" in their short name. If your media is not audio-only or video-only, then all the rest of the
+        success criteria apply.
 
-            <h3 class="h4">HTML</h3>
-            <p>
-                One big secret to great accessibility lies in the markup, the type of HTML we choose to build our site.
-                It kind of makes it easy because "it is just HTML", but it makes it hard because we actually need to know how to use HTML.
-            </p>
-            <p>
-                HTML = Semantic = very important to accessibility. We get so much accessibility for free if we use HTML properly.
-            </p>
-            <p>
-                Building a site with div and span tags, styling it with CSS and create interactivity with JavaScript "will work" --
-                but it is definitely not accessible. You could kind of make it accessible by using aria, but that would be a long
-                and hard round trip to fix everything you stripped out.
-            </p>
-            <p>
-                <strong>Semantic HTML is accessible and has been since the beginning of the web.</strong>
-            </p>
-            <h4 class="h5">Document Structure and Landmarks</h4>
-            <h5 class="h6">Head tag</h5>
-            <p>
-                Make sure there is a valid doctype (WCAG 4.1.1), and HTML is valid, with no duplicate IDs.
-                Also use the lang attribute (WCAG 3.1.1) on the HTML tag. (If using another language in a section, set lang on container (WCAG 3.1.2))
-                Each page should have a good title (WCAG 2.4.2) unique for every page.
-                Set the viewport meta (WCAG 1.4.4), allow users to pinch and zoom. Also use relative units (REM/EM/PERCENT) (WCAG 1.4.4).
-                Use a good responsive design.
-            </p>
-            <h5 class="h6">Body tag - landmarks</h5>
-            <p>
-                Focusing on the content in the body tag, we should section our content with landmarks (HTML 5), (WCAG 1.3.1).
-            </p>
-            <ul>
-                <li>Header</li>
-                <li>Nav (if several, use an aria-label)</li>
-                <li>Main (can only be used once on a page)</li>
-                <li>Footer</li>
-                <li>Aside (teacher puts this as a sibbling to main)</li>
-            </ul>
-            <p>
-                Users with assistive technologies can discover these elements.
-            </p>
-            <h5 class="h6">Body tag - headers</h5>
-            <p>
-                Think of headers as the table of content for the page (WCAG 1.3.1).
-                H1 tag is required and should appear only once, and the rest of headers should be in an logical order and describing the content of their section (WCAG 2.4.6).
-                Preferebly the H1 should be the first element in the main section. Also think about H1 matching the title of the page.
-            </p>
-            <p>
-                Screen reader users will often use the headers to navigate the page, so it is important that they are in a logical order.
-                H1, H2, H3 etc. (We can style them with CSS).
-            </p>
+        Media can also be live or prerecorded. Each of the success criterion short names clearly tells you if the
+        success criterion applies to live or prerecorded media.
+    </p>
+    <p>
+        From 
+        <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv.html" target="_blank">Understanding Guideline 1.2 | Understanding WCAG 2.0</a>
+    </p>
+    <hr class="mb-4">
 
-            <h4 class="h5">Lists</h4>
-            <p>
-                You are not required to use lists, but they can be really usefull and used for a lot of things. They are relevant to (WCAG 1.3.1).
-            </p>
-            <p>
-                If a list is ordered, use the ol tag. Use ul tag for generic list with no order. Description list is used with dl tag (name and value pairs (glossary or FAQ for example)).
-            </p>
-            <h5 class="h6">Why bother with lists?</h5>
-            <p>
-                Better semantic. A screen reader user can discover the lists, gets information about the type of list and how many items it contains.
-            </p>
+    <h4 class="h5">Other Guidelines</h4>
+    <p>
+        (WCAG 1.4.2) states that audio on a page, that plays automatically, for more than 3 seconds, users should be
+        able to turn it off or pause or lower the volume (independant of the system volume).
+        In most cases, avoid this.
+    </p>
+    <p>
+        (WCAG 2.2.2) states that content that is blinking, moving or autoupdating, users should be able to pause, stop
+        or hide.
+        Could apply to image galleries, stock tickers or social media feeds.
+    </p>
+    <p>
+        (WCAG 2.3.1) dont flash content more than 3 times in a second.
+    </p>
+    <p>
+        (WCAG 2.4.1) and (WCAG 4.1.2) states that embedded media via iframe, the iframe should have a title attribute.
+    </p>
 
-            <h4 class="h5">Navigation and Skip Links</h4>
-            <p>
-                Consistent navigation, multiple ways to find a page, meaningful links, consistent overall interface, skip links.
-            </p>
-            <p>
-                Use ul or ol tags in the nav element (WCAG 1.3.1).
-            </p>
-            <p>
-                Dont use images of text, use proper text (WCAG 1.4.5) also (WCAG 1.4.4)
-            </p>
-            <ul>
-                <li>(WCAG 3.2.3) says that navigation should be consistent (in the same place on every page and in the same order).</li>
-                <li class="mt-2">(WCAG 2.4.5) says that there should be multiple ways to find a page (link, sitemap, search functionality (role=search, type=search)).</li>
-                <li class="mt-2">(WCAG 3.2.4) says that components with the same functionality should be identified consistently (dont switch things up).</li>
-                <li class="mt-2">(WCAG 2.4.4) says that links purpose can be determined from the link text alone or together with its programmatically context (for example aria-labelledby) (teacher uses .sr-only text)</li>
-                <li class="mt-2">(WCAG 2.4.1) bypass blocks, used to skip to main content, bypassing content that are repeated on multiple pages (for example a manu). Use proper semantics and landmarks. Skip links are extra nice for keyboard users not using assistive technology.</li>
-            </ul>
+    <h3 class="h4">Responsive Web Design and Accessibility</h3>
+    <p>
+        Responsive web design and accessibility are natural partners.
+    </p>
+    <h4 class="h5">Switching Context</h4>
+    <p>
+        In a tight layout, a common pattern is to have a select instead of a menu. If user is automatically navigates to
+        a page
+        when selecting an option, that would violate (WCAG 3.2.2). The success criteria states that changing the setting
+        of
+        an interface component should not trigger a change of context, unless user has been advised about the behavior.
+        One solution is to have a button next to the select, so user selects an option, then clicks the button.
+    </p>
+    <h4 class="h5">Order of Content / Focus</h4>
+    <p>
+        (WCAG 1.3.2) is important for responsive design, when for example menus are reordered of smaller viewports.
+        For example on large viewport the menu is on the right and its markup is after the main content, so DOM order =
+        Visual order.
+        However on smaller viewports the menu is placed, with CSS, on top of the main content, so DOM order != Visual
+        order, thats a problem.
+        It is a problem for users that use a combination of magnifing tools and a screen reader.
+    </p>
+    <p>
+        (WCAG 2.4.3) is also relevant here, use logical tab order.
+    </p>
+    <p>
+        One way to solve it is to hide the menu completly with display none. 
+        Maybe set display block on duplicate markup in the rights place?
+    </p>
+    <h5 class="h6">Do not set auto focus</h5>
+    <p>
+        (WCAG 3.2.1) states: Any component that is able to trigger an event when it receives focus must not change the
+        context.
+        For example: Setting focus automatically to the next field when a user types two characters in a field, violates
+        this.
+    </p>
+    <h4 class="h5">Mobile Devices</h4>
+    <p>
+        (WCAG 1.3.4), dont lock an interface to a orientation (for example only allow portrait mode).
+        Sometimes a mobile device is mounted and the orientetation can not be changed.
+    </p>
+    <p>
+        (WCAG 2.5.1) states that gestures can not be the only way to operate an interface, there need to be a way to use
+        a single pointer.
+        This is for users with difficulties using their hands. So for example an image gallery should be operable with
+        booth swipe and a button for back/forward.
+    </p>
+    <p>
+        (WCAG 2.5.2) Pointer cancellation. Dont use the down event for firing a function, use the click event (fired on
+        up), so user can cancel it by moving away.
+    </p>
+    <p>
+        (WCAG 2.5.4) Motion Actuation, functionality can not be limited to motion (like shaking or rotating), for the
+        same reasons as (WCAG 2.5.1).
+    </p>
+    <h4 class="h5">Additional Guidelines</h4>
+    <p>
+        Be careful with off screen content, screen reader users can still tab to them. Hide the content with display
+        none, like using the hidden attribute and
+        maybe enforce the rather weak css selector with display none !important.
+    </p>
+    <p>
+        Use relative units like rem/em/percent, so users can change text size in browser and everything changes size and
+        flows naturally.
+    </p>
+    <p>
+        (WCAG 1.4.12) states that users should be able to change typography without loss of content or functionality.
+    </p>
+    <p>
+        (WCAG 1.4.10), reflow should work and no scrolling in 2 dimensions.
+    </p>
 
-            <h4 class="h5">Tables</h4>
-            <p>
-                (WCAG 1.3.1) is important with tables. Dont use tables for layout (we are past that now, heh).
-                Again, assistive technologies uses the semantics of a table to better present the content to the user.
-            </p>
-            <ul>
-                <li>Might use a caption (use instead of a header or an intro), but not required</li>
-                <li>thead, tfoot, tbody: used for structure (optional in simple cases)</li>
-                <li>tr, th, td</li>
-                <li>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope">scope</a> or
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-headers">headers</a>
-                </li>
-            </ul>
-            <p>
-                Screen readers can have problems with complex tables (multiple headers with the headers attribute)...
-            </p>
 
-            <h4 class="h5">Forms, focus and Color Contrast</h4>
-            <ul>
-                <li>Accessible Forms</li>
-                <li>Error Identification</li>
-                <li>Use of Color</li>
-                <li>Keyboard Navigation and Focus Indication</li>
-            </ul>
-            <p>
-                Avoid placeholder text, they have low contrast (WCAG 1.4.3) and dissapear when typing, use proper labels instead (WCAG 1.3.1) (WCAG 2.4.6) (WCAG 3.3.2) (with for attribute or as a parent to the input).
-                Also interface components should have a good contrast (WCAG 1.4.11).
-            </p>
-            <p>
-                Provide instructions (in the label) for required formats, like email or a date (WCAG 3.3.2).
-            </p>
-            <p>
-                If building our own widgets, they must follow (WCAG 4.1.2), so in essence provide the same accessibility as native components.
-            </p>
-            <p>
-                Structure the form logically (WCAG 1.3.1) and give instructions (WCAG 3.3.2), use fieldsets and legends (important for radios) (legend is technically optional but should be used), use labels.
-                Prefebly put overview instructions about the form outside the form tag, since screen readers enter a special form mode inside a form and focus should then be on the controls.
-                Do not give general instructions like "red color indicates error" (WCAG 1.3.3). It is however ok to write "Required fields are marked with *", since text (a star) can be seen visually (and rezised) and read.
-            </p>
-            <p>
-                All form controls should be accessible with keyboard navigation (WCAG 2.1.1), and no keyboard trap (WCAG 2.1.2).
-                A proper focus indicator is also important (WCAG 2.4.7).
-            </p>
-            <p>
-                If providing keyboard shortcuts, users should be able to turn them off or remap them (WCAG 2.1.4). 
-                For example in an email application, D key deletes an email, if a user uses dictation and says "David", an email could be accedently deleted.
-                Best to avoid them.
-            </p>
-            <p>
-                Errors should be presented to the user (WCAG 3.3.1).
-                Errors should not be presented only by, for example, red color (WCAG 1.4.1).
-                Provide suggestion for how to fix the error (WCAG 3.3.3), important for pattern validation like dates.
-            </p>
-            <h5 class="h6">More info and Validation logic</h5>
-            <p>
-                Use the novalidate attribute on the form, so no native validation happens (it is not accessible, 2019).
-            </p>
-            <p>
-                Use required attribute for required fields and set aria-invalid dynamic on fields with errors (WCAG 4.1.2 ?).
-            </p>
-            <p>
-                Use HTML input types, like email and tel, it gives better semantic and can give features with auto fill and matching digital keyboard (WCAG 1.3.1).
-            </p>
-            <p>
-                Provide an error summary that triggers on submit (see lab page), set focus on it (tabindex -1) (might user aria-live also, but I think focus is enough).
-            </p>
-            <p>
-                Provide error messages related to the field that has the error, and connect them semantically.
-                The teacher puts the error messages in a span, that is display none, inside the label, and toogle display to inline-block when showing them.
-                But, UX might not want error messages to be in the label. Moving them with CSS is not ok (WCAG 1.3.2). Aria-describedby is more flexible.
-            </p>
-            <p>
-                Also note (WCAG 3.3.4), Error Prevention (Legal, Financial, Data), for certain use cases. 
-            </p>
-            <p>
-                Also note (WCAG 2.2.1), if a timer is involved in filling out the form (also applies to automatically logout).
-            </p>
-            
-            <h3 class="h4">Media</h3>
-            <p>
-                (WCAG 1.1.1) is very important here, it states that: All non text content that is presented to the user has a text alternative that serves the equivalent purpose.
-                Users that are visually impaired or hearing impaired need to be able to perceive the content.
-            </p>
-            <h4 class="h5">Images</h4>
-            <p>
-                Assistive technologies can not read text in images, so images need a text alternative (exception beeing purely decorative images) (WCAG 1.4.5).
-            </p>
-            <p>
-                Images that does not contain text also need a text alternative that serves the equivalent purpose (WCAG 1.1.1). Use the alt attribute.
-                If an image is used purely for decoration, set the alt attribute to an empty string.
-            </p>
-            <p>
-                Tips for writing alt text:
-            </p>
-            <ul>
-                <li>Dont describe the image literally</li>
-                <li>Avoid words like "This is an image of" or "A picture of", a screen reader will know this</li>
-                <li>Describe the meaning or purpose of the image. Why did you pick that image?</li>
-                <li>Also, include any text in the image</li>
-            </ul>
-            <h4 class="h5">Background images via CSS</h4>
-            <p>
-                Put a span inside the element with the background image, with sr-only and the alt text.
-            </p>
-            <p>
-                span class="some-icon" span class="sr-only" The alt text /span /span
-            </p>
-            <h4 class="h5">SVG</h4>
-            <p>
-                We should tell assistive technologies that this is an image, by adding role="img" directly on the svg tag.
-                Also use the title tag (first child in the svg tag) to label the svg. For extra support, can give title an
-                id and reference it using aria-labelledby on the svg tag.
-            </p>
-            <p>
-                Could also use aria-describedby or aria-labelledby to another tags id (?).
-            </p>
-            <h4 class="h5">Audio</h4>
-            <p>
-                Falls under a category WCAG calls Time based media, and need to be accessible to people with hearing impairment.
-                Examples are: podcasts, radio newscasts (recorded), tv or movie sound bites.
-            </p>
-            <p>
-                (WCAG 1.2.1) states that for prerecorded audio only and prerecorded video only media, an alternative is provided
-                that present equivalent information. Also (WCAG 1.1.1) states that we should provide text for non text content.
-            </p>
-            <p>
-                So, for audio, we should provide a transcript of the audio.
-            </p>
-            <ul>
-                <li>Paid service</li>
-                <li>
-                    Speech recognition
-                    <ul>
-                        <li>Google Docs Voice Typing</li>
-                        <li>Windows Speech Recognition</li>
-                        <li>Apple Dictation</li>
-                        <li>Dragon Naturally Speaking (not free)</li>
-                    </ul>
-                </li>
-            </ul>
-            <p>
-                Include name of the speakers. Describe the tone and expression, door slams, thunder outside, visual cues like someone covers his moth, represent the same story.
-            </p>
-            <p>
-                You then could present the transcript inline, under the audio player or link to it.
-            </p>
-            <h4 class="h5">Video</h4>
-            <p>
-                (WCAG 1.2.3) states that we need to provide content in an alternative way.
-                And again (WCAG 1.1.1). Also (WCAG 1.2.5) audio description of the media (all none dialog elements that contributes to the meaning of the video).
-            </p>
-            <p>
-                The techer recomment using a transcript (can be read, resized, read out loud by screen reader, converted to braile). Se above under Audio.
-            </p>
-            <h5 class="h6">Captions</h5>
-            <p>
-                (WCAG 1.2.1) requires captions for prerecorded media and (WCAG 1.2.4) requires captions for live media.
-            </p>
-            <p>
-                There are 2 types of captions: open caption, "burnt" into the media always visible and closed caption that users toggle on or off.
-            </p>
-            <p>
-                Youtube has an auto subtitle service that one can use when uploading a video. You could also upload a transcript and sync it to the video. Or do it manually.
-            </p>
-            <p>
-                There are of course profesional captioning services.
-            </p>
-            <p>
-                For live media, you need to hire a subtitler professional that does it live.
-            </p>
-            <h4 class="h5">Other Guidelines</h4>
-            <p>
-                (WCAG 1.4.2) states that audio on a page, that plays automatically, for more than 3 seconds, users should be able to turn it off or pause or lower the volume (independant of the system volume).
-                In most cases, avoid this.
-            </p>
-            <p>
-                (WCAG 2.2.2) states that content that is blinking, moving or autoupdating, users should be able to pause, stop or hide.
-                Could apply to image galleries, stock tickers or social media feeds.
-            </p>
-            <p>
-                (WCAG 2.3.1) dont flash content more than 3 times in a second.
-            </p>
-            <p>
-                (WCAG 2.4.1) and (WCAG 4.1.2) states that embedded media via iframe, the iframe should have a title attribute.
-            </p>
+</article>
 
-            <h3 class="h4">Responsive Web Design and Accessibility</h3>
-            <p>
-                Responsive web design and accessibility are natural partners.
-            </p>
-            <h4 class="h5">Switching Context</h4>
-            <p>
-                In a tight layout, a common pattern is to have a select instead of a menu. If user is automatically navigates to a page
-                when selecting an option, that would violate (WCAG 3.2.2). The success criteria states that changing the setting of
-                an interface component should not trigger a change of context, unless user has been advised about the behavior.
-                One solution is to have a button next to the select, so user selects an option, then clicks the button.
-            </p>
-            <h4 class="h5">Order of Content / Focus</h4>
-            <p>
-                (WCAG 1.3.2) is important for responsive design, when for example menus are reordered of smaller viewports.
-                For example on large viewport the menu is on the right and its markup is after the main content, so DOM order = Visual order.
-                However on smaller viewports the menu is placed, with CSS, on top of the main content, so DOM order != Visual order, thats a problem.
-                It is a problem for users that use a combination of magnifing tools and a screen reader.
-            </p>
-            <p>
-                (WCAG 2.4.3) is also relevant here, use logical tab order.
-            </p>
-            <p>
-                One way to solve it is to hide the menu completly with display none. Maybe set display block on markup in the rights place?
-            </p>
-            <h5 class="h6">Do not set auto focus</h5>
-            <p>
-                (WCAG 3.2.1) states: Any component that is able to trigger an event when it receives focus must not change the context.
-                For example: Setting focus automatically to the next field when a user types two characters in a field, violates this.
-            </p>
-            <h4 class="h5">Mobile Devices</h4>
-            <p>
-                (WCAG 1.3.4), dont lock an interface to a orientation (for example only allow portrait mode).
-                Sometimes a mobile device is mounted and the orientetation can not be changed.
-            </p>
-            <p>
-                (WCAG 2.5.1) states that gestures can not be the only way to operate an interface, there need to be a way to use a single pointer.
-                This is for users with difficulties using their hands. So for example an image gallery should be operable with booth swipe and a button for back/forward.
-            </p>
-            <p>
-                (WCAG 2.5.2) Pointer cancellation. Dont use the down event for firing a function, use the click event (fired on up), so user can cancel it by moving away.
-            </p>
-            <p>
-                (WCAG 2.5.4) Motion Actuation, functionality can not be limited to motion (like shaking or rotating), for the same reasons as (WCAG 2.5.1).
-            </p>
-            <h4 class="h5">Additional Guidelines</h4>
-            <p>
-                Be careful with off screen content, screen reader users can still tab to them. Hide the content with display none, like using the hidden attribute and
-                maybe enforce the rather weak css selector with display none !important.
-            </p>
-            <p>
-                Use relative units like rem/em/percent, so users can change text size in browser and everything changes size and flows naturally.
-            </p>
-            <p>
-                (WCAG 1.4.12) states that users should be able to change typography without loss of content or functionality.
-            </p>
-            <p>
-                (WCAG 1.4.10), reflow should work and no scrolling in 2 dimensions.
-            </p>
-            
-
-        </article>
-
-        {{/inline}}
-        {{/base}}
+{{/inline}}
+{{/base}}
