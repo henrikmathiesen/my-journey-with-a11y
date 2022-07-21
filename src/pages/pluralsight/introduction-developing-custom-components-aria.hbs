@@ -23,8 +23,72 @@
     </p>
 
     <h3 class="h4">Getting Started: Intro to ARIA</h3>
+    <h4 class="h5">Version Check</h4>
     <p>
-        ...
+        In this version of the course, we use ARIA 1.1.
+    </p>
+    <h4 class="h5">Intro to ARIA</h4>
+    <p>
+        It is important to have a solid understanding of the concepts and resources.
+    </p>
+    <ul>
+        <li>Official ARIA Standard</li>
+        <li>5 Rules of ARIA</li>
+        <li>Official ARIA Authoring Practices</li>
+        <li>The Dangers of ARIA</li>
+    </ul>
+    <h5 class="h6">Official ARIA Standard</h5>
+    <p>
+        If you wonder what something means or need help, visit this first, before searching on Google. 
+        <a href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Applications (WAI-ARIA) 1.1</a> | 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a>
+    </p>
+    <p>
+        Section 5.3 is important, Categorization of Roles. Roles provide semantic to elements.
+    </p>
+    <p>
+        Section 6 is also important, Supported States and Properties.
+    </p>
+    <h5 class="h6">5 Rules of ARIA</h5>
+    <p>
+        These high level rules will always guide you.
+    </p>
+    <p>
+        <strong>First rule:</strong> Dont use ARIA (if you can use HTML instead). ARIA is used to describe widget roles, semantic and state,
+        if most of it is covered by native HTML you should prefer that since it is less code and more stable.
+    </p>
+    <p>
+        <strong>Second rule:</strong> Dont change native semantics. ARIA will override the HTML.
+    </p>
+    <p>
+        <strong>Third rule:</strong> All interactive ARIA roles need to be operable by keyboard.
+    </p>
+    <p>
+        <strong>Fourth rule:</strong> Dont use role=presentation or aria-hidden=true on visible focusable elements.
+        Presentation is a very special role, it basicly removes the semantics of an element. Aria-hidden is a state that will hide an element
+        from assistive technology, but it is still vissible for sighted users, creating confusion.
+    </p>
+    <p>
+        <strong>Fifth rule:</strong> All interactive elements must have an accessible name, for example aria-label.
+    </p>
+    <p>
+        The link to Official ARIA Standard describes these 5 Rules of ARIA also.
+    </p>
+    <h5 class="h6">Offical ARIA Authoring Practices</h5>
+    <p>
+        <a href="https://www.w3.org/tr/wai-aria-practices">ARIA Authoring Practices Guide</a>
+    </p>
+    <!-- TODO -->
+    <h5 class="h6">The Dangers of ARIA</h5>
+    <p>
+        ARIA is very powerful. But using it incorrectly can couse some serious blockers for users with assistive technologies.
+        See ARIA as a last resort, to fill in gaps that is missing from HTML. ARIA support varies between assistive technologies and their combination with browsers.
+        This problem is augmentet by the fact that, with CSS we can make media queries and with Javascript we can check which browser the user uses, but there is no
+        way to check which assistive technology the user is using. The only approach is to test test test, and try to provide workarounds.
+    </p>
+    <p>
+        The more aria is used, the more complicated and error prone stuff becomes.
+        No ARIA is better than bad ARIA.
     </p>
     
 
