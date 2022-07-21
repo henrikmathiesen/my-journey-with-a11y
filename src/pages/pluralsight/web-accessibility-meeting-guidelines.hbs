@@ -309,7 +309,8 @@
     <p>
         Images that does not contain text also need a text alternative that serves the equivalent purpose (WCAG 1.1.1).
         Use the alt attribute.
-        If an image is used purely for decoration, set the alt attribute to an empty string.
+        If an image is used purely for decoration, set the alt attribute to an empty string. 
+        Might also complement it with aria-hidden=true.
     </p>
     <p>
         Tips for writing alt text:
@@ -326,6 +327,12 @@
     </p>
     <p>
         span class="some-icon" span class="sr-only" The alt text /span /span
+    </p>
+    <p>
+        Other suggestions is to put the alt text in an aria-label. Also role=img. 
+        <a href="https://www.w3.org/WAI/GL/wiki/ARIATechnique_usingImgRole_with_aria-label_forCSS-backgroundImage">
+            ARIATechnique usingImgRole with aria-label forCSS-backgroundImage - WCAG WG
+        </a>
     </p>
     <h4 class="h5">SVG</h4>
     <p>
