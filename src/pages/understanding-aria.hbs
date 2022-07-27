@@ -12,6 +12,7 @@
             </p>
             <p>
                 Prefer native controls (you get keyboard support, focus, built in semantics), but when that is not enough, use ARIA.
+                Also prefer to use native HTML elements, like nav instead of role="navigation".
             </p>
             <p>
                 For example: if we want to use div or span elements instead of a native checkbox, we need aria to communicate what it is to screen readers.
@@ -56,16 +57,105 @@
             </p>
 
             <h3 class="h4">Roles, States and Properties</h3>
+            <h4 class="h5">Role</h4>
             <p>
-                A great resource is <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#aria_ex" target="_blank">ARIA Authoring Practices 1.1 - Widget Patterns</a>.
+                Set on an element using a role attribute, for example li[role="menuitem"].
             </p>
             <p>
-                Properties can describe the nature of an "object" but also the state of an "object".<br>
-                aria-multiline is an example of a property (describes the nature (singleline or multiline)). <br>
-                aria-checked as an example of a state, it toggles between true and false.
+                Roles are catecorized into 6 categories: 
+            </p>
+            <ol>
+                <li>Abstract Roles (do not use)</li>
+                <li>Widget Roles</li>
+                <li>Document Structure Roles</li>
+                <li>Landmark Roles</li>
+                <li>Live Region Roles</li>
+                <li>Window Roles</li>
+            </ol>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#roles_categorization" target="_blank">Categorization of Roles | Official docs.</a>
             </p>
             <p>
-                In ARIA Authoring Practices 1.1, click on the role under "WAI-ARIA Roles, States, and Properties" to read more about that widget.
+                Some roles are called <strong>composite roles (scroll down)</strong>, which means that they act as containers that manage other, contained widgets.
+            </p>
+            <p>
+                There are hierarchical information about roles, for example, a searchbox is a type of textbox.
+            </p>
+            <p>
+                Also some roles must be contained inside other roles, like, listitem must be inside an element of role="list".
+            </p>
+            <p>
+                Each role has supported states and properties.
+            </p>
+            <h4 class="h5">States versus Properties</h4>
+            <p>
+                All are HTML aria- attributes.
+            </p>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#statevsprop" target="_blank">Clarification of States versus Properties | Official docs.</a>
+            </p>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#dfn-state" target="_blank">State | Official docs.</a>
+            </p>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#dfn-property" target="_blank">Property | Official docs.</a>
+            </p>
+
+            <h4 class="h5">State</h4>
+            <p>
+                Set on an element using an aria- attribute, for example li[role="menuitemcheckbox"][aria-checked="true"].
+            </p>
+            <p>
+                States communicates to assistive technologies that the value could be changed frequently.
+            </p>
+
+            <h4 class="h5">Property</h4>
+            <p>
+                Set on an element using an aria- attribute, for example input[type="text"][aria-describedby="some-id"]
+            </p>
+            <p>
+                Properties communicates to assistive technologies that the value could be changed less frequently (but not a rule).
+            </p>
+
+            <h4 class="h5">Global States and Properties</h4>
+            <p>
+                Some states and properties are applicable to all elements regardless of whether a role is applied.
+                But in some cases a role can prohibit a use of certain states or properties.
+            </p>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#global_states" target="_blank">Global States and Properties | Official docs.</a>
+            </p>
+
+            <h4 class="h5">Other categories</h4>
+            <p>
+                States and properties are further catecorized.
+            </p>
+            <ul>
+                <li>Widget Attributes</li>
+                <li>Live Region Attributes</li>
+                <li>Drag-and-Drop Attributes</li>
+                <li>Relationship Attributes</li>
+            </ul>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#state_prop_taxonomy" target="_blank">Taxonomy of WAI-ARIA States and Properties | Official docs.</a>
+            </p>
+
+            <h4 class="h5">Translatable States and Properties</h4>
+            <p>
+                These should be translated when a page is localized.
+            </p>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#translatable-states-and-properties" target="_blank">Translatable States and Properties | Official docs.</a>
+            </p>
+
+            <h4 class="h5">All aria-* attributes</h4>
+            <p>
+                <a href="https://www.w3.org/TR/wai-aria-1.2/#state_prop_def" target="_blank">Definitions of States and Properties (all aria-* attributes) | Official docs.</a>
+            </p>
+
+            <h3 class="h4">Documentation</h3>
+            <p>
+                <a href="index.html">See Scope under WAI-ARIA Specific</a>
             </p>
 
         </article>
