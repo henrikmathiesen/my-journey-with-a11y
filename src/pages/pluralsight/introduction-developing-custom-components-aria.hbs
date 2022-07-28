@@ -92,6 +92,52 @@
         The more aria is used, the more complicated and error prone stuff becomes.
         No ARIA is better than bad ARIA.
     </p>
+
+    <h3 class="h4">Building an Expandable Component</h3>
+    <p>
+        Semantics is very important, it expresses what something is and how to use it.
+        Every interactive control must provide these 3 things: <strong>name, role, value</strong>.
+        Of these 3 things, semantics provide the <strong>role</strong>.
+    </p>
+    <p>
+        Aria 1.1 provide 69 roles, and of them 29 is interactive, called
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#widget_roles" target="_blank">Widget Roles</a>.
+    </p>
+    <p>
+        Teacher uses role=button on accordian header. Could use an actual button inside the h tag as well, 
+        <a href="index.html">see my implementation under Scope > My Coding Lab</a>.
+    </p>
+    <p>
+        Teacher discovers that role=button does not make the text usable with the keyboard. Role is just a contract
+        to the user, you need to provide the interactivity. So the third rule of aria was broken: 
+        All interactive ARIA roles need to be operable by keyboard.
+    </p>
+    <p>
+        This also breaks the first rule of aria: Dont use ARIA (if you can use HTML instead).
+        It also breaks the second rule, Dont change native semantics, since role=button on a h tag ovverides the header semantics.
+        So, button inside the h tag it is then...
+    </p>
+    <h4 class="h5">States and Properties</h4>
+    <p>
+        This provides the <strong>value</strong>.
+    </p>
+    <p>
+        Aria 1.1 provides 48 states and properties. 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#state_prop_def" target="_blank">All states and properties</a>. 
+        Scroll up for categories.
+    </p>
+    <p>
+        But what state and properties should we use? Well, we have a button that expands our accordian. Lets check the 
+        related role, <a href="https://www.w3.org/TR/wai-aria-1.2/#button" target="_blank">Role button</a>. We can
+        look under Supported States and Properties, aria-expanded sounds interesting. Lets click on it, 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#aria-expanded" target="_blank">aria-expanded</a> : 
+        "Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.", sounds right.
+        We can also see the expected values for the attribute.
+    </p>
+    <h4 class="h5">Remember the accessibility tab in Chrome Developer Tools</h4>
+    <p>
+        Accessibility Tree, a subset of the DOM tree.
+    </p>
     
 
 
