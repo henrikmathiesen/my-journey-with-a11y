@@ -137,8 +137,8 @@
     <h4 class="h5">The name</h4>
     <p>
         The <strong>name</strong> of the interactive control is calculated in the following way: 
-        aria-labelledby has highest priority, then aria-label, then title, then the text inside the tag. 
-        Chrome Developer Tools accessibility panel display them in that order as well.
+        aria-labelledby has highest priority, then aria-label, then the text inside the tag, then the title attribute.
+        Chrome Developer Tools accessibility panel displays them in that order as well.
     </p>
     <h4 class="h5">Remember the accessibility tab in Chrome Developer Tools</h4>
     <p>
@@ -146,18 +146,43 @@
     </p>
 
     <h3 class="h4">Providing Actions with a Menu Button</h3>
+    <p>
+        A composite widget (parent role and sub role) that opens a menu, selecting something in the menu creates an action on the page (change of content). 
+        A regular menu on the other hand, is not a aria-menu / menu button, because selecting something creates a route change most likely (change of context). 
+        A native select is not a aria-menu / menu button neither, because its purpose is to take inputs in a form (dont use it for change of content nor context).
+    </p>
+    <p>
+        So, menu buttons are for dynamic actions, not for navigation nor forms.
+    </p>
+    <h4 class="h5">Aria Roles</h4>
+    <p>
+        We use a tag with role menu and children with role menuitem. And a button with aria-haspopup, aria-expanded and aria-controls (pointing to the role=menu). 
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/" target="_blank">Menu Button | ARIA Authoring Practices Guide</a>
+    </p>
+    <p>
+        ul must be directly after the button. 
+        <a href="https://www.w3.org/WAI/ARIA/apg/example-index/menu-button/menu-button-actions.html">Actions Menu Button | ARIA Authoring Practices Guide</a>.
+    </p>
+    <p>
+        See ARIA Authoring Practices Guide for a guide for the menu button. 
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/" target="_blank">Menu Button | ARIA Authoring Practices Guide</a>
+    </p>
+    <h4 class="h5">Tab and Arrow Keys</h4>
+    <p>
+        A page may contain several composite widgets. Tab should ideally take the user from widget to widget, and arrow keys should be used to navigate inside the widget.
+    </p>
 
     <h4 class="h5">Role presentation</h4>
     <p>
         A note about role="presentation", it removes the semantic from an element and the element will not be mapped to the accessibility API. 
         So from an assistive technology point of view, these are the same: h1[role=presentation] foo /h1 and span foo /span. 
         Could be used in a similiar way as aria-hidden on a purely decorative image, or to hide a parent tag from assistive technology and 
-        by doing so fullfilling a direct child requirements for a role (must be direct child of another role), like this:
+        by doing so fullfilling a direct child requirement for a role (must be direct child of another role), like this:
     </p>
     <pre>
-        tag role=menu
-            tag role=presentation       // In the way, but must be here for some reason
-                tag role=menuitem       // Preferebly direct child to role=menu
+        ul role=menu
+            li role=presentation            // "In the way", but must be here
+                button role=menuitem        // Preferebly direct child to role=menu
     </pre>
 
 </article>
