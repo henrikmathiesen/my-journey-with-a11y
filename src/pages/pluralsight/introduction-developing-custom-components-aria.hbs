@@ -134,12 +134,31 @@
         "Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.", sounds right.
         We can also see the expected values for the attribute.
     </p>
+    <h4 class="h5">The name</h4>
+    <p>
+        The <strong>name</strong> of the interactive control is calculated in the following way: 
+        aria-labelledby has highest priority, then aria-label, then title, then the text inside the tag. 
+        Chrome Developer Tools accessibility panel display them in that order as well.
+    </p>
     <h4 class="h5">Remember the accessibility tab in Chrome Developer Tools</h4>
     <p>
         Accessibility Tree, a subset of the DOM tree.
     </p>
-    
 
+    <h3 class="h4">Providing Actions with a Menu Button</h3>
+
+    <h4 class="h5">Role presentation</h4>
+    <p>
+        A note about role="presentation", it removes the semantic from an element and the element will not be mapped to the accessibility API. 
+        So from an assistive technology point of view, these are the same: h1[role=presentation] foo /h1 and span foo /span. 
+        Could be used in a similiar way as aria-hidden on a purely decorative image, or to hide a parent tag from assistive technology and 
+        by doing so fullfilling a direct child requirements for a role (must be direct child of another role), like this:
+    </p>
+    <pre>
+        tag role=menu
+            tag role=presentation       // In the way, but must be here for some reason
+                tag role=menuitem       // Preferebly direct child to role=menu
+    </pre>
 
 </article>
 
