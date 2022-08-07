@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Introduction to Developing Custom Components with ARIA 1 - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+    <script>
+        const app = {};
+    </script>
+     
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+<article class="col-lg-8">
+    <h2>Introduction to Developing Custom Components with ARIA 1</h2>
+    <p>
+        <a href="https://app.pluralsight.com/library/courses/introduction-developing-custom-components-aria/table-of-contents"
+            target="_blank">Link to course</a>
+    </p>
+
+    <h3 class="h4">Course Overview</h3>
+    <p>
+        ARIA is essential for delivering a rich and interactive experience on the web today.
+        We will be looking at the offical ARIA standard and Authoring Practices.
+    </p>
+    <p>
+        Also the 5 rules of ARIA and how to follow them. 
+        And the 3 core elements that every interactive component should provide.
+    </p>
+    <p>
+        We also covers the dangers with ARIA and the importance of testing the components properly.
+        Plus Tips and Tricks!
+    </p>
+
+    <h3 class="h4">Getting Started: Intro to ARIA</h3>
+    <h4 class="h5">Version Check</h4>
+    <p>
+        In this version of the course, we use ARIA 1.1.
+    </p>
+    <h4 class="h5">Intro to ARIA</h4>
+    <p>
+        It is important to have a solid understanding of the concepts and resources.
+    </p>
+    <ul>
+        <li>Official ARIA Standard</li>
+        <li>5 Rules of ARIA</li>
+        <li>Official ARIA Authoring Practices</li>
+        <li>The Dangers of ARIA</li>
+    </ul>
+    <h5 class="h6">Official ARIA Standard</h5>
+    <p>
+        If you wonder what something means or need help, visit this first, before searching on Google. 
+        <a href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Applications (WAI-ARIA) 1.1</a> | 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/">Accessible Rich Internet Applications (WAI-ARIA) 1.2</a>
+    </p>
+    <p>
+        Section 5.3 is important, Categorization of Roles. Roles provide semantic to elements.
+    </p>
+    <p>
+        Section 6 is also important, Supported States and Properties.
+    </p>
+    <h5 class="h6">5 Rules of ARIA</h5>
+    <p>
+        These high level rules will always guide you.
+    </p>
+    <p>
+        <strong>First rule:</strong> Dont use ARIA (if you can use HTML instead). ARIA is used to describe widget roles, semantic and state,
+        if most of it is covered by native HTML you should prefer that since it is less code and more stable.
+    </p>
+    <p>
+        <strong>Second rule:</strong> Dont change native semantics. ARIA will override the HTML.
+    </p>
+    <p>
+        <strong>Third rule:</strong> All interactive ARIA roles need to be operable by keyboard.
+    </p>
+    <p>
+        <strong>Fourth rule:</strong> Dont use role=presentation or aria-hidden=true on visible focusable elements.
+        Presentation is a very special role, it basicly removes the semantics of an element. Aria-hidden is a state that will hide an element
+        from assistive technology, but it is still vissible for sighted users, creating confusion.
+    </p>
+    <p>
+        <strong>Fifth rule:</strong> All interactive elements must have an accessible name, for example aria-label.
+    </p>
+    <p>
+        The link to Official ARIA Standard describes these 5 Rules of ARIA also.
+    </p>
+    <h5 class="h6">Offical ARIA Authoring Practices</h5>
+    <p>
+        <a href="https://www.w3.org/tr/wai-aria-practices">ARIA Authoring Practices Guide</a>
+    </p>
+    <p>
+        They provide example code for cirka 30 widgets. Also general tips.
+    </p>
+    <h5 class="h6">The Dangers of ARIA</h5>
+    <p>
+        ARIA is very powerful. But using it incorrectly can couse some serious blockers for users with assistive technologies.
+        See ARIA as a last resort, to fill in gaps that is missing from HTML. ARIA support varies between assistive technologies and their combination with browsers.
+        This problem is augmentet by the fact that, with CSS we can make media queries and with Javascript we can check which browser the user uses, but there is no
+        way to check which assistive technology the user is using. The only approach is to test test test, and try to provide workarounds.
+    </p>
+    <p>
+        The more aria is used, the more complicated and error prone stuff becomes.
+        No ARIA is better than bad ARIA.
+    </p>
+
+    <h3 class="h4">Building an Expandable Component</h3>
+    <p>
+        Semantics is very important, it expresses what something is and how to use it.
+        Every interactive control must provide these 3 things: <strong>name, role, value</strong>.
+        Of these 3 things, semantics provide the <strong>role</strong>.
+    </p>
+    <p>
+        Aria 1.1 provide 69 roles, and of them 29 is interactive, called
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#widget_roles" target="_blank">Widget Roles</a>.
+    </p>
+    <p>
+        Teacher uses role=button on accordian header. Could use an actual button inside the h tag as well, 
+        <a href="index.html">see my implementation under Scope > My Coding Lab</a>.
+    </p>
+    <p>
+        Teacher discovers that role=button does not make the text usable with the keyboard. Role is just a contract
+        to the user, you need to provide the interactivity. So the third rule of aria was broken: 
+        All interactive ARIA roles need to be operable by keyboard.
+    </p>
+    <p>
+        This also breaks the first rule of aria: Dont use ARIA (if you can use HTML instead).
+        It also breaks the second rule, Dont change native semantics, since role=button on a h tag ovverides the header semantics.
+        So, button inside the h tag it is then...
+    </p>
+    <h4 class="h5">States and Properties</h4>
+    <p>
+        This provides the <strong>value</strong>.
+    </p>
+    <p>
+        Aria 1.1 provides 48 states and properties. 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#state_prop_def" target="_blank">All states and properties</a>. 
+        Scroll up for categories.
+    </p>
+    <p>
+        But what state and properties should we use? Well, we have a button that expands our accordian. Lets check the 
+        related role, <a href="https://www.w3.org/TR/wai-aria-1.2/#button" target="_blank">Role button</a>. We can
+        look under Supported States and Properties, aria-expanded sounds interesting. Lets click on it, 
+        <a href="https://www.w3.org/TR/wai-aria-1.2/#aria-expanded" target="_blank">aria-expanded</a> : 
+        "Indicates whether a grouping element owned or controlled by this element is expanded or collapsed.", sounds right.
+        We can also see the expected values for the attribute.
+    </p>
+    <h4 class="h5">The name</h4>
+    <p>
+        The <strong>name</strong> of the interactive control is calculated in the following way: 
+        aria-labelledby has highest priority, then aria-label, then the text inside the tag, then the title attribute.
+        Chrome Developer Tools accessibility panel displays them in that order as well.
+    </p>
+    <h4 class="h5">Remember the accessibility tab in Chrome Developer Tools</h4>
+    <p>
+        Accessibility Tree, a subset of the DOM tree.
+    </p>
+
+    <h3 class="h4">Providing Actions with a Menu Button</h3>
+    <p>
+        A composite widget (parent role and sub role) that opens a menu, selecting something in the menu creates an action on the page (change of content). 
+        A regular menu on the other hand, is not a aria-menu / menu button, because selecting something creates a route change most likely (change of context). 
+        A native select is not a aria-menu / menu button neither, because its purpose is to take inputs in a form (dont use it for change of content nor context).
+    </p>
+    <p>
+        So, menu buttons are for dynamic actions, not for navigation nor forms.
+    </p>
+    <h4 class="h5">Aria Roles</h4>
+    <p>
+        We use a tag with role menu and children with role menuitem. And a button with aria-haspopup, aria-expanded and aria-controls (pointing to the role=menu). 
+        <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/" target="_blank">Menu Button | ARIA Authoring Practices Guide</a>
+    </p>
+    <p>
+        ul must be directly after the button. 
+        <a href="https://www.w3.org/WAI/ARIA/apg/example-index/menu-button/menu-button-actions.html">Actions Menu Button | ARIA Authoring Practices Guide</a>.
+    </p>
+    <p>
+        Could also use role=menuitemcheckbox or role=menuitemradio, they are also valid children to role=menu and serve different purpose.
+    </p>
+    <h4 class="h5">Tab and Arrow Keys</h4>
+    <p>
+        A page may contain several composite widgets. Tab should ideally take the user from widget to widget, and arrow keys should be used to navigate inside the widget.
+    </p>
+    <h4 class="h5">Focus Indicator</h4>
+    <p>
+        Focus indicator is very important, at least do not override the default one, but prefebly create a better (that follows the app design).
+    </p>
+
+    <h4 class="h5">Role presentation</h4>
+    <p>
+        A note about role="presentation", it removes the semantic from an element and the element will not be mapped to the accessibility API. 
+        So from an assistive technology point of view, these are the same: h1[role=presentation] foo /h1 and span foo /span. 
+        Could be used in a similiar way as aria-hidden on a purely decorative image, or to hide a parent tag from assistive technology and 
+        by doing so fullfilling a direct child requirement for a role (must be direct child of another role), like this:
+    </p>
+    <pre>
+        ul role=menu
+            li role=presentation            // "In the way", but must be here
+                button role=menuitem        // Preferebly direct child to role=menu
+    </pre>
+
+</article>
+
+
+        </main>
+    </div>
+</body>
+
+</html>

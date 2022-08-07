@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Screen Reader Test Page - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+    <script>
+        const app = {};
+    </script>
+     
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="../../index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+<div class="col">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Screen Reader Test Page (h2)</h2>
+            <p>
+                Paragraph under heading level 2.
+            </p>
+
+            <h3 class="h4">Sub header 1 (h3)</h3>
+            <p>
+                Paragraph under first sub header, level 3.
+            </p>
+
+            <h3 class="h4">Sub header 2 (h3)</h3>
+            <p>
+                Paragraph under second sub header, level 3.
+            </p>
+
+            <h4 class="h5">Sub header 3 (h4)</h4>
+            <p>
+                Paragraph under first sub header, level 4.
+            </p>
+
+            <h4 class="h5">Sub header 4 (h4)</h4>
+            <p>
+                Paragraph under second sub header, level 4.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div>
+                <ul>
+                    <li>Adam</li>
+                    <li>Bertil</li>
+                    <li>Ceasar</li>
+                </ul>
+
+                <ol>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                </ol>
+            </div>
+
+            <div class="mt-5">
+                <a href="https://github.com/">Github</a>
+                <a href="https://www.google.com/">Google</a>
+                <a href="https://stackoverflow.com/">Stack Overflow</a>
+            </div>
+
+            <div class="mt-5">
+                <button type="button" class="btn btn-primary">Button 1</button>
+                <button type="button" class="btn btn-secondary">Button 2</button>
+                <button type="button" class="btn btn-secondary">Button 3</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Table Header 1</th>
+                        <th>Table Header 2</th>
+                        <th>Table Header 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>One</td>
+                        <td>Two</td>
+                        <td>Three</td>
+                    </tr>
+                    <tr>
+                        <td>Adam</td>
+                        <td>Bertil</td>
+                        <td>Ceasar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <aside class="mt-5">
+        <!-- 
+            More logical if this is a sibbling to main. It is valid to have it inside main, like we do (see StackOverflow).
+            However VoiceOver landmark navigation will treat it as it is outside main.
+            https://stackoverflow.com/questions/38023089/should-i-have-aside-element-ouside-or-inside-of-main-element
+        -->
+        <h2>This is aside content</h2>
+        <p>
+            Lorem ipsum dolores es sita met.
+        </p>
+    </aside>
+</div>
+
+
+        </main>
+    </div>
+</body>
+
+</html>
