@@ -88,14 +88,37 @@
         Status updates should be communicated.
     </p>
     <p>
-        Video should have transcripts (will satisfy both users that can not see and can not hear the media). Paus, stop, hide. Dont auto start the media.
+        Video should have transcripts (spoken words and "events") (will satisfy both users that can not see and can not hear the media -- can be read out loud, translated to braile, seen visually and resized). 
+        Paus, stop, hide. Dont auto start the media.
     </p>
     <p>
         Pop up and tooltip, be careful so not covering content. Hover AND focus should open it. 
         Dismiss with ESC, hovering off / blur only, stay persistent on scroll, rezise and hovering inside tooltip (and copy the content).
     </p>
     <h4 class="h5">Cognitive</h4>
+    <p>
+        Probebly the largest category of dissabilities. The determine how people process information and areas of attention, memory, language, problem solving and comprehension. 
+    </p>
+    <p>
+        Content should be easy to understand and operable.
+    </p>
+    <p>
+        Prevent distraction, like animations (users should be able to turn off / pause / hide) and flashes (avoid). 
+        Chrome Developer Tools, Rendering Tab, has an option, Emulate CSS media feature prefers reduced motion, if this stops animation, 
+        it means the developer has used CSS that respect system settings regarding animation. 
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion">prefers-reduced-motion | MDN</a>. 
+        Some animations are necessary like loading animations or progress bars.
+    </p>
+    <p>
+        Make sure the language is understandable. Dont point to sensory characteristics. Use correct lang attribute. Explain unusual words / abbreviations.
+    </p>
     <h4 class="h5">Hearing</h4>
+    <p>
+        Audio needs some text alternative. Use a transcript. A deaf user could use captions.
+    </p>
+    <p>
+        Controls for: Paus, Stop, Hide the media. Dont automatically start media.
+    </p>
 
 
 </article>
