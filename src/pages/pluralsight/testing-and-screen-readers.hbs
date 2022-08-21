@@ -22,6 +22,56 @@
         <li>Testing with screen readers NVDA, JAWS and Voice Over (Mac OS and iOS).</li>
     </ul>
 
+    <h3 class="h4">Basic Testing Techniques</h3>
+    <h4 class="h5">Physical</h4>
+    <p>
+        About 14% of the population has some form av physical dissability.
+    </p>
+    <p>
+        The single most important thing to do is test the interface with the keyboard. It will give an indication of the support for other inputs as well. 
+        Links, buttons and form elements are focusable elements that we should be able to tab to, and activate by enter key. 
+        It is also important that the focus indicator is easy to see. Also try to not use several different variants of focus indicators.
+    </p>
+    <p>
+        Preferebly the first tab stop on a page should be skip links, that lets a user skip to the main content.
+    </p>
+    <p>
+        document.activeElement in Chrome Developer Tools Console, will return the current element that has focus.
+    </p>
+    <p>
+        Radios uses so called widget navigation (tab to them, navigate inside the group with arrow keys, select with space).
+    </p>
+    <p>
+        Form controls are usally activated with space key (sometime enter to select an option in a select). Links and buttons are usally activated using enter key. 
+        Can differ between operating systems.
+    </p>
+    <p>
+        Logical tab order, and no keyboard trap is also important. Also when tabbing to an element, there should never be a change of context (route change, reload, automatic move focus).
+    </p>
+    <h5 class="h6">Touch and Voice</h5>
+    <p>
+        Gestures / motion, users should also be able to click a button or some other control.
+    </p>
+    <p>
+        Pointer cancelation is important, onUp event should be used (default with links and buttons).
+    </p>
+    <p>
+        Label in name.
+    </p>
+    <p>
+        User should have enough time. Turn off, adjust, give user option to extend (atleast 10 times).
+    </p>
+    <p>
+        Test for orientation, should not be locked to one viewport.
+    </p>
+    <h4 class="h5">Vision</h4>
+    <p>
+
+    </p>
+    <h4 class="h5">Cognitive</h4>
+    <h4 class="h5">Hearing</h4>
+
+
 </article>
 
 {{/inline}}
