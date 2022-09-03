@@ -61,20 +61,12 @@ h1 a {
     }
 }
 
-h2, .h2, .h4 {
-    margin-bottom: 0.5rem;
+h2, .h2, .h4, .h5, .h6 {
+    margin-bottom: 1rem;
 }
 
-.h5 {
-    margin-bottom: 0.25rem;
-}
-
-* + .h4 {
+* + h2, * + .h2, * + .h4, * + .h5, * + .h6 {
     margin-top: 1.5rem;
-}
-
-* + .h5 {
-    margin-top: 1rem;
 }
 
 .blockquote {
