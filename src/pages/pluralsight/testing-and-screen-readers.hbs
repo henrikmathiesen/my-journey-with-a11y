@@ -131,18 +131,125 @@
     <p>
         There is also an experimental new validator <a href="https://validator.w3.org/nu/" target="_blank">The W3C Markup Validation Service -- nu</a>
     </p>
+
+    <h4 class="h5">Also see</h4>
+    <p>
+        <a href="web-accessibility-meeting-guidelines.html#html">Pluralsight Course on Meeting Web Accessibility Guidelines (WCAG 2.1), section on HTML.</a>
+    </p>
+
     <h4 class="h5">Document Attributes</h4>
     <p>
-        
+        HTML validation might have picked up on some of these stuff. But also need to test manually. 
+        Use Chrome Developer Tools.
     </p>
+    <ul>
+        <li>Valid doctype</li>
+        <li>HTML tag with lang attribute</li>
+        <li>Also use lang attribute on elements with text in other languages</li>
+        <li>charset</li>
+        <li>Title tag (unique and describe the page)</li>
+    </ul>
     <h4 class="h5">Landmarks</h4>
+    <p>
+        Landmarks are important for semantics and for use as bypass blocks by assistive technology
+        (we can also use manually skiplinks for keyboard users without assistive technology).
+    </p>
+    <p>
+        These landmarks are: 
+    </p>
+    <ul>
+        <li>Header</li>
+        <li>Nav</li>
+        <li>Main</li>
+        <li>Footer</li>
+        <li>Aside</li>
+    </ul>
+    <p>
+        Form and Section are not landmarks, but would be if the have an accessible name provided via: 
+        aria-label, aria-labelledby or the title attribute.
+    </p>
+    <p>
+        The HTML validator will check for these, but we can check manually as well.
+    </p>
+    <p>
+        Not all pages will use all these, but at a minimum we should find the main tag.
+    </p>
+    <p>
+        We can use Chrome Developer Tools, Elements tab and search for these tags.
+    </p>
     <h4 class="h5">Headings</h4>
+    <p>
+        Having propert headings is really important. Use h1 (one per page, preferebly matching the title) to h6, in logical order. 
+        AT can lists these and jump to them (and use them as bypass blocks along with landmarks). 
+        They are a table of contents for the page.
+    </p>
+    <p>
+        Inspect the code, Chrome Developer Tools. Check headings and search for headings, check order.
+    </p>
     <h4 class="h5">Buttons and Links</h4>
+    <p>
+        Links are for navigation, change of context. Buttons are for actions.
+    </p>
+    <p>
+        Links should have unique text and not have text like "read more" (see coding lab).
+    </p>
+    <p>
+        The visuall label should preferebly match the accessible name.
+    </p>
+    <p>
+        Remember the Google Chrome Accessibility Tab.
+    </p>
+    <p>
+        Navigation links should be in the same order, accross all pages.
+    </p>
+    <p>
+        Use consistent names for actions, such as submitting a form (for example dont mix "Submit", "Post", "Go").
+    </p>
     <h4 class="h5">Images</h4>
+    <p>
+        Provide text alternative (that make sense), very important, first WCAG guideline.
+    </p>
+    <ul>
+        <li>alt attribute</li>
+        <li>aria-label</li>
+        <li>aria-labelledby</li>
+    </ul>
+    <p>
+        If image is nested in the a tag (and no text in the a tag), for example the logo (link to home page), 
+        the alt text is calculated for the link text. If the a tag contains text, the accessibility link text 
+        could be duplicate, consider using aria-hidden for the image (presentational only) and an empty alt="" attribute.
+    </p>
+    <p>
+        Avoid images of text, for rezise reasons (logos are an exception, but prefer scalable SVG).
+    </p>
     <h4 class="h5">Lists</h4>
+    <p>
+        ul or ol (for example steps) use correctly.
+    </p>
     <h4 class="h5">Tables</h4>
+    <p>
+        Display tabular data. Use correctly. Use column headers (th in tr in thead), set scope, but if 
+        omitted the browser calculates it to the best of its ability. 
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope" target="_blank">MDN - Scope</a>
+    </p>
+    <p>
+        Try to avoid complex tables.
+    </p>
     <h4 class="h5">Forms</h4>
-
+    <ul>
+        <li>Use correct input type, for example type="email"</li>
+        <li>Correct labels with for attribute</li>
+        <li>No placeholder</li>
+        <li>required attribute</li>
+        <li>auto-complete attribute</li>
+        <li>Give instructions</li>
+        <li>Use novalidate attribute on form, for manual validation</li>
+        <li>Use fieldset and legend (must be first child of fieldset element)</li>
+        <li>Disabled attribute -- should we use?</li>
+        <li>Use text, color and preferebly an icon also, for validation messages</li>
+        <li>Also use aria-invalid</li>
+        <li>Use aria-describedby to connect invalid field with error message</li>
+    </ul>
 
 </article>
 
