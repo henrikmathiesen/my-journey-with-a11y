@@ -268,6 +268,103 @@
         <li>Axe Core (use with unit tests, for example jest-axe)</li>
     </ul>
 
+    <h3 class="h4">Testing with Screen Readers</h3>
+    <p>
+        This is a very important step in the testing process.
+    </p>
+    <h4 class="h5">Screen Reader Myths</h4>
+    <h5 class="h6">"Screen Readers are only used by blind people"</h5>
+    <p>
+        No! Screen readers are also used by people with low vision, cognitive disability and physical disability. 
+        When making content visible only for screen readers (aria-label, .sr-only) ask yourself if all users will benefit. 
+        It can be confusing if the visual user experience and screen reader experience differ too much.
+    </p>
+    <h5 class="h6">"Screen Readers users are early adopters"</h5>
+    <p>
+        Dont asume these users are using the latest version of screen readers or browsers. 
+        Some of these tools can be expensive. Also some users might rely on their employer to upgrade and they might not be on a fast schedule to do so. 
+        Also screen reader users depend heavily on these tools, and might gotten used to a version and its setting, and not wanting to upgrade.
+    </p>
+    <h5 class="h6">"Screen Readers users are expert users / testers"</h5>
+    <p>
+        The experience with these tools can vary. Also dont asume that all screen reader users are eager to test your interface for free.
+    </p>
+    <h5 class="h6">"Automatically reading content means screen reader support"</h5>
+    <p>
+        Reading text on a page is the bare minimum a screen reader can do. 
+        Screen reader support means proper navigation, and announcing semantics and state of all elements.
+    </p>
+    <h5 class="h6">"Screen reader users read from top to bottom"</h5>
+    <p>
+        No! They scan the page, looking for landmarks, headings, links and specific controls.
+    </p>
+    <h5 class="h6">"Screen reader users only use the TAB key"</h5>
+    <p>
+        No! They use the TAB key and a lot of other shortcuts.
+    </p>
+    <h4 class="h5">Screen Reader Modes</h4>
+    <p>
+        Shortcuts depend on which mode the user is in.
+    </p>
+    <p>
+        There are mainly 2 modes (technically 3) and mostly apply to Windows screen readers.
+    </p>
+    <h5 class="h6">Browse Mode</h5>
+    <p>
+        This is the default mode. And has the largest sets of shortcuts and interactions. 
+    </p>
+    <p>
+        Just as a sighted user might scan the page, a screen reader user can do the same, jumping to elements: 
+        Headings, Tables, Links, Buttons, Forms, Landmarks, Lists, Images.
+    </p>
+    <p>
+        Common shortcuts for NVDA (Windows) and JAWS (Windows):
+    </p>
+    <ul>
+        <li>h for next heading and 1-6 for a specific heading level</li>
+        <li>t for tables</li>
+        <li>b for buttons</li>
+        <li>g for graphics</li>
+        <li>tab for navigating interactive controls</li>
+        <li>shift tab will navigate in reverse order</li>
+    </ul>
+    <p>
+        In browse mode, content can be discovered in different increment, mostly using arrow keys.
+    </p>
+    <ul>
+        <li>UP / DOWN key reads previous / next line</li>
+        <li>MODIFIER KEY (CTRL or INSERT) + LEFT / RIGHT reads previous / next word</li>
+        <li>LEFT / RIGHT reads previous / next character</li>
+    </ul>
+    <h5 class="h6">Forms (or focus) Mode</h5>
+    <p>
+        This is the mode that is required to interact with form elements. 
+        Assuming proper semantics are being used, the screen reader will automatically 
+        switch between Browse Mode and Forms Mode.
+    </p>
+    <p>
+        In this mode the normal shortcuts wont work, for example h or t, since that would hinder the user from typing in form fields. 
+        Instead these keys are passed to the browser, so the form can be filled out.
+    </p>
+    <h5 class="h6">Application Mode</h5>
+    <p>
+        It is like a combination of Browse Mode and Forms Mode under a very specific context. 
+        Custom widgets have specific interaction that requires this special mode. This mode is 
+        the same as Browse Mode in the sense that specific keys is used to operate the interface, 
+        but the keys are not automatically provided by the screen reader, they are provided with JavaScript. 
+        So the keys are passed to the browser, like in Form Mode, but picked up by JavaScript logic.
+    </p>
+    <p>
+        So for example the LEFT / RIGHT arrow keys might be used to navigate tabs in a widget, 
+        instead of the default behavior, reading one character at a time. 
+        Or using ESC to close a modal.
+    </p>
+    <h5 class="h6">Do not mix keyboard testing with Screen Reader testing</h5>
+    <p>
+        It is very important to recognize these different modes and how keys are affected.
+    </p>
+
+
 </article>
 
 {{/inline}}
