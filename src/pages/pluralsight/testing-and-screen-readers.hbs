@@ -363,6 +363,123 @@
     <p>
         It is very important to recognize these different modes and how keys are affected.
     </p>
+    <h4 class="h5">Testing with NVDA</h4>
+    <p>
+        Only on Windows. Free to use. Firefox works best with it.
+        NVDA stands for Non Visual Desktop Access.
+    </p>
+    <p>
+        CAPS LOCK or INSERT (default) are usually the NVDA Modifier Keys.
+    </p>
+    <p>
+        Tools > Speach Viewer will help see what is announced.
+    </p>
+    <p>
+        Upon navigating to a site NVDA will start reading the page from top to bottom.
+        Normally, screen reader users wont use the screen reader in this way.
+    </p>
+    <p>
+        The CTRL key is the single most important key, it will stop the screen reader from announcing content.
+    </p>
+    <h5 class="h6">Up / Down Keys</h5>
+    <p>
+        Use up / down keys to navigate.
+    </p>
+    <p>
+        Remember empty alt attribute makes NVDA skip announcing an image.
+    </p>
+    <p>
+        Read More Link is problematic, use aria-labelledby (point to header and link text) or aria-label.
+    </p>
+    <p>
+        Proper semantic for ul helps the Screen Reader user to know how many items, can skip them.
+    </p>
+    <p>
+        When down arrow just repeats the last item announced, it means we have reached the end of the page. 
+    </p>
+    <h5 class="h6">Tab Key</h5>
+    <p>
+        Use Tab Key to navigate focusable elements (skips static content).
+    </p>
+    <p>
+        When tabbing to an input, NVDA changes from Browse Mode to Focus Mode (Forms Mode).
+    </p>
+    <p>
+        When navigating in a widget, aria state and properties really help, aria-expanded.
+        Press SPACE (or ENTER) to expand, and down arrow to navigate to the static content.
+    </p>
+    <p>
+        Forms. Semantics are important. Up/Down Key will read radio items as content, select with SPACE, TABS exits. 
+    </p>
+    <p>
+        ESC exits Focus Mode (Forms Mode), ENTER re enters it. Can also use NVDA Modifier Key and SPACE Key.
+    </p>
+    <h5 class="h6">Short Cuts</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Means</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>d</td>
+                <td>Landmarks</td>
+            </tr>
+            <tr>
+                <td>h</td>
+                <td>Headings</td>
+            </tr>
+            <tr>
+                <td>1-6</td>
+                <td>Heading Levels</td>
+            </tr>
+            <tr>
+                <td>t</td>
+                <td>Tables</td>
+            </tr>
+            <tr>
+                <td>k</td>
+                <td>Links</td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td>Buttons</td>
+            </tr>
+            <tr>
+                <td>l</td>
+                <td>Lists</td>
+            </tr>
+            <tr>
+                <td>i</td>
+                <td>Lists, navigate items</td>
+            </tr>
+            <tr>
+                <td>g</td>
+                <td>Graphics (with alt text and not aria-hidden)</td>
+            </tr>
+            <tr>
+                <td>SHIFT</td>
+                <td>Navigates these in reverse</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        There should at least be a main landmark.
+    </p>
+    <p>
+        Table will put us in Application Mode, because special "widget" keys apply.
+        Can use up/down arror, but CTRL + ALT + Arrow will navigate more effectivly in any direction.
+    </p>
+    <h5 class="h6">Elements List</h5>
+    <p>
+        NVDA Key + F7 , will bring up the Elements List.
+    </p>
+    <p>
+        It will list: Links, Headings, Form Fields, Buttons and Landmarks.
+        Can filter, Activate, Move To.
+    </p>
 
 
 </article>
