@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Screen Reader Shortcuts - My journey with a11y</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // https://stackoverflow.com/questions/41142932/ie-supports-foreach-when-invoked-fromthe-console-but-not-when-called-from-t
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'forEach')) {
+            Object.defineProperty(NodeList.prototype, 'forEach', Object.getOwnPropertyDescriptor(Array.prototype, 'forEach'));
+        }
+    
+        // Added by moi
+        if (!Object.getOwnPropertyDescriptor(NodeList.prototype, 'some')) {
+            Object.defineProperty(NodeList.prototype, 'some', Object.getOwnPropertyDescriptor(Array.prototype, 'some'));
+        }
+    </script>
+    <script>
+        const app = {};
+    </script>
+     
+</head>
+
+<body>
+    <div class="container app-container">
+        <header class="row app-header">
+            <div class="col">
+                <h1 class="pb-2 pt-2 pb-sm-4 pt-sm-4 pb-lg-5 pt-lg-5 text-center">
+                    <a href="index.html">My journey with a11y</a>
+                </h1>
+            </div>
+        </header>
+        <main class="row py-2 py-sm-4 py-lg-5">
+            
+<div class="col-lg-8">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Voice Over</th>
+                <th scope="col">NVDA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Turn On</td>
+                <td>Command + F5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Turn Off</td>
+                <td>Command + F5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Stop Reading</td>
+                <td>CTRL</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+        </main>
+    </div>
+</body>
+
+</html>
