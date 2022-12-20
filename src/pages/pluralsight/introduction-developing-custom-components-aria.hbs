@@ -145,6 +145,25 @@
         Accessibility Tree, a subset of the DOM tree.
     </p>
 
+    <h3 class="h4">Name, Role, Value - repetition</h3>
+    <p>
+        Lets take a slider widget as an example.
+    </p>
+    <ul>
+        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#slider">wai-aria-1.2 -- slider</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/">ARIA Authoring Practices -- slider</a></li>
+    </ul>
+    <ul>
+        <li>
+            <strong>name:</strong> an aria-label on the widgets container div, or an aria-labelledby. This is what the assistive technology announces
+        </li>
+        <li>
+            <strong>role:</strong> role="slider", this is the semantic.
+        </li>
+        <li>
+            <strong>value:</strong> aria-valuenow (aria-*) (state), aria-valuemax/aria-valuemin (aria-*) (property)
+        </li>
+    </ul>
     <h3 class="h4">Providing Actions with a Menu Button</h3>
     <p>
         A composite widget (parent role and sub role) that opens a menu, selecting something in the menu creates an action on the page (change of content). 
